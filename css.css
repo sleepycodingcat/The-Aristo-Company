@@ -1,0 +1,26 @@
+
+/*ACROSS ALL PAGES*/
+
+header{
+  display: flex;
+  justify-content: space-between;
+  
+
+}
+
+body{
+  margin: 5vh 10vh;
+}
+
+#menuIcon{
+  font-size: clamp(5vw,5vw,12vw);
+}
+
+btn:hover{
+  cursor: pointer;
+  color:red;
+}
+
+#logo{
+  height:clamp(5vw,5vw,12vw);
+}
