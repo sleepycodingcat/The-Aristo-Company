@@ -1,6 +1,12 @@
 
 /*ACROSS ALL PAGES*/
 
+:root {
+  --aristo-red: #c1272dff;
+  --aristo-dark-yellow: #fbe492ff;
+  --aristo-pale-yellow:#fff9e1ff;
+}
+
 *{
   box-sizing: border-box;
 }
@@ -28,13 +34,69 @@ btn:hover{
   height:clamp(5vw,6vw,12vw);
 }
 
+click-spark{
+  --click-spark-color: var(--aristo-red);
+}
+
 /*LANDING PAGE ONLY*/ 
 
 .scrollContainer{
   overflow:hidden;
   max-width: 100%;
   white-space: nowrap;
+  display:inline-block;
+  opacity:0%;
+  cursor:default;
 }
+
+#penBoundingBox{
+  display:inline-block;
+  position:absolute;
+  z-index: 101;
+  width:400px;
+  height:40px;
+  background:rgba(171, 12, 12, 0);
+  right:5vw;
+  top:280px;
+  transform:rotate(-60deg);
+
+  /* is not responsive at all!! */
+}
+
+
+#penBoundingBox:hover ~ #penImg{
+  animation:bounce 2s ease-in-out infinite;
+}
+
+#penBoundingBox:hover ~ #camImg{
+  transition: opacity 0.1s;
+  opacity:0%;
+}
+
+@keyframes bounce {
+  0%{
+    transform:translateY(0)
+  }
+  50%{
+    transform: translateY(-15px);
+  }
+  100%{
+    transform:translateY(0px);
+  }
+  
+}
+
+#penBoundingBox:hover ~ .scrollContainer{
+  transition: opacity 0.1s;
+  opacity:100%;
+}
+
+#penBoundingBox:not(:hover) ~ .scrollContainer{
+  transition: opacity 0.2s;
+  opacity:0%;
+}
+
+
 
 #marquee1, #marquee3{
   animation: leftScroll 20s linear infinite;
@@ -62,6 +124,7 @@ btn:hover{
   font-size: clamp(1rem,2rem,2rem);
   font-weight:none;
 }
+
 @keyframes leftScroll {
   0%{
     transform: translateX(0);
@@ -85,8 +148,7 @@ btn:hover{
   display:inline-block;
   position:absolute;
   z-index: 100;
-  transform:rotate(30deg);
-  filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(1.2rem 1rem 9px rgba(0, 0, 0, 0.5));
   right:10vw;
   top:17vh;
 }
@@ -95,15 +157,16 @@ btn:hover{
   width:100vh;
   position:absolute;
   z-index: 100;
-  filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(1.2rem 1rem 9px rgba(0, 0, 0, 0.5));
   display:inline-block;
   top:25vh;
   left:5vw;
-
 }
 
 .writing{
-  color:#c1272dff;
+  color:var(--aristo-red);
 }
+
+
 
 
