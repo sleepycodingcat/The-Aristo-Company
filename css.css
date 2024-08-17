@@ -8,10 +8,11 @@
 header{
   display: flex;
   justify-content: space-between;
+  margin:20px 0px;
 }
 
 body{
-  margin: 5vh 10vh;
+  margin: 5vh 4vw;
 }
 
 #menuIcon{
@@ -29,24 +30,38 @@ btn:hover{
 
 /*LANDING PAGE ONLY*/ 
 
-#scrollContainer{
+.scrollContainer{
   overflow:hidden;
   max-width: 100%;
   white-space: nowrap;
 }
 
+#marquee1, #marquee3{
+  animation: leftScroll 20s linear infinite;
+  font-family: "Lexend",sans-serif;
+
+}
+
+#marquee2, #marquee4{
+  animation:rightScroll 10s linear infinite;
+  font-family: "geller-headline", serif;
+}
+
 .marquee{
+  height:14vh;
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
   font-size: 1rem;
-  animation: leftScroll 20s linear infinite;
+
 }
 
-.marquee p {
-  display: inline-block;
+.marquee h2{
+  margin: 30px 0px;
+  margin:none;
+  font-size: clamp(1rem,2rem,2rem);
+  font-weight:none;
 }
-
 @keyframes leftScroll {
   0%{
     transform: translateX(0);
@@ -54,6 +69,41 @@ btn:hover{
   100%{
     transform: translateX(-50%);
   }
+}
+
+@keyframes rightScroll {
+  0%{
+    transform: translateX(-30%);
+  }
+  100%{
+    transform: translateX(0%);
+  }
+}
+
+#penImg{
+  width:50vh;
+  display:inline-block;
+  position:absolute;
+  z-index: 100;
+  transform:rotate(30deg);
+  filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
+  right:10vw;
+  top:17vh;
+}
+
+#camImg{
+  width:100vh;
+  position:absolute;
+  z-index: 100;
+  filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
+  display:inline-block;
+  top:25vh;
+  left:5vw;
+
+}
+
+.writing{
+  color:#c1272dff;
 }
 
 
