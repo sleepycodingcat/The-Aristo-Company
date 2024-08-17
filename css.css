@@ -27,7 +27,7 @@ body{
 
 btn:hover{
   cursor: pointer;
-  color:red;
+  color:var(--aristo-red);
 }
 
 #logo{
@@ -39,6 +39,8 @@ click-spark{
 }
 
 /*LANDING PAGE ONLY*/ 
+
+/* WRITING STYLE */
 
 .scrollContainer{
   overflow:hidden;
@@ -96,8 +98,6 @@ click-spark{
   opacity:0%;
 }
 
-
-
 #marquee1, #marquee3{
   animation: leftScroll 20s linear infinite;
   font-family: "Lexend",sans-serif;
@@ -153,6 +153,12 @@ click-spark{
   top:17vh;
 }
 
+.writing{
+  color:var(--aristo-red);
+}
+
+/* FILM STYLE */
+
 #camImg{
   width:100vh;
   position:absolute;
@@ -160,12 +166,36 @@ click-spark{
   filter: drop-shadow(1.2rem 1rem 9px rgba(0, 0, 0, 0.5));
   display:inline-block;
   top:25vh;
-  left:5vw;
+  left:10vw;
 }
 
-.writing{
-  color:var(--aristo-red);
+#filmContainer{
+  display:flex;
+  overflow:hidden;
+  align-items: center;
+  animation:rightScroll 5s linear infinite;
 }
+
+.photo{
+  object-fit: cover;
+  object-position: 15% 30%;
+  --s: 9px; /* control the size */
+ 
+  width: calc(20*var(--s));
+  aspect-ratio: 1.2;
+  background: 
+    conic-gradient(at 50% var(--s),#000000 75%,#0000 0) 
+    0 0/calc(2*var(--s)) calc(100% - var(--s)) padding-box;
+  border: 10px solid #000000;
+  padding: calc(var(--s) * 2) calc(var(--s) * 0);
+  margin-right: calc(-2*var(--s));
+}
+
+#strip1{
+  overflow:hidden;
+  
+}
+
 
 
 
