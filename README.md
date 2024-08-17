@@ -1,0 +1,1 @@
+This is my personal portfolio website for all my writing and film/photography work! Originally, this started out as a school project as all BTEC L2 Media students need their own website, but instead of doing something with Wix or Google sites, I took it as a chance to practice my coding and design skills.
