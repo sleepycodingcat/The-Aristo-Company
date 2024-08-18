@@ -52,16 +52,16 @@ click-spark{
 }
 
 #penBoundingBox{
+  transform:rotate(-60deg);
   display:inline-block;
   position:absolute;
   z-index: 101;
   width:400px;
   height:40px;
-  background:rgba(171, 12, 12, 0);
+  background:rgba(101, 10, 10, 0.868);
   right:5vw;
   top:280px;
-  transform:rotate(-60deg);
-
+  animation:bounce 2s ease-in-out infinite;
   /* is not responsive at all!! */
 }
 
@@ -151,6 +151,7 @@ click-spark{
   filter: drop-shadow(1.2rem 1rem 9px rgba(0, 0, 0, 0.5));
   right:10vw;
   top:17vh;
+  animation:bounce 2s ease-in-out infinite;
 }
 
 .writing{
@@ -167,16 +168,20 @@ click-spark{
   display:inline-block;
   top:25vh;
   left:10vw;
+  animation:bounce 2s ease-in-out infinite;
 }
 
-#filmContainer{
-  display:flex;
+.filmContainer{
+  max-width: 100%;
+  white-space: nowrap;
+  display: inline-block;
   overflow:hidden;
   align-items: center;
-  animation:rightScroll 5s linear infinite;
+  opacity:0%;
 }
 
 .photo{
+  height:23vh;
   object-fit: cover;
   object-position: 15% 30%;
   --s: 9px; /* control the size */
@@ -191,9 +196,60 @@ click-spark{
   margin-right: calc(-2*var(--s));
 }
 
-#strip1{
-  overflow:hidden;
-  
+#strip1,#strip3{
+  animation:leftScrollFilm 16s linear infinite;  
+}
+
+#strip2{
+  animation:rightScrollFilm 16s linear infinite;
+}
+
+@keyframes leftScrollFilm {
+  0%{
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes rightScrollFilm{
+  0%{
+    transform: translateX(-30%);
+  }
+  100%{
+    transform: translateX(0%);
+  }
+}
+
+#camBoundingBox:hover ~ .filmContainer{
+  transition: opacity 0.2s;
+  opacity:100%;
+}
+
+#camBoundingBox:hover ~ #penImg{
+  transition: opacity 0.1s;
+  opacity:0%;
+}
+
+#camBoundingBox:not(:hover) ~ .filmContainer{
+  transition: opacity 0.2s;
+  opacity:0%;
+}
+
+#camBoundingBox{
+  position:absolute;
+  z-index: 101;
+  width:480px;
+  height:300px;
+  background:rgba(240, 0, 0, 0);
+  left:12vw;
+  top:36vh;
+  border-radius: 80px;
+  animation:bounce 2s ease-in-out infinite;
+
+  /* is not responsive at all!! */
+
 }
 
 
