@@ -11,10 +11,35 @@
   box-sizing: border-box;
 }
 
+@media screen and (max-width:600px){
+  header h1{
+    display:none;
+  }
+}
+
 header{
+  flex-wrap:wrap;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end; 
   margin:20px 0px;
+}
+
+header a{
+  display:flex;
+  text-decoration: none;
+  color:black;
+  font-family: "futura-pt-bold", sans-serif;
+}
+
+h1{
+  font-size: clamp(1rem,2rem,3rem);
+  margin: 4px 0px;
+}
+
+header a:hover{
+  transition: color 0.2s;
+  color:var(--aristo-red);
 }
 
 body{
@@ -27,6 +52,7 @@ body{
 
 btn:hover{
   cursor: pointer;
+  transition: color 0.2s;
   color:var(--aristo-red);
 }
 
