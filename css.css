@@ -21,7 +21,7 @@ header{
   flex-wrap:wrap;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end; 
+  align-items: center; 
   margin:20px 0px;
 }
 
@@ -33,8 +33,8 @@ header a{
 }
 
 h1{
-  font-size: clamp(1rem,2rem,3rem);
-  margin: 4px 0px;
+  font-size: clamp(2.5vw,3vw,6vw);
+  margin: 20px 0px 0px 0px;
 }
 
 header a:hover{
@@ -47,6 +47,7 @@ body{
 }
 
 #menuIcon{
+  margin:10px 0px 0px 0px;
   font-size: clamp(5vw,5vw,12vw);
 }
 
@@ -60,9 +61,40 @@ btn:hover{
   height:clamp(5vw,6vw,12vw);
 }
 
+
 click-spark{
   --click-spark-color: var(--aristo-red);
 }
+
+/* DROP DOWN MENU */
+
+#dropdown{
+  position:absolute;
+  display:flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center; /* horizontally center align */
+  text-align: center;
+  overflow:hidden;
+}
+
+#btecBtn:hover + #dropdown #dropdownContent,#dropdown #dropdownContent:hover {
+  transform: translateY(0);
+}
+
+#dropdownContent{
+  transform: translateY(-150px);
+  background-color: black;
+  padding:10px 20px;
+}
+
+#dropdown a {
+  width: 100%; /* Set the width of anchor tags to 100% */
+  text-align: center; /* center align the text within the anchor tags */
+  color:white;
+}
+
+
 
 /*LANDING PAGE ONLY*/ 
 
