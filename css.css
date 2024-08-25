@@ -344,6 +344,48 @@ click-spark{
 
 }
 
+/* PHOTOS PAGE */
+
+
+.imgRow {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  
+}
+.imgColumn {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.imgColumn img {
+  margin-top: 10px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.imgColumn img:hover{
+  transition:transform 0.2s ease-in;
+  transform: scale(1.03);
+}
+
+.imgColumn img:not(:hover){
+  transition:transform 0.2s ease-out;
+  transform: scale(1);
+}
+
+@media screen and (max-width: 800px) {
+  .imgColumn {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+.imgContainer{
+  overflow:hidden;
+  object-fit: cover;
+}
 
 
 
