@@ -37,7 +37,7 @@
 
     <div class = "imgRow">
         <div class = "imgColumn">
-            <div class ="imgContainer"><img class = "picture" src = "/Photography compressed/Frozen Time.png" ></div>
+            <div class ="imgContainer"><img class = "picture" src = "/Photography compressed/Frozen Time.png" onclick="openModal();currentSlide(1)"></div>
             <div class ="imgContainer"><img class = "picture" src = "/Photography compressed/Across the water.png" ></div>
             <div class ="imgContainer"><img class = "picture" src = "/Photography compressed/Autum Birds.png" ></div>
             <div class ="imgContainer"><img class = "picture" src = "/Photography compressed/bubble!.png"></div>
@@ -45,8 +45,14 @@
         </div>
 
         <div class = "imgColumn">
-            <div class ="imgContainer"><img class = "picture" src = "/Photography compressed/IMG_3900.jpg"></div>
-            <div class ="imgContainer"><img class = "picture" src = "/Photography compressed/Lily.png" ></div>
+            <div class ="imgContainer">
+                <img class = "picture" src = "/Photography compressed/IMG_3900.jpg">
+                <img class = "hoverStickPpl" id = "jailStick" src = "/jail person.png">
+            </div>
+            <div class ="imgContainer">
+                <img class = "picture" src = "/Photography compressed/Lily.png" >
+                <img class = "hoverStickPpl" id = "bookStick" src = "/book person.png">
+            </div>
             <div class ="imgContainer">
                 <img class = "picture" src = "/Photography compressed/Running Guy.png">
                 <img class = "hoverStickPpl" id = "runningStick" src = "/running stick person.png">
@@ -74,6 +80,37 @@
             <div class ="imgContainer"><img class = "picture"  src = "/Photography compressed/Old Times.png"></div>
         </div>
     </div>
+
+    <div id="myModal" class="modal">
+        <span class="close cursor" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+      
+          <div class="mySlides">
+            <div class="numbertext">1 / 4</div>
+            <img src="/Photography compressed/Frozen Time.png" style="width:100%">
+          </div>
+      
+          <div class="mySlides">
+            <div class="numbertext">2 / 4</div>
+            <img src="/Photography compressed/Across the water.png" style="width:100%">
+          </div>
+      
+          <div class="mySlides">
+            <div class="numbertext">3 / 4</div>
+            <img src="/Photography compressed/Autum Birds.png" style="width:100%">
+          </div>
+      
+          <div class="mySlides">
+            <div class="numbertext">4 / 4</div>
+            <img src="/Photography compressed/bubble!.png" style="width:100%">
+          </div>
+      
+          <!-- Next/previous controls -->
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+      </div>
+
     <click-spark></click-spark>
 
     <script src = "/script.js"></script>
