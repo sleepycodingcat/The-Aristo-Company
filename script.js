@@ -1,3 +1,6 @@
+let width = window.innerWidth;
+let height = window.innerHeight;
+
 document.addEventListener('DOMContentLoaded', () => {
     const logoContainer = document.querySelector('#logoContainer');
     const video = document.querySelector('#logo');
@@ -60,3 +63,22 @@ function openModal() {
     dots[slideIndex-1].className += " active";
     captionText.innerHTML = dots[slideIndex-1].alt;
   }
+
+  // MENU SIDEBAR
+
+  /* Set the width of the side navigation to 250px */
+function openNav() {
+  if (width<450){
+    document.getElementById("navBar").style.width = "100vw";
+  }
+  else{
+    document.getElementById("navBar").style.width = "30vw";
+  }
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  document.getElementById("navBar").style.width = "0";
+}
+
+

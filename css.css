@@ -25,16 +25,20 @@ header{
   margin:20px 0px;
 }
 
+a{
+  font-family: "futura-pt-bold", sans-serif;
+}
+
 header a{
   display:flex;
   text-decoration: none;
   color:black;
-  font-family: "futura-pt-bold", sans-serif;
 }
 
 h1{
   font-size: clamp(2.5vw,3vw,6vw);
   margin: 20px 0px 0px 0px;
+  font-family: "futura-pt-bold", sans-serif;
 }
 
 header a:hover{
@@ -45,6 +49,7 @@ header a:hover{
 body{
   margin: 5vh 4vw;
 }
+
 
 #menuIcon{
   margin:10px 0px 0px 0px;
@@ -541,4 +546,32 @@ click-spark{
   padding: 8px 12px;
   position: absolute;
   top: 0;
+}
+
+
+/* MENU SIDEBAR */
+
+.sideNav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: var(--aristo-dark-yellow);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+#navContent{
+  padding:10px 50px;
+}
+
+#navBarClose{
+  margin:2vh 0vh;
+  font-size: clamp(5vw,5vw,12vw);
+}
+
+.sideNav h1{
+  font-size: 10vw;
 }
