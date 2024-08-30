@@ -369,6 +369,7 @@ click-spark{
   margin-top: 10px;
   vertical-align: middle;
   width: 100%;
+  cursor: pointer;
 }
 
 .imgColumn .picture:hover{
@@ -515,7 +516,7 @@ click-spark{
   position: absolute;
   top: 50%;
   width: auto;
-  padding: 16px;
+  padding: 2px 10px;
   margin-top: -50px;
   color: white;
   font-weight: bold;
@@ -548,6 +549,12 @@ click-spark{
   top: 0;
 }
 
+.imgInfo{
+  font-family: "Lexend",sans-serif;
+  text-align: center;
+  margin:5px 0;
+}
+
 
 /* MENU SIDEBAR */
 
@@ -561,6 +568,16 @@ click-spark{
   background-color: var(--aristo-dark-yellow);
   overflow-x: hidden;
   transition: 0.5s;
+}
+
+.sideNav a{
+  text-decoration: none;
+  color:black;
+  font-size:2rem;
+}
+
+.sideNav a:hover{
+  color:var(--aristo-red);
 }
 
 #navContent{
