@@ -1,3 +1,5 @@
+// LOGO MOVES ON HOVER
+
 let width = window.innerWidth;
 let height = window.innerHeight;
 
