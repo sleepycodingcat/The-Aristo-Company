@@ -1,0 +1,32 @@
+
+  
+  .youtube-player {
+    position: relative;
+    width: 640px;
+    height: 400px;
+    margin: auto;
+    cursor: pointer;
+  }
+  
+  .youtube-player img {
+    width: 100%;
+  }
+  
+  .youtube-player.pristine::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -15px;
+    margin-left: -25px;
+    height: 0;
+    width: 0;
+    border-left: 50px solid purple;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    transition: opacity .2s ease;
+  }
+  
+  .youtube-player.pristine:hover::before {
+    opacity: .7;
+  }

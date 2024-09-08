@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      overflow: hidden
+    }
+
+    html, body {
+      height: 100%
+    }
+
+    img, span {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      bottom: 0;
+      margin: auto
+    }
+
+    span {
+      height: 1.5em;
+      text-align: center;
+      font: 48px/1.5 sans-serif;
+      color: white;
+      text-shadow: 0 0 0.5em black
+    }
+
+    #wrapper {
+      position: relative;
+      width: fit-content;
+      cursor: pointer;
+    }
+
+    #wrapper>#thumbnail {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 style="text-align: center;">My Website</h1>
+  <div id="wrapper">
+    <div id="thumbnail">
+      <img src=https://img.youtube.com/vi/Y8Wp3dafaMQ/hqdefault.jpg
+        alt='Video The Dark Knight Rises: What Went Wrong? – Wisecrack Edition'>
+      <span>▶</span>
+    </div>
+    <!-- The <iframe> (and video player) will replace this <div> tag. -->
+    <div id="player"></div>
+  </div>
+  <script>
+    //This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    //This function creates an <iframe> (and YouTube player)
+    //after the API code downloads.
+    var player;
+    let playerReady = false;
+    let thumbnail = document.getElementById('thumbnail');
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '390',
+        width: '640',
+        videoId: 'Y8Wp3dafaMQ',
+        playerVars: {
+          'playsinline': 1,
+          'autoplay': 1
+        },
+        events: {
+          'onReady': () => { playerReady = true; }
+        }
+      });
+    }
+
+    thumbnail.addEventListener('click', playVideo);
+    async function playVideo() {
+      if (!playerReady) {
+        console.log('waiting...');
+        await until(p => playerReady);
+      }
+
+      console.log('playing!');
+      if (thumbnail)
+        thumbnail.remove();
+      player.playVideo();
+    }
+
+    function until(conditionFunction) {
+      const poll = resolve =>
+        conditionFunction() ? resolve() : setTimeout(_ => poll(resolve), 400);
+      return new Promise(poll);
+    }
+  </script>
+</body>
+
+</html>

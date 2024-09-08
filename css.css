@@ -117,9 +117,10 @@ click-spark{
   grid-template-rows: 100%;
   justify-items:center;
   align-items: center;
+  /* to do: make this container center in middle of screen in phone screen size */
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   #camPenContainer{
     height:100%;
     grid-template-rows: 50% 50%;
@@ -280,7 +281,6 @@ body:has(#penBoundingBox:not(:hover)) ~ #camBoundingBox:not(:hover) .filmContain
 #penImg{
   width:70%;
   display:inline-block;
-  /* position:absolute; */
   grid-column:3/4;
   grid-row:1/1;
   z-index: 100;
@@ -674,15 +674,15 @@ body:has(#camBoundingBox:not(:hover)) .filmContainer{
   display:flex;
   flex-direction: column;
   align-content: center;
+  justify-content: center;
   flex-wrap:wrap;
   margin: 6vw 0;
 }
 
 #featuredVid iframe{
   height:30vw;
-  width:60vw;
+  width:50vw;
   border-style:none;
-
 }
 
 #featuredVid h2{
@@ -692,4 +692,45 @@ body:has(#camBoundingBox:not(:hover)) .filmContainer{
   margin:2vw 0;
   color:var(--aristo-red);
   
+}
+
+
+#featuredVid img, span {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  margin: auto
+}
+
+#featuredVid span{
+  height: 1.5em;
+  text-align: center;
+  font: 90px/1.5 sans-serif;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 0.7em var(--aristo-dark-yellow);
+}
+
+#featuredVid span:hover{
+  color:rgba(255, 255, 255, 0.701);
+}
+
+#wrapper {
+  align-self: center;
+  position: relative;
+  width: fit-content;
+  cursor: pointer;
+}
+
+#wrapper>#thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#thumbnail img{
+  height:100%;
+  object-fit: cover;;
 }

@@ -1,5 +1,53 @@
-// LOGO MOVES ON HOVER
+// Customized YT thumbnail preview
 
+//This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+//This function creates an <iframe> (and YouTube player)
+//after the API code downloads.
+var player;
+let playerReady = false;
+let thumbnail = document.getElementById('thumbnail');
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    height: '390',
+    width: '640',
+    videoId: 'ntqivT3Nklg',
+    playerVars: {
+      'playsinline': 1,
+      'autoplay': 1
+    },
+    events: {
+      'onReady': () => { playerReady = true; }
+    }
+  });
+}
+
+thumbnail.addEventListener('click', playVideo);
+async function playVideo() {
+  if (!playerReady) {
+    console.log('waiting...');
+    await until(p => playerReady);
+  }
+
+  console.log('playing!');
+  if (thumbnail)
+    thumbnail.remove();
+  player.playVideo();
+}
+
+function until(conditionFunction) {
+  const poll = resolve =>
+    conditionFunction() ? resolve() : setTimeout(_ => poll(resolve), 400);
+  return new Promise(poll);
+}
+
+
+
+// LOGO MOVES ON HOVER
 let width = window.innerWidth;
 let height = window.innerHeight;
 
