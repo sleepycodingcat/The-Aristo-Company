@@ -18,7 +18,6 @@ function onYouTubeIframeAPIReady() {
     videoId: 'ntqivT3Nklg',
     playerVars: {
       'playsinline': 1,
-      'autoplay': 1
     },
     events: {
       'onReady': () => { playerReady = true; }
