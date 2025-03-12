@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Aristo Company Media</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel = "stylesheet" href = "/The-Aristo-Company/css.css">
-    <link rel="icon" href="/O favicon.png">
+    <link rel="stylesheet" href="../css.css">
+    <link rel="icon" href="../O favicon.png">
     <link rel="stylesheet" href="https://use.typekit.net/how3ouk.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,18 +14,18 @@
 </head>
 <body>
     <header>
-        <div id = "logoContainer">
-            <a href = "mediaHome.html"><video playsinline muted id = "logo" src = "/The Aristo Company Logo white bg compressed.mp4"></video></a>
+        <div id="logoContainer">
+            <a href="mediaHome.html"><video playsinline muted id="logo" src="/The Aristo Company Logo white bg compressed.mp4"></video></a>
         </div>
 
-        <a href ="mediaPhotography.html">
+        <a href="mediaPhotography.html">
             <h1>PHOTOS</h1>
         </a>
 
         <div>
-            <h1><a id = "btecBtn" href ="btecHome.html">BTEC L.2</a>  
+            <h1><a id="btecBtn" href="btecHome.html">BTEC L.2</a>  
             <div id="dropdown">
-                <div id ="dropdownContent">
+                <div id="dropdownContent">
                     <a href="Unit 1.html">Unit 1</a>
                     <a href="Unit 4.html">Unit 4</a>
                 </div>
@@ -33,7 +33,7 @@
             </h1>
         </div>
         
-        <a href ="otherMediaHome.html">
+        <a href="otherMediaHome.html">
             <h1>OTHER</h1>
         </a>
         <!-- <span class="material-symbols-outlined">
@@ -47,40 +47,81 @@
         <span class="material-symbols-outlined">
             edit
         </span> -->
-        <btn onclick="openNav()" id = "menuIcon" class="material-symbols-outlined">
+        <btn onclick="openNav()" id="menuIcon" class="material-symbols-outlined">
             menu
         </btn>
     </header>
 
     <div id="navBar" class="sideNav">
-        <div id = "navContent">
+        <div id="navContent">
             <btn class="material-symbols-outlined" id="navBarClose" onclick="closeNav()">
                 close
             </btn>
             <h1>FILM</h1>
-            <a href = "mediaPhotography.html">Photos</a><br>
-            <a href = "btecHome.html">BTEC L2</a><br>
-            <a href = "otherMediaHome.html">Other</a><br>
+            <a href="mediaPhotography.html">Photos</a><br>
+            <a href="btecHome.html">BTEC L2</a><br>
+            <a href="otherMediaHome.html">Other</a><br>
         </div>
     </div>
 
-    <h1>Brief</h1>
-    <p>You have been commissioned by a media agency to develop ideas and a proposal for a new media product to promote involvement with community projects in your local area. 
-        One key aim of these projects is to encourage young people to work with more  experienced members of the community to learn life-enriching new skills. 
-    </p>
 
-    <h1>Activity 1.1</h1>
-    <iframe src="https://docs.google.com/document/d/e/2PACX-1vT4ycx4RkfpIBjfv8f_usOkMFOopQf2lTNAmMcATtr1aCPt3TCtfTjtOwbLO7DLCIU3SKQtsTHET6pF/pub?embedded=true" width = "1000" height ="500"></iframe>
-    <h1>Activity 1.2</h1>
-    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ_U35hCyfQuRoeBaye_1uUOgW10J6Rcp_v55pRgBLaMJnkQPgI-3WLHbJgJgiDa4YSRDmKAUh9oRuc/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-    <h1>Activity 2</h1>
-    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRMDh_N0Ww9-r3eu65ngAEgVSm1mosLz-jvANk91XTb1Qk0GbKUd9tvfGPbaYlPrJE0CiHTBaxjbvjI/embed?start=true&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+    <div id="briefWrapper">
+        <h1 id="brief">Brief</h1>
+        <p>You have been commissioned by a media agency to develop ideas and a proposal for a new media product to promote involvement with community projects in your local area. 
+            One key aim of these projects is to encourage young people to work with more experienced members of the community to learn life-enriching new skills. 
+        </p>
+        <a href="#activity3">
+            <btn id="jumpToFinal">Jump to final product!</btn>
+        </a>
+    </div>
 
-    <h1>Activity 3</h1>
-    <iframe src="https://drive.google.com/file/d/1p8sPISLnwcbtRtPem0bRTy2j4J_UMCkH/preview" width="640" height="480" allow="autoplay"></iframe>
+    <div class="unit1Section">
+        <div>
+            <embed src="../Unit 1 Research Plan 2024.pdf#toolbar=0&navpanes=0&scrollbar=0" width="500" height="600" type="application/pdf">
+        </div>
+        <div class="activityDescript">
+            <h1 class="activityTitle">Activity 1.1</h1>
+            <p>Before starting our research, we made a detailed research plan to collect primary and secondary research. 
+                I first looked for existing products that used the same medium I planned to use, and then wrote questions for a survey and focus group to collect relevant data.
+            </p>
+        </div>
+        
+    </div>
+
+    <div class="unit1Section">
+        <div>
+            <iframe class="gSlides" src="https://docs.google.com/presentation/d/e/2PACX-1vQ_U35hCyfQuRoeBaye_1uUOgW10J6Rcp_v55pRgBLaMJnkQPgI-3WLHbJgJgiDa4YSRDmKAUh9oRuc/embed?start=false&loop=false&delayms=3000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        </div>
+        <div class="activityDescript">
+            <h1 class="activityTitle">Activity 1.2</h1>
+            <p>Before starting our research, we made a detailed research plan to collect primary and secondary research. 
+                I first looked for existing products that used the same medium I planned to use, and then wrote questions for a survey and focus group to collect relevant data.
+            </p>
+        </div>
+    </div>
+
+    <div class="unit1Section">
+        <div>
+            <iframe class="gSlides" src="https://docs.google.com/presentation/d/e/2PACX-1vRMDh_N0Ww9-r3eu65ngAEgVSm1mosLz-jvANk91XTb1Qk0GbKUd9tvfGPbaYlPrJE0CiHTBaxjbvjI/embed?start=true&loop=false&delayms=3000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        </div>
+        <div class="activityDescript">
+            <h1 class="activityTitle">Activity 2</h1>
+            <p>Before starting our research, we made a detailed research plan to collect primary and secondary research. 
+                I first looked for existing products that used the same medium I planned to use, and then wrote questions for a survey and focus group to collect relevant data.
+            </p>
+        </div>
+    </div>
+
+    <div id="activity3Wrapper">
+        <div>
+            <h1 class="activityTitle" id="activity3">Activity 3</h1>
+            <iframe id="unit1Video" height="400" width="800" src="https://drive.google.com/file/d/1p8sPISLnwcbtRtPem0bRTy2j4J_UMCkH/preview" allow="autoplay"></iframe>
+        </div>
+    </div> 
+
 
     <click-spark></click-spark>
-    <script src = "/script.js"></script>
-    <script type="module" src="/click-spark.js"></script>
+    <script src="../script.js"></script>
+    <script type="module" src="../click-spark.js"></script>
 </body>
 </html>

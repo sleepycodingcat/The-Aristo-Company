@@ -22,7 +22,7 @@ header{
   display: flex;
   justify-content: space-between;
   align-items: center; 
-  margin:20px 0px;
+  margin: 20px 0vw 6vw 0px;
 }
 
 footer{
@@ -45,6 +45,12 @@ h1{
   margin: 20px 0px 0px 0px;
   font-family: "futura-pt-bold", sans-serif;
 }
+
+p{
+  font-family: "Lexend",sans-serif;
+}
+
+
 
 header a:hover{
   transition: color 0.2s;
@@ -79,6 +85,7 @@ click-spark{
 /* DROP DOWN MENU */
 
 #dropdown{
+  z-index: 1;
   position:absolute;
   display:flex;
   flex-direction: column;
@@ -96,6 +103,10 @@ click-spark{
   transform: translateY(-150px);
   background-color: black;
   padding:10px 20px;
+}
+
+#dropdown a:hover{
+  color:var(--aristo-red);
 }
 
 #dropdown a {
@@ -138,6 +149,28 @@ click-spark{
   }
 
   
+}
+
+.tooltip{
+  position: relative;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: fit-content;
+  height: fit-content;
+  background-color: var(--aristo-red);
+  color: var(--aristo-pale-yellow);
+  padding: 5px 10px;
+  font-size: 1.2rem;
+
+  /* Position the tooltip */
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  display:block;
 }
 
 
@@ -290,11 +323,6 @@ body:has(#penBoundingBox:not(:hover)) ~ #camBoundingBox:not(:hover) .filmContain
   animation:bounce 2s ease-in-out infinite;
 }
 
-.writing{
-  color:var(--aristo-red);
-}
-
-
 /* FILM STYLE */
 
 
@@ -414,7 +442,6 @@ body:has(#camBoundingBox:not(:hover)) .filmContainer{
   display: flex;
   flex-wrap: wrap;
   padding: 0 4px;
-  margin:6vw 0;
   
 }
 .imgColumn {
@@ -440,10 +467,19 @@ body:has(#camBoundingBox:not(:hover)) .filmContainer{
   opacity:100%;
 }
 
+.hoverStickPpl {
+  opacity:100%;
+}
+
+.myModal:hover + .hoverStickPpl {
+  display: none;
+}
+
 .imgColumn .picture:not(:hover) ~ .hoverStickPpl{
   transition:opacity 0.3s;
   opacity: 0%;
 }
+
 
 #runningStick:hover{
   opacity:100%;
@@ -479,21 +515,16 @@ body:has(#camBoundingBox:not(:hover)) .filmContainer{
 
 .imgContainer{
   overflow:hidden;
-  object-fit: cover;
+  object-fit: contain;
   position:relative;
 }
-
-.hoverStickPpl{
-  opacity:0%;
-}
-
 
 #runningStick{
   position:absolute;
   left: 68%;
   top:44%;
   width:10%;
-  z-index: 200;
+  z-index: 1;
 }
 
 #stairStick{
@@ -501,7 +532,7 @@ body:has(#camBoundingBox:not(:hover)) .filmContainer{
   left: 6%;
   top:5%;
   width:10%;
-  z-index: 200;
+  z-index: 1;
 }
 
 #bookStick{
@@ -509,7 +540,7 @@ body:has(#camBoundingBox:not(:hover)) .filmContainer{
   left: 20%;
   top:30%;
   width:35%;
-  z-index: 20;
+  z-index: 1;
 }
 
 #jailStick{
@@ -517,7 +548,7 @@ body:has(#camBoundingBox:not(:hover)) .filmContainer{
   left: 7%;
   top:10%;
   width:78%;
-  z-index: 20;
+  z-index: 1;
 }
 
 /* IMAGE LIGHTBOX */
@@ -527,7 +558,7 @@ body:has(#camBoundingBox:not(:hover)) .filmContainer{
   display: none;
   position: fixed;
   z-index: 1;
-  padding:50px 0;
+  padding:30px 0;
   left: 0;
   top: 0;
   width: 100%;
@@ -543,16 +574,6 @@ body:has(#camBoundingBox:not(:hover)) .filmContainer{
   padding: 0;
   width: 50%;
   max-width: 1200px;
-}
-
-/* The Close Button */
-.close {
-  color: rgb(0, 0, 0);
-  position: absolute;
-  top: 10px;
-  right: 30px;
-  font-size: 100px;
-  font-weight: bold;
 }
 
 .close:hover,
@@ -734,3 +755,59 @@ body:has(#camBoundingBox:not(:hover)) .filmContainer{
   height:100%;
   object-fit: cover;;
 }
+
+
+/* UNIT 1 PAGE */
+h1#brief{
+  text-align: center;
+  background-color: var(--aristo-dark-yellow);
+  padding:5px 0px;
+}
+
+#briefWrapper{
+  margin:0 0 80px 0;
+}
+
+.gSlides{
+  width:500px;
+  height:300px;
+}
+
+.unit1Section{
+  margin:40px 0px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.activityDescript{
+  margin:0 0px 0px 30px;
+}
+
+#jumpToFinal{
+  font-family: "futura-pt-bold", sans-serif;
+  padding: 10px 10px;
+  background-color: var(--aristo-pale-yellow);
+}
+.activityTitle{
+  margin:20px 0px;
+}
+
+#activity3Wrapper{
+  margin:100px 0 0 0;
+  padding:0 0 30px 0;
+  display:flex;
+  justify-content: center;
+  background: linear-gradient(103deg, var(--aristo-dark-yellow) 35%, var(--aristo-red) 25%)
+}
+
+#unit1Video{
+  border: 5px inset var(--aristo-dark-yellow);
+}
+
+@media (max-width: 800px) {
+  .unit1Section {
+    flex-direction: column;
+  }
+}
+
