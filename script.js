@@ -17,7 +17,7 @@ let height = window.innerHeight;
   /* Set the width of the side navigation to 250px */
 
   function openNav() {
-    if (width<450){
+    if (width<"600px"){
       document.getElementById("navBar").style.width = "100vw";
     }
     else{

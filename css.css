@@ -11,18 +11,21 @@
   box-sizing: border-box;
 }
 
-@media screen and (max-width:600px){
-  header h1{
-    display:none;
-  }
-}
-
 header{
   flex-wrap:wrap;
   display: flex;
   justify-content: space-between;
   align-items: center; 
   margin: 20px 0vw 6vw 0px;
+  padding: 0 10px;
+  position: relative;
+}
+
+/* Header text responsive sizing */
+header h1 {
+  font-size: clamp(30px, 2.8vw, 50px); /* Min 16px, max 24px, responsive in between */
+  margin: 20px 10px 0px 10px; /* Add horizontal spacing */
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 footer{
@@ -62,9 +65,9 @@ body{
 }
 
 
-#menuIcon{
-  margin:10px 0px 0px 0px;
-  font-size: clamp(5vw,5vw,12vw);
+#menuIcon {
+  margin: 10px 0px 0px 0px;
+  font-size: clamp(30px, 5vw, 48px); /* Min 30px, max 48px, responsive in between */
 }
 
 btn:hover{
@@ -73,13 +76,52 @@ btn:hover{
   color:var(--aristo-red);
 }
 
-#logo{
-  height:clamp(5vw,6vw,12vw);
+#logo {
+  height: clamp(40px, 6vw, 70px); /* Min 40px, max 70px, responsive in between */
 }
 
 
 click-spark{
   --click-spark-color: var(--aristo-red);
+}
+
+
+/* MENU SIDEBAR */
+
+.sideNav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: var(--aristo-dark-yellow);
+  overflow-x: hidden;
+  transition: 0.5s;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2); /* Add shadow */
+}
+
+.sideNav a{
+  text-decoration: none;
+  color:black;
+  font-size:2rem;
+}
+
+.sideNav a:hover{
+  color:var(--aristo-red);
+}
+
+#navContent{
+  padding:10px 50px;
+}
+
+#navBarClose{
+  margin:2vh 0vh;
+  font-size: clamp(5vw,5vw,12vw);
+}
+
+.sideNav h1{
+  font-size: 10vw;
 }
 
 /* DROP DOWN MENU */
@@ -95,25 +137,176 @@ click-spark{
   overflow:hidden;
 }
 
+/* Create the animated background effect */
+#dropdown a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%; /* Start off-screen to the left */
+  width: 100%;
+  height: 100%;
+  background-color: var(--aristo-red); /* Use the site's red color */
+  transition: all 0.4s ease; /* Animation speed */
+  z-index: -1; /* Place behind the text */
+}
+
+/* Animate the background on hover */
+#dropdown a:hover::before {
+  left: 0; /* Move in from the left */
+}
+
+
 #btecBtn:hover + #dropdown #dropdownContent,#dropdown #dropdownContent:hover {
   transform: translateY(0);
 }
 
 #dropdownContent{
-  transform: translateY(-150px);
+  transform: translateY(-101%);
   background-color: black;
-  padding:10px 20px;
+  padding:10px 15px;
+  transition: transform 0.4s ease; 
+  min-width: 180px; /* Ensure minimum width for readability */
 }
 
-#dropdown a:hover{
-  color:var(--aristo-red);
+
+/* Responsive breakpoints */
+
+/* Large tablets and smaller (1024px and below) */
+@media screen and (max-width: 1024px) {
+  header {
+    margin: 15px 0vw 5vw 0px; /* Slightly reduced margins */
+  }
+
+  header h1 {
+    font-size: clamp(18px, 2.8vw, 26px); /* Slightly smaller text */
+    margin: 15px 8px 0px 8px; /* Reduced spacing */
+  }
+}
+
+/* Medium tablets and smaller (768px and below) */
+@media screen and (max-width: 768px) {
+  header {
+    margin: 10px 0vw 4vw 0px; /* Reduced margins */
+    flex-wrap: nowrap; /* Prevent wrapping */
+  }
+
+
+  header h1 {
+    font-size: clamp(16px, 2.5vw, 22px); /* Smaller text */
+    margin: 15px 5px 0px 5px; /* Reduced spacing */
+  }
+
+  #dropdownContent {
+    min-width: 100px; /* Slightly smaller width */
+  }
+}
+
+/* Small tablets and phones (600px and below) */
+@media screen and (max-width: 600px) {
+  header {
+    justify-content: space-between; /* Space between logo and menu icon */
+    padding: 0 15px; /* Add padding */
+    margin: 10px 0 20px 0; /* Adjusted margins */
+  }
+
+  #logoContainer {
+    flex: 0 0 auto; /* Don't grow or shrink */
+  }
+
+  /* Show menu icon */
+  #menuIcon {
+    display: block;
+    margin-left: auto; /* Push to the right */
+  }
+
+  /* Hide navigation text */
+  header h1,
+  header a:not(#logoContainer a) {
+    display: none;
+  }
+
+  /* Enhance sidebar navigation for mobile */
+  .sideNav {
+    height: 100%;
+    position: fixed;
+    z-index: 100; /* Higher z-index */
+    top: 0;
+    right: 0;
+    background-color: var(--aristo-dark-yellow);
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+
+  .sideNav.open {
+    width: 100%; /* Take most of the screen */
+  }
+
+  #navContent {
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sideNav a {
+    margin: 10px 0;
+    font-size: 1.5rem; /* Slightly smaller for better fit */
+    padding: 5px 0;
+  }
+
+  #navBarClose {
+    margin: 10px 0 20px 0;
+    align-self: flex-end;
+  }
+}
+
+/* Very small phones (400px and below) */
+@media screen and (max-width: 400px) {
+  header {
+    padding: 0 10px;
+    margin: 5px 0 15px 0;
+  }
+
+  #logo {
+    height: clamp(35px, 5vw, 50px); /* Slightly smaller logo */
+  }
+
+  #menuIcon {
+    font-size: clamp(28px, 4.5vw, 40px); /* Slightly smaller icon */
+  }
+
+  /* Adjust sidebar for very small screens */
+  .sideNav.open {
+    width: 85%; /* Take more of the screen */
+  }
+
+  #navContent {
+    padding: 15px 25px;
+  }
+
+  .sideNav a {
+    font-size: 1.3rem;
+  }
 }
 
 #dropdown a {
   width: 100%; /* Set the width of anchor tags to 100% */
-  text-align: center; /* center align the text within the anchor tags */
-  color:white;
+  text-align: left; /* center align the text within the anchor tags */
+  color:var(--aristo-dark-yellow);
+  display: block; /* Ensure it's a block element */
+  white-space: normal; /* Allow text to wrap */
+  margin: 9px 0;
+  padding: 4px 10px; /* Add padding for the hover effect */
+  position: relative; /* For the pseudo-element positioning */
+  overflow: hidden; /* Hide the overflow for the animation */
+  transition: color 0.3s ease; /* Smooth transition for text color */
+  z-index: 1; /* Ensure text stays above the animated background */
 }
+
+#learnerDeclarations{
+  line-height: 1.1; /* Adjust line height for better readability */
+}
+
 
 
 
@@ -635,43 +828,6 @@ body:has(#camBoundingBox:not(:hover)) .filmContainer{
 }
 
 
-/* MENU SIDEBAR */
-
-.sideNav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  background-color: var(--aristo-dark-yellow);
-  overflow-x: hidden;
-  transition: 0.5s;
-}
-
-.sideNav a{
-  text-decoration: none;
-  color:black;
-  font-size:2rem;
-}
-
-.sideNav a:hover{
-  color:var(--aristo-red);
-}
-
-#navContent{
-  padding:10px 50px;
-}
-
-#navBarClose{
-  margin:2vh 0vh;
-  font-size: clamp(5vw,5vw,12vw);
-}
-
-.sideNav h1{
-  font-size: 10vw;
-}
-
 /* OTHER: VIDEO PAGE */
 
 
@@ -769,8 +925,8 @@ h1#brief{
 }
 
 .gSlides{
-  width:500px;
-  height:300px;
+  width:50vw;
+  height:30vw;
 }
 
 .unit1Section{
