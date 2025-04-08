@@ -11,6 +11,25 @@ function fn(e) {
     }
 }
 
+ // MENU SIDEBAR
+let width = window.innerWidth;
+let height = window.innerHeight;
+  /* Set the width of the side navigation to 250px */
+
+  function openNav() {
+    if (width<450){
+      document.getElementById("navBar").style.width = "100vw";
+    }
+    else{
+      document.getElementById("navBar").style.width = "30vw";
+    }
+  }
+  
+  /* Set the width of the side navigation to 0 */
+  function closeNav() {
+    document.getElementById("navBar").style.width = "0";
+  }
+
 // Customized YT thumbnail preview
 
 //This code loads the IFrame Player API code asynchronously.
@@ -60,8 +79,6 @@ function until(conditionFunction) {
 
 
 // LOGO MOVES ON HOVER
-let width = window.innerWidth;
-let height = window.innerHeight;
 
 document.addEventListener('DOMContentLoaded', () => {
     const logoContainer = document.querySelector('#logoContainer');
@@ -126,21 +143,6 @@ function openModal() {
     captionText.innerHTML = dots[slideIndex-1].alt;
   }
 
-  // MENU SIDEBAR
-
-  /* Set the width of the side navigation to 250px */
-function openNav() {
-  if (width<450){
-    document.getElementById("navBar").style.width = "100vw";
-  }
-  else{
-    document.getElementById("navBar").style.width = "30vw";
-  }
-}
-
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-  document.getElementById("navBar").style.width = "0";
-}
+ 
 
 
