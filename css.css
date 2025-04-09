@@ -190,6 +190,9 @@ click-spark{
     flex-wrap: nowrap; /* Prevent wrapping */
   }
 
+  #navContent {
+    padding: 10px 30px;
+  }
 
   header h1 {
     font-size: clamp(16px, 2.5vw, 22px); /* Smaller text */
@@ -249,10 +252,13 @@ click-spark{
   }
 
   .sideNav a {
-    margin: 10px 0;
     font-size: 1.5rem; /* Slightly smaller for better fit */
-    padding: 5px 0;
   }
+
+  .sideNav h1 {
+    font-size:25vw;
+    margin:0;
+}
 
   #navBarClose {
     margin: 10px 0 20px 0;

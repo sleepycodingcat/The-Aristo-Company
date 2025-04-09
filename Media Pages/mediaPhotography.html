@@ -13,34 +13,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Lexend:wght@100..900&family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div id="logoContainer">
-        <a href="mediaHome.html"><video playsinline muted id="logo" src="../The Aristo Company Logo white bg compressed.mp4"></video></a>
-    </div>
-
-    <a href="mediaPhotography.html">
-        <h1>PHOTOS</h1>
-    </a>
-
-    <div>
-        <h1><a id="btecBtn" href="btecHome.html">BTEC L.2</a>  
-        <div id="dropdown">
-            <div id="dropdownContent">
-                <a href="Unit 1.html">Unit 1</a>
-                <a href="Unit 4.html">Unit 4</a>
-            </div>
+    <header>
+        <div id = "logoContainer">
+            <a href = "mediaHome.html"><video playsinline muted id = "logo" src = "../The Aristo Company Logo white bg compressed.mp4"></video></a>
         </div>
-        </h1>
-    </div>
-    
-    <a href="otherMediaHome.html">
-        <h1>OTHER</h1>
-    </a>
-    
-    <btn onclick="openNav()" id="menuIcon" class="material-symbols-outlined">
-        menu
-    </btn>
-</header>
+
+        <a href ="mediaPhotography.html">
+            <h1>PHOTOS</h1>
+        </a>
+
+        <div>
+            <h1><a id = "btecBtn" href ="btecHome.html">BTEC L.2</a>  
+            <div id="dropdown">
+                <div id ="dropdownContent">
+                    <a href="Unit 1.html">Unit 1</a>
+                    <a href="Unit 4.html">Unit 4</a>
+                    <a id = "learnerDeclarations" href="Learner_Declarations.html">Learner <br> Declarations</a>
+                </div>
+            </div>
+            </h1>
+        </div>
+        
+        <a href ="otherMediaHome.html">
+            <h1>OTHER</h1>
+        </a>
+        <btn onclick="openNav()" id = "menuIcon" class="material-symbols-outlined">
+            menu
+        </btn>
+    </header>
 
 <div id="navBar" class="sideNav">
     <div id="navContent">
@@ -54,70 +54,59 @@
     </div>
 </div>
 
-    <div class="imgRow">
-        <div class="imgColumn">
-            <div class="imgContainer"><img class="picture" src="../Photography compressed/Frozen Time.png" onclick="openModal();currentSlide(1)"></div>
-            <div class="imgContainer"><img class="picture" src="../Photography compressed/Across the water.png" onclick="openModal();currentSlide(2)"></div>
-            <div class="imgContainer"><img class="picture" src="../Photography compressed/Autum Birds.png" onclick="openModal();currentSlide(3)"></div>
-            <div class="imgContainer"><img class="picture" src="../Photography compressed/bubble!.png" onclick="openModal();currentSlide(4)"></div>
-            <div class="imgContainer"><img class="picture" src="../Photography compressed/Evaporating Calligraphy.png" onclick="openModal();currentSlide(5)" ></div>
-        </div>
-
-        <div class="imgColumn">
-            <div class="imgContainer">
-                <img class="picture" src="../Photography compressed/IMG_3900.jpg" onclick="openModal();currentSlide(6)">
-                <img class="hoverStickPpl" id="jailStick" src="../jail person.png" onclick="openModal();currentSlide(6)">
-            </div>
-            <div class="imgContainer">
-                <img class="picture" src="../Photography compressed/Lily.png" onclick="openModal();currentSlide(7)">
-                <img class="hoverStickPpl" id="bookStick" src="../book person.png">
-            </div>
-            <div class="imgContainer">
-                <img class="picture" src="../Photography compressed/Running Guy.png" onclick="openModal();currentSlide(8)">
-                <img class="hoverStickPpl" id="runningStick" src="../running stick person.png">
-                
-            </div>
-            <div class="imgContainer"><img class="picture" src="../Photography compressed/Exit Light, Enter Night.png" onclick="openModal();currentSlide(9)"></div>
-            <div class="imgContainer"><img class="picture" src="../Photography compressed/IMG_3897.jpg" onclick="openModal();currentSlide(10)"></div>
-        </div>
-        
-        <div class="imgColumn">
-            <div class="imgContainer">
-                <img class="picture" src="../Photography compressed/Stairs.png" onclick="openModal();currentSlide(11)">
-                <img class="hoverStickPpl" id="stairStick" src="../stair person.png">
-            </div>
-            <div class="imgContainer"><img class="picture" src="../Photography compressed/White Collars and Ironed Pants.png" onclick="openModal();currentSlide(12)"></div>
-            <div class="imgContainer"><img class="picture" src="../Photography compressed/Remember.png" onclick="openModal();currentSlide(13)"></div>
-            <div class="imgContainer"><img class="picture" src="../Photography compressed/macau.jpg" onclick="openModal();currentSlide(14)"></div>
-        </div>
-
-        <div class="imgColumn">
-            <div class="imgContainer"><img class="picture" src="../Photography compressed/4 birds on a wire.png" onclick="openModal();currentSlide(15)"></div>
-            <div class="imgContainer"><img class="picture" src="../Photography compressed/Sparrow on Wire.png" onclick="openModal();currentSlide(16)"></div>
-            <div class="imgContainer"><img class="picture" src="../Photography compressed/Winter's Coming Again.png" onclick="openModal();currentSlide(17)"></div>
-            <div class="imgContainer"><img class="picture" src="../Photography compressed/Old Times.png" onclick="openModal();currentSlide(18)"></div>
-            <div class="imgContainer"><img class="picture" src="../Photography compressed/Sports_day.png" onclick="openModal();currentSlide(19)"></div>
-            <div class="imgContainer"><img class="picture" src="../Photography compressed/KGV_Lion.png" onclick="openModal();currentSlide(20)"></div>
-        </div>
+<div class="imgRow">
+    <div class="imgColumn">
+        <div class="imgContainer"><img class="picture" src="../Photography compressed/Frozen Time.png"></div>
+        <div class="imgContainer"><img class="picture" src="../Photography compressed/Across the water.png"></div>
+        <div class="imgContainer"><img class="picture" src="../Photography compressed/Autumn Birds.png"></div>
+        <div class="imgContainer"><img class="picture" src="../Photography compressed/Bubble!.png"></div>
+        <div class="imgContainer"><img class="picture" src="../Photography compressed/Evaporating Calligraphy.png"></div>
     </div>
 
-    <div id="myModal" class="modal">
-        <span class="close cursor" onclick="closeModal()">&times;</span>
-        <div class="modal-content">
-      
-          <div class="mySlides">
-            <div class="numbertext">1 / 18</div>
-            <img src="../Photography compressed/Frozen Time.png" style="width:100%">
-            <p class="imgInfo"> FROZEN TIME | CHOI HONG | 2022</p>
-          </div>
-      
-          <!-- Rest of the mySlides elements with updated image sources -->
-
-          <!-- Next/previous controls -->
-          <a class="prev" onclick="plusSlides(-1)"> &#129152;</a>
-          <a class="next" onclick="plusSlides(1)"> &#129154;</a>
+    <div class="imgColumn">
+        <div class="imgContainer">
+            <img class="picture" src="../Photography compressed/Bamboo.jpg">
+            <img class="hoverStickPpl" id="jailStick" src="../jail person.png">
         </div>
-      </div>
+        <div class="imgContainer">
+            <img class="picture" src="../Photography compressed/Lily.png">
+            <img class="hoverStickPpl" id="bookStick" src="../book person.png">
+        </div>
+        <div class="imgContainer">
+            <img class="picture" src="../Photography compressed/Run.png">
+            <img class="hoverStickPpl" id="runningStick" src="../running stick person.png">
+        </div>
+        <div class="imgContainer"><img class="picture" src="../Photography compressed/Exit Light, Enter Night.png"></div>
+        <div class="imgContainer"><img class="picture" src="../Photography compressed/Guardians.jpg"></div>
+    </div>
+    
+    <div class="imgColumn">
+        <div class="imgContainer">
+            <img class="picture" src="../Photography compressed/Stairs.png">
+            <img class="hoverStickPpl" id="stairStick" src="../stair person.png">
+        </div>
+        <div class="imgContainer"><img class="picture" src="../Photography compressed/White Collars and Ironed Pants.png"></div>
+        <div class="imgContainer"><img class="picture" src="../Photography compressed/Remember.png"></div>
+        <div class="imgContainer"><img class="picture" src="../Photography compressed/Saint Paul's.jpg"></div>
+    </div>
+
+    <div class="imgColumn">
+        <div class="imgContainer"><img class="picture" src="../Photography compressed/Four Birds on a Wire.png"></div>
+        <div class="imgContainer"><img class="picture" src="../Photography compressed/Sparrow on a Wire.png"></div>
+        <div class="imgContainer"><img class="picture" src="../Photography compressed/Winter's Coming Again.png"></div>
+        <div class="imgContainer"><img class="picture" src="../Photography compressed/Old Times.png"></div>
+        <div class="imgContainer"><img class="picture" src="../Photography compressed/A Photo of Two Photographers.png"></div>
+        <div class="imgContainer"><img class="picture" src="../Photography compressed/KGV Lion.png"></div>
+    </div>
+</div>
+
+<!-- Empty modal container - will be filled dynamically -->
+<div id="myModal" class="modal">
+    <span class="close cursor" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+        <!-- Content will be generated by JavaScript -->
+    </div>
+</div>
 
       <footer>
         <p>contacts email and stuff</p>
@@ -126,6 +115,7 @@
     <click-spark></click-spark>
 
     <script src="../script.js"></script>
+    <script src="../photo_lightbox.js"></script>
     <script type="module" src="../click-spark.js"></script>
 </body>
 </html>
