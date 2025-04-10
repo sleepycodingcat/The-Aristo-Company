@@ -13,34 +13,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Lexend:wght@100..900&family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div id = "logoContainer">
-            <a href = "mediaHome.html"><video playsinline muted id = "logo" src = "../The Aristo Company Logo white bg compressed.mp4"></video></a>
-        </div>
+  <header>
+    <div id="logoContainer">
+        <a href="mediaHome.html"><video playsinline muted id="logo" src="../The Aristo Company Logo white bg compressed.mp4"></video></a>
+    </div>
 
-        <a href ="mediaPhotography.html">
-            <h1>PHOTOS</h1>
-        </a>
+    <a href="mediaPhotography.html">
+        <h1>PHOTOS</h1>
+    </a>
 
-        <div>
-            <h1><a id = "btecBtn" href ="btecHome.html">BTEC L.2</a>  
-            <div id="dropdown">
-                <div id ="dropdownContent">
-                    <a href="Unit 1.html">Unit 1</a>
-                    <a href="Unit 4.html">Unit 4</a>
-                    <a id = "learnerDeclarations" href="Learner_Declarations.html">Learner <br> Declarations</a>
-                </div>
+    <div>
+        <h1><a id="btecBtn" href="btecHome.html">BTEC L.2</a>  
+        <div id="dropdown">
+            <div id="dropdownContent">
+                <a href="Unit 1.html">Unit 1</a>
+                <a href="Unit 4.html">Unit 4</a>
             </div>
-            </h1>
         </div>
-        
-        <a href ="otherMediaHome.html">
-            <h1>OTHER</h1>
-        </a>
-        <btn onclick="openNav()" id = "menuIcon" class="material-symbols-outlined">
-            menu
-        </btn>
-    </header>
+        </h1>
+    </div>
+    
+    <a href="otherMediaHome.html">
+        <h1>OTHER</h1>
+    </a>
+    
+    <btn onclick="openNav()" id="menuIcon" class="material-symbols-outlined">
+        menu
+    </btn>
+</header>
 
 <div id="navBar" class="sideNav">
     <div id="navContent">
@@ -54,68 +54,243 @@
     </div>
 </div>
 
-<div class="imgRow">
-    <div class="imgColumn">
-        <div class="imgContainer"><img class="picture" src="../Photography compressed/Frozen Time.png"></div>
-        <div class="imgContainer"><img class="picture" src="../Photography compressed/Across the water.png"></div>
-        <div class="imgContainer"><img class="picture" src="../Photography compressed/Autumn Birds.png"></div>
-        <div class="imgContainer"><img class="picture" src="../Photography compressed/Bubble!.png"></div>
-        <div class="imgContainer"><img class="picture" src="../Photography compressed/Evaporating Calligraphy.png"></div>
+    <!-- Filter buttons explicitly in the HTML -->
+    <div id="gallery-filters" class="gallery-filters">
+      <button class="filter-btn active" data-filter="all">Show All</button>
+      <button class="filter-btn" data-filter="event">Events</button>
+      <button class="filter-btn" data-filter="street">Street</button>
+      <button class="filter-btn" data-filter="favorite">Favorites</button>
     </div>
 
-    <div class="imgColumn">
-        <div class="imgContainer">
-            <img class="picture" src="../Photography compressed/Bamboo.jpg">
-            <img class="hoverStickPpl" id="jailStick" src="../jail person.png">
+    <div class="imgRow">
+        <div class="imgColumn">
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Frozen Time.png"
+                     data-title="Frozen Time"
+                     data-location ="Choi Hung"
+                     data-year="2022"
+                     data-type="street">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Across the Water.png"
+                     data-title="Across the Water"
+                     data-location ="Yim Tin Tsai"
+                     data-year="2022"
+                     data-type="street">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Y11 Formal.JPG"
+                     data-title=""
+                     data-location ="Ho Man Tin"
+                     data-year="2024"
+                     data-type="event"
+                     data-favorite="true">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Autumn Birds.png"
+                     data-title="Autumn Birds"
+                     data-location ="Mong Kok"
+                     data-year="2022"
+                     data-type="street">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Bubble!.png"
+                     data-title="Bubble!"
+                     data-location ="To Kwa Wan"
+                     data-year="2023"
+                     data-type="street">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Evaporating Calligraphy.png"
+                     data-title="Evaporating Calligraphy"
+                     data-location ="Hangzhou"
+                     data-year="2023"
+                     data-type="street">
+            </div>
         </div>
-        <div class="imgContainer">
-            <img class="picture" src="../Photography compressed/Lily.png">
-            <img class="hoverStickPpl" id="bookStick" src="../book person.png">
+
+        <div class="imgColumn">
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Bamboo.jpg"
+                     data-title="Bamboo"
+                     data-location ="Sheung Wan"
+                     data-year="2023"
+                     data-type="street">
+                <img class="hoverStickPpl" id="jailStick" src="../jail person.png">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Lily.png"
+                     data-title="Lily"
+                     data-location ="Sheung Wan"
+                     data-year="2023"
+                     data-type="street">
+                <img class="hoverStickPpl" id="bookStick" src="../book person.png">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Run.png"
+                     data-title="Run"
+                     data-location ="Sheung Wan"
+                     data-year="2022"
+                     data-type="street">
+                <img class="hoverStickPpl" id="runningStick" src="../running stick person.png">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Exit Light, Enter Night.png"
+                     data-title="Exit Light, Enter Night"
+                     data-location ="Central"
+                     data-year="2023"
+                     data-type="street">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Guardians.jpg"
+                     data-title="Guardians"
+                     data-location ="Sheung Wan"
+                     data-year="2023"
+                     data-type="street">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Mara Willilams.JPG"
+                     data-title="Mara Williams"
+                     data-location ="Ho Man Tin"
+                     data-year="2024"
+                     data-type="event">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/A Workshop in the Wall.png"
+                     data-title="A Workshop in the Wall"
+                     data-location ="To Kwa Wan"
+                     data-year="2023"
+                     data-type="street">
+            </div>
         </div>
-        <div class="imgContainer">
-            <img class="picture" src="../Photography compressed/Run.png">
-            <img class="hoverStickPpl" id="runningStick" src="../running stick person.png">
+        
+        <div class="imgColumn">
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Stairs.png"
+                     data-title="Stairs"
+                     data-location ="Mong Kok"
+                     data-year="2022"
+                     data-type="street"
+                     data-favorite="true">
+                <img class="hoverStickPpl" id="stairStick" src="../stair person.png">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/White Collars and Ironed Pants.png"
+                     data-title="White Collars and Ironed Pants"
+                     data-location ="Mong Kok"
+                     data-year="2022"
+                     data-type="street">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Remember.png"
+                     data-title="Remember?"
+                     data-location ="Sai Kung"
+                     data-year="2022"
+                     data-type="street">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Saint Paul's.jpg"
+                     data-title="Ruins of Saint Paul's"
+                     data-location ="Macau"
+                     data-year="2024"
+                     data-type="street">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/London.jpg"
+                     data-title="Untitled"
+                     data-location ="London"
+                     data-year="2023"
+                     data-type="street">
+            </div>
         </div>
-        <div class="imgContainer"><img class="picture" src="../Photography compressed/Exit Light, Enter Night.png"></div>
-        <div class="imgContainer"><img class="picture" src="../Photography compressed/Guardians.jpg"></div>
-    </div>
-    
-    <div class="imgColumn">
-        <div class="imgContainer">
-            <img class="picture" src="../Photography compressed/Stairs.png">
-            <img class="hoverStickPpl" id="stairStick" src="../stair person.png">
+
+        <div class="imgColumn">
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Four Birds on a Wire.png"
+                     data-title="Four Birds on a Wire"
+                     data-location ="Mong Ko"
+                     data-year="2022"
+                     data-type="street">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Sparrow on a Wire.png"
+                     data-title="Sparrow on a Wire"
+                     data-location ="Mong Kok"
+                     data-year="2022"
+                     data-type="street">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Winter's Coming Again.png"
+                     data-title="Winter's Coming Again"
+                     data-location ="Central"
+                     data-year="2023"
+                     data-type="street">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/Old Times.png"
+                     data-title="Old Times"
+                     data-location ="Ho Man Tin"
+                     data-year="2022"
+                     data-type="street">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/A Photo of Two Photographers.png"
+                     data-title="A Photo of Two Photographers"
+                     data-location ="Sham Shui Po"
+                     data-year="2024"
+                     data-type="event"
+                     data-favorite="true">
+            </div>
+            <div class="imgContainer">
+                <img class="picture" 
+                     src="../Photography compressed/KGV Lion.png"
+                     data-title="KGV Lion"
+                     data-location ="Ho Man Tin"
+                     data-year="2022"
+                     data-type="street">
+            </div>
         </div>
-        <div class="imgContainer"><img class="picture" src="../Photography compressed/White Collars and Ironed Pants.png"></div>
-        <div class="imgContainer"><img class="picture" src="../Photography compressed/Remember.png"></div>
-        <div class="imgContainer"><img class="picture" src="../Photography compressed/Saint Paul's.jpg"></div>
     </div>
 
-    <div class="imgColumn">
-        <div class="imgContainer"><img class="picture" src="../Photography compressed/Four Birds on a Wire.png"></div>
-        <div class="imgContainer"><img class="picture" src="../Photography compressed/Sparrow on a Wire.png"></div>
-        <div class="imgContainer"><img class="picture" src="../Photography compressed/Winter's Coming Again.png"></div>
-        <div class="imgContainer"><img class="picture" src="../Photography compressed/Old Times.png"></div>
-        <div class="imgContainer"><img class="picture" src="../Photography compressed/A Photo of Two Photographers.png"></div>
-        <div class="imgContainer"><img class="picture" src="../Photography compressed/KGV Lion.png"></div>
+    <!-- Empty modal container - will be filled dynamically -->
+    <div id="myModal" class="modal">
+        <span class="close cursor" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <!-- Content will be generated by JavaScript -->
+        </div>
     </div>
-</div>
 
-<!-- Empty modal container - will be filled dynamically -->
-<div id="myModal" class="modal">
-    <span class="close cursor" onclick="closeModal()">&times;</span>
-    <div class="modal-content">
-        <!-- Content will be generated by JavaScript -->
-    </div>
-</div>
-
-      <footer>
+    <footer>
         <p>contacts email and stuff</p>
-      </footer>
+    </footer>
 
     <click-spark></click-spark>
 
-    <script src="../script.js"></script>
     <script src="../photo_lightbox.js"></script>
+    <script src = "../script.js"></script>
     <script type="module" src="../click-spark.js"></script>
 </body>
 </html>
