@@ -18,10 +18,21 @@
     <div id = "logoContainer">
       <a href = "https://github.com/dashboard"><video playsinline muted id = "logo" src = "The Aristo Company Logo white bg compressed.mp4" type="video/mp4"></video></a>
     </div>
-    <btn id = "menuIcon" class="material-symbols-outlined">
+    <btn onclick="openNav()" id = "menuIcon" class="material-symbols-outlined">
       menu
     </btn>
   </header>
+  <div id="navBar" class="sideNav">
+    <div id = "navContent">
+        <btn class="material-symbols-outlined" id="navBarClose" onclick="closeNav()">
+            close
+        </btn>
+        <h1>FILM</h1>
+        <a href = "mediaPhotography.html">Photos</a><br>
+        <a href = "btecHome.html">BTEC L2</a><br>
+        <a href = "otherMediaHome.html">Other</a><br>
+    </div>
+</div>
   <div id = "camPenContainer">
     <a id = "penBoundingBox" href = "writingHome.html">
       <div></div> 
@@ -72,7 +83,6 @@
     <div class = "scrollContainer">
       <div class = "marquee"  id = "marquee4">
         <h2>
-          Anything you write can be fixed, but you can't fix a blank page.
           Anything you write can be fixed, but you can't fix a blank page.
           Anything you write can be fixed, but you can't fix a blank page.
           Anything you write can be fixed, but you can't fix a blank page.
@@ -143,8 +153,6 @@
 
     </div>
   </div>
-
-  
 
   <script type="module" src="click-spark.js"></script>
   <script src = "script.js"></script>
