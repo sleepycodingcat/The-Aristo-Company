@@ -91,6 +91,35 @@ if (thumbnail) {
 // LOGO MOVES ON HOVER
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Load the footer
+  fetch('footer.html')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Failed to load footer: ${response.statusText}`);
+      }
+      return response.text();
+    })
+    .then(data => {
+      console.log(data); // Log the fetched content
+
+      document.getElementById('footer-placeholder').innerHTML = data;
+    })
+    .catch(error => {
+      console.error(error);
+      document.getElementById('footer-placeholder').innerHTML = `
+        <footer>
+          <p>Error loading footer content.</p>
+        </footer>
+      `;
+    });
+
+  // Load the sidebar
+  fetch('sidebar.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('sidebar-placeholder').innerHTML = data;
+    });
+
     const logoContainer = document.querySelector('#logoContainer');
     const video = document.querySelector('#logo');
     function playVideo() {
