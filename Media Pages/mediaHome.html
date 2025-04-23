@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Aristo Company Media</title>
+    <title>The Aristo Company</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel = "stylesheet" href = "../css.css">
+    <link rel="stylesheet" href="../css.css">
+    <link rel="stylesheet" href="parallax-styles.css">
     <link rel="icon" href="../O favicon.png">
     <link rel="stylesheet" href="https://use.typekit.net/how3ouk.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,42 +15,89 @@
 </head>
 <body>
     <header>
-      <div id = "logoContainer">
-          <a href = "mediaHome.html"><video playsinline muted id = "logo" src = "../The Aristo Company Logo white bg compressed.mp4"></video></a>
+      <div id="logoContainer">
+          <a href="mediaHome.html"><video playsinline muted id="logo" src="../The Aristo Company Logo white bg compressed.mp4"></video></a>
       </div>
 
       <div>
-          <h1><a id = "btecBtn" href ="btecHome.html">BTEC L.2</a>  
+          <h1><a id="btecBtn" href="btecHome.html">BTEC L.2</a>  
           <div id="dropdown">
-              <div id ="dropdownContent">
+              <div id="dropdownContent">
                   <a href="Unit 1.html">Unit 1</a>
                   <a href="Unit 4.html">Unit 4</a>
-                  <a id = "learnerDeclarations" href="Learner_Declarations.html">Learner <br> Declarations</a>
+                  <a id="learnerDeclarations" href="Learner_Declarations.html">Learner <br> Declarations</a>
               </div>
           </div>
           </h1>
       </div>
 
-      <a href ="mediaPhotography.html">
+      <a href="mediaPhotography.html">
           <h1>PHOTOS</h1>
       </a>
       
-      <a href ="otherMediaHome.html">
+      <a href="otherMediaHome.html">
           <h1>FILMS</h1>
       </a>
-      <btn onclick="openNav()" id = "menuIcon" class="material-symbols-outlined">
+      <btn onclick="openNav()" id="menuIcon" class="material-symbols-outlined">
           menu
       </btn>
-  </header>
+    </header>
 
-  <div id="sidebar-placeholder"></div>
+    <div id="sidebar-placeholder"></div>
 
+    <!-- Parallax Content -->
+    <div id="parallax-world-of-aristo">
+
+        <!-- First Parallax Section -->
+        <section>
+            <div class="parallax-one">
+                <p>A Piece of Cake with Babel Film Workshop 2025</p>
+            </div>
+        </section>
+
+        <!-- First Content Block -->
+        <section>
+            <div class="block">
+                <p class="line-break margin-top-10"></p>
+                <p class="margin-top-10">Hi! I'm Rachell</p>
+            </div>
+        </section>
+
+        <!-- Second Parallax Section -->
+        <section>
+            <video autoplay muted loop id="myVideo">
+                <source src="../book person.png" type="video/mp4">
+              </video>
+        </section>
+
+        <!-- Second Content Block -->
+        <section>
+            <div class="block">
+                <p class="line-break margin-top-10"></p>
+                <p class="margin-top-10">The smoke rising from cooking fires carries with it aromas that trigger our most primal memories. Scientists have discovered that the olfactory bulb has direct connections to the amygdala and hippocampus, areas of the brain strongly linked to emotion and memory—explaining why the scent of a particular dish can instantly transport us across decades. Beyond nourishment, shared meals foster connection. The table becomes a place where stories are exchanged, traditions passed down, and bonds strengthened. In an increasingly digital world, the tactile experience of preparing food and breaking bread together offers a vital counterbalance—a reminder of our shared humanity and the simple pleasures that sustain us through changing times.</p>
+            </div>
+        </section>
+
+        <!-- Third Parallax Section -->
+        <section>
+            <div class="parallax-three">
+                <h2>URBAN PERSPECTIVES</h2>
+            </div>
+        </section>
+
+        <!-- Third Content Block -->
+        <section>
+            <div class="block">
+                <p class="line-break margin-top-10"></p>
+                <p class="margin-top-10">Cities have always been crucibles of innovation, where the density of human interaction catalyzes creativity and cultural evolution. Yet within these bustling environments, designers increasingly recognize the need for moments of pause—thoughtful spaces that allow for reflection and connection with nature. The juxtaposition of the runner against the green park beyond the window speaks to this essential balance: the human-made and the natural, movement and stillness, individual journeys within collective spaces. As urban populations continue to grow, with over 68% of humanity projected to live in cities by 2050, the thoughtful design of these environments becomes not just an aesthetic concern but a fundamental aspect of human wellbeing—creating spaces where people can thrive physically, socially, and psychologically.</p>
+            </div>
+        </section>
+    </div>
 
     <div id="footer-placeholder"></div>
 
-
     <click-spark></click-spark>
-    <script src = "../script.js"></script>
+    <script src="../script.js"></script>
     <script type="module" src="../click-spark.js"></script>
 </body>
 </html>
