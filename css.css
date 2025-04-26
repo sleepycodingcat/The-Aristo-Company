@@ -1589,3 +1589,18 @@ h1#brief{
   margin:40px;
 }
 
+#filmReel{
+  width:100%;
+}
+
+#allFilmsBtn{
+  top:100px;
+  position: relative;
+  background-color: var(--aristo-red);
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
