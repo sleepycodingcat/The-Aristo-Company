@@ -1404,89 +1404,13 @@ h1#brief{
 }
 
 /* Parallax Styles - Adapted for Aristo Company */
-@import url(https://fonts.googleapis.com/css?family=Oswald:300,400,700);
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
-
-/* Override site styles for parallax sections */
-#main {width: 100%; padding:0;}
-.content-asset p {margin:0 auto;}
-.breadcrumb {display:none;}
 
 /* Helpers */
 .margin-top-10 {padding-top:10px;}
 .margin-bot-10 {padding-bottom:10px;}
 
-/* Typography for parallax sections */
-#parallax-world-of-aristo h1 {
-    font-family: "futura-pt-bold", sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    text-transform: uppercase;
-    color: black;
-    padding: 0;
-    margin: 0;
-}
-
-#parallax-world-of-aristo h2 {
-    font-family: "futura-pt-bold", sans-serif;
-    font-size: 70px;
-    letter-spacing: 10px;
-    text-align: center;
-    color: white;
-    font-weight: 400;
-    text-transform: uppercase;
-    z-index: 10;
-    opacity: 0.9;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-#parallax-world-of-aristo h3 {
-    font-family: "futura-pt-bold", sans-serif;
-    font-size: 14px;
-    line-height: 0;
-    font-weight: 400;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-    color: black;
-}
-
-#parallax-world-of-aristo p {
-    font-family: "Lexend", sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 24px;
-}
-
-.first-character {
-    font-weight: 400;
-    float: left;
-    font-size: 84px;
-    line-height: 64px;
-    padding-top: 4px;
-    padding-right: 8px;
-    padding-left: 3px;
-    font-family: "Lexend", sans-serif;
-}
-
-.sc {color: var(--aristo-red);}
-.ny {color: var(--aristo-red);}
-.atw {color: var(--aristo-red);}
-
-/* Section - Title */
-#parallax-world-of-aristo .title {
-    background: white;
-    padding: 60px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-#parallax-world-of-aristo .title h1 {
-    font-size: 35px;
-    letter-spacing: 8px;
-}
-
 /* Section - Block */
-#parallax-world-of-aristo .block {
+#allParallaxContainer .block {
     background: white;
     padding: 60px;
     width: 820px;
@@ -1494,29 +1418,14 @@ h1#brief{
     text-align: justify;
 }
 
-#parallax-world-of-aristo .block-gray {
-    background: #f2f2f2;
-    padding: 60px;
-}
-
-#parallax-world-of-aristo .section-overlay-mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    opacity: 0.7;
-}
-
 /* Section - Parallax */
-#parallax-world-of-aristo .parallax-one {
+#allParallaxContainer .parallax-one {
     padding-top: 200px;
     padding-bottom: 200px;
     overflow: hidden;
     position: relative;
     width: 100%;
-    background-image: url("../Film BTS/APOC/edited.JPEG");
+    background-image: url("/Film BTS/APOC/edited.JPEG");
     background-attachment: fixed;
     background-size: cover;
     -moz-background-size: cover;
@@ -1525,7 +1434,7 @@ h1#brief{
     background-position: top center;
 }
 
-#parallax-world-of-aristo .parallax-two {
+#allParallaxContainer .parallax-two {
     padding-top: 200px;
     padding-bottom: 200px;
     overflow: hidden;
@@ -1537,13 +1446,13 @@ h1#brief{
     background-position: center center;
 }
 
-#parallax-world-of-aristo .parallax-three {
+#allParallaxContainer .parallax-three {
     padding-top: 200px;
     padding-bottom: 200px;
     overflow: hidden;
     position: relative;
     width: 100%;
-    background-image: url("../Photography compressed/Run.png");
+    background-image: url("/Photography compressed/Run.png");
     background-attachment: fixed;
     background-size: cover;
     -moz-background-size: cover;
@@ -1553,30 +1462,30 @@ h1#brief{
 }
 
 /* Extras */
-#parallax-world-of-aristo .line-break {
-    border-bottom: 1px solid black;
+#allParallaxContainer .line-break {
+    border-bottom: 2px solid black;
     width: 150px;
     margin: 0 auto;
 }
 
 /* Media Queries */
 @media screen and (max-width: 959px) and (min-width: 768px) {
-    #parallax-world-of-aristo .block {padding: 40px; width: 620px;}
+    #allParallaxContainer .block {padding: 40px; width: 620px;}
 }
 
 @media screen and (max-width: 767px) {
-    #parallax-world-of-aristo .block {padding: 30px; width: 420px;}
-    #parallax-world-of-aristo h2 {font-size: 30px;}
-    #parallax-world-of-aristo .parallax-one,
-    #parallax-world-of-aristo .parallax-two,
-    #parallax-world-of-aristo .parallax-three {
+    #allParallaxContainer .block {padding: 30px; width: 420px;}
+    #allParallaxContainer h2 {font-size: 30px;}
+    #allParallaxContainer .parallax-one,
+    #allParallaxContainer .parallax-two,
+    #allParallaxContainer .parallax-three {
         padding-top: 100px;
         padding-bottom: 100px;
     }
 }
 
 @media screen and (max-width: 479px) {
-    #parallax-world-of-aristo .block {padding: 30px 15px; width: 290px;}
+    #allParallaxContainer .block {padding: 30px 15px; width: 290px;}
 }
 
 /* Learner Declarations */
@@ -1603,4 +1512,11 @@ h1#brief{
   border: none;
   cursor: pointer;
   border-radius: 5px;
+}
+
+.imgCaption{
+  color: white;
+  left:2%;
+  bottom: -30px;
+  position:relative;
 }
