@@ -1,16 +1,3 @@
-// TOOLTIP THAT FOLLOWS CURSOR LANDING PAGE
-
-var tooltip = document.querySelectorAll('.tooltiptext');
-
-document.addEventListener('mousemove', fn, false);
-
-function fn(e) {
-    for (var i=tooltip.length; i--;) {
-        tooltip[i].style.left = e.pageX-150 + 'px';
-        tooltip[i].style.top = e.pageY-300 + 'px';
-    }
-}
-
  // MENU SIDEBAR
 
  function openNav() {
