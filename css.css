@@ -1452,7 +1452,7 @@ h1#brief{
     overflow: hidden;
     position: relative;
     width: 100%;
-    background-image: url("/Photography compressed/Run.png");
+    background-image: url(../Photography compressed/Run.png);
     background-attachment: fixed;
     background-size: cover;
     -moz-background-size: cover;
