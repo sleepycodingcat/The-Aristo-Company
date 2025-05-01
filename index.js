@@ -54,40 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
         document.getElementById('footer-placeholder').innerHTML = data;
       })
-      .catch(error => {
-        console.error(error);
-        document.getElementById('footer-placeholder').innerHTML = `
-          <footer>
-            <p>Error loading footer content.</p>
-          </footer>
-        `;
-      });
-  
-    // Load the sidebar
-    fetch('sidebar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('sidebar-placeholder').innerHTML = data;
-      });
-  
-      const logoContainer = document.querySelector('#logoContainer');
-      const video = document.querySelector('#logo');
-      function playVideo() {
-          video.play();
-      }
-  
-      function pauseVideo() {
-          video.pause();
-          video.currentTime = 0;
-      }
-  
-      logoContainer.addEventListener('mouseenter', playVideo);
-      logoContainer.addEventListener('mouseleave', pauseVideo);
-  
-      // Add touch support for mobile devices
-      logoContainer.addEventListener('touchstart', playVideo);
-      logoContainer.addEventListener('touchend', pauseVideo);
-  });
+    });
   
    
   
