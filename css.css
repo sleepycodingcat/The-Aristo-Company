@@ -1514,9 +1514,11 @@ h1#brief{
   border-radius: 5px;
 }
 
-.imgCaption{
-  color: white;
-  left:2%;
-  bottom: -30px;
-  position:relative;
+
+.imgCaption {
+  color: #ffffff;
+  left: 2%;
+  bottom: -4px;
+  position: absolute;
+  text-shadow: 0px 0px 6px #000;
 }
