@@ -1587,6 +1587,8 @@ h1#brief{
 }
 
 
+
+
 .block h2 {
   text-align:center;
   font-family: "futura-pt-bold", sans-serif;
@@ -1680,4 +1682,66 @@ h1#brief{
   bottom: -4px;
   position: absolute;
   text-shadow: 0px 0px 6px #000;
+}
+
+/* Preloader */
+
+.aristo-preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--aristo-pale-yellow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease-out;
+  transform: scale(2);
+}
+
+.loader__filmstrip {
+  position: relative;
+  width: 56px;
+  height: 70px;
+  background: #000; /* Black filmstrip */
+  z-index: 1;
+}
+
+.loader__filmstrip::before,
+.loader__filmstrip::after {
+  content: '';
+  position: absolute;
+  height: 120%;
+  border-left: 5px dashed var(--aristo-pale-yellow); /* Using your pale yellow */
+  animation: roll 0.02s infinite linear;
+}
+
+.loader__filmstrip::before {
+  left: 5px;
+}
+
+.loader__filmstrip::after {
+  right: 5px;
+}
+
+.loader__text {
+  margin: 15px auto 0;
+  color: var(--aristo-red);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "futura-pt-bold", sans-serif;
+}
+
+@keyframes roll {
+  0% { top: 0px; }
+  100% { top: -15px; }
+}
+
+/* Hide after load */
+body.loaded .aristo-preloader {
+  opacity: 0;
+  pointer-events: none;
 }

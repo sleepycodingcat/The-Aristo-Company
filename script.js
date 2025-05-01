@@ -1,3 +1,16 @@
+ // Wait for everything to load
+ window.addEventListener('load', function() {
+  // Minimum show time (1500ms) before fading out
+  setTimeout(function() {
+    document.body.classList.add('loaded');
+    // Remove after fade completes (500ms)
+    setTimeout(function() {
+      document.querySelector('.aristo-preloader').remove();
+    }, 500);
+  }, 1500);
+}); 
+ 
+ 
  // MENU SIDEBAR
 
  function openNav() {
@@ -74,6 +87,16 @@ if (thumbnail) {
     return new Promise(poll)
   }
 }
+
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    document.body.classList.add('loaded');
+    setTimeout(function() {
+      document.querySelector('.aristo-preloader').style.display = 'none';
+    }, 500);
+  }, 1500);
+});
+
 
 // LOGO MOVES ON HOVER
 
