@@ -1425,7 +1425,7 @@ h1#brief{
     overflow: hidden;
     position: relative;
     width: 100%;
-    background-image: url("/Film BTS/APOC/edited.JPEG");
+    background-image: url("./Film BTS/APOC/edited.JPEG");
     background-attachment: fixed;
     background-size: cover;
     -moz-background-size: cover;
