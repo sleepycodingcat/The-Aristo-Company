@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/how3ouk.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Lexend:wght@100..900&family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -43,10 +44,16 @@
 </header>
 
 <div id ="declarationsContainer">
-    <div class ="declarations">
+    <!-- <div class ="declarations">
         <h1>Unit 1 Learner Declaration </h1>
-        <embed src="../PDF files/Unit 1 Learner Declaration.pdf#toolbar=0&navpanes=0&scrollbar=0" width="500" height="600" type="application/pdf">
-    </div>
+        <iframe src="../PDF files/Unit 1 Learner Declaration.pdf" 
+        title="Unit 1 Learner Declaration"
+        width="500" height="600"></iframe>    </div> -->
+
+        <div id="pdf-viewer-container" style="width: 100%; height: 600px; overflow: auto; border: 1px solid #ccc;"></div>
+
+
+
     <div class ="declarations"> 
         <h1>Unit 4 Learner Declaration </h1>
         <embed src="../PDF files/Unit 4 Learner Declaration.pdf#toolbar=0&navpanes=0&scrollbar=0" width="500" height="600" type="application/pdf">

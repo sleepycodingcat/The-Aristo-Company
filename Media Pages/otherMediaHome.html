@@ -13,6 +13,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Lexend:wght@100..900&family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="aristo-preloader">
+    <div class="loader__filmstrip"></div>
+    <div class="loader__text">Loading the film...</div>
+  </div>
     <click-spark></click-spark>
     <header>
       <div id = "logoContainer">
@@ -45,34 +49,72 @@
 
   <div id="sidebar-placeholder"></div>
 
-
-
-    <div id="featuredVid">
-      <h2>FRESH FROM THE CUTTING ROOM:</h2>
-
-        <div id="wrapper">
-          <div id="thumbnail">
-            <img src="../other media/The Human Touch freezeframe.jpg" alt='HK Wanderlust'>
-            <span>▶</span>
-          </div>
-          <!-- The <iframe> (and video player) will replace this <div> tag. -->
-          <div id="player"></div>
+   <!-- Featured Film Section -->
+   <section id="featuredFilm">
+    <h2>FEATURED FILM</h2>
+    <div class="featured-container">
+        <div id="featuredWrapper">
+            <div id="featuredThumbnail">
+                <img src="../other media/The Human Touch freezeframe.jpg" alt='The Human Touch'>
+                <span>▶</span>
+            </div>
+            <div id="featuredPlayer"></div>
         </div>
-        <p>Award Winning Film</p>
-
-        <a href="../index.html">
-          <button>See more Director's Dirtpile</button>
-        </a>
+        <div class="featured-info">
+            <h3>The Human Touch</h3>
+            <p>An award-winning short film exploring human connection in a digital age. This project showcases our ability to tell compelling stories through visual media.</p>
+            <a href="#" class="btn">Behind the Scenes</a>
+        </div>
     </div>
-    
+</section>
 
-    <div class="vidRow">
-            <iframe title="The Paper Trailer Netflix Mock up" src="https://www.youtube.com/embed/imr5WP-2IwU" allow="fullscreen;"></iframe>
-            <iframe title="Come Alive Mini Enterprise Ad!" src="https://www.youtube.com/embed/T4TdrFHx6Kc" allow="fullscreen;"></iframe>
-            <iframe title="HK Wanderlust Travel Ad" src="https://www.youtube.com/embed/WELbl7RLxYE" allow="fullscreen;"></iframe>
-            <iframe title="Sabrina Carpenter | Thumbs Unofficial Music Video" src="https://www.youtube.com/embed/YDMx8V6qyZo" allow="fullscreen;"></iframe>
-            <iframe title="Splat! Stop Motion" src="https://www.youtube.com/embed/6tCpbyyHU9o" allow="fullscreen;"></iframe>
+<!-- Film Grid Section -->
+<section id="filmGrid">
+    <h2>OTHER WORKS</h2>
+    <div class="masonry-grid">
+        <!-- Film 1 -->
+        <div class="masonry-item" data-id="imr5WP-2IwU" data-title="The Paper Trailer" data-desc="A mock Netflix trailer for an original thriller concept.">
+            <img src="../other media/Unit 1 preview.png" alt="The Paper Trailer">
+            <div class="film-caption">
+                <h3>The Paper Trailer</h3>
+                <p>Netflix mock trailer</p>
+            </div>
+            <div class="play-icon">
+                <span class="material-symbols-outlined">play_circle</span>
+            </div>
+        </div>
+        
+        <!-- Film 2 -->
+        <div class="masonry-item" data-id="T4TdrFHx6Kc" data-title="Come Alive Mini Enterprise Ad" data-desc="Promotional video for a student enterprise project.">
+            <img src="../other media/Come Alive freezeframe.jpg" alt="Come Alive Ad">
+            <div class="film-caption">
+                <h3>Come Alive</h3>
+                <p>Enterprise ad</p>
+            </div>
+            <div class="play-icon">
+                <span class="material-symbols-outlined">play_circle</span>
+            </div>
+        </div>
+        
+        <!-- [Rest of film items...] -->
     </div>
+</section>
+
+<!-- Film Lightbox -->
+<div id="filmLightbox" class="lightbox">
+    <div class="lightbox-content">
+        <span class="close-btn material-symbols-outlined">close</span>
+        <div class="lightbox-media">
+            <iframe id="lightboxPlayer" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="lightbox-info">
+            <h3 id="lightboxTitle"></h3>
+            <p id="lightboxDesc"></p>
+            <a href="#" id="btsBtn" class="btn">Behind the Scenes</a>
+        </div>
+    </div>
+</div>
+
 
     <div id="footer-placeholder"></div>
 

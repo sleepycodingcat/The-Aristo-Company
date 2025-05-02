@@ -12,31 +12,56 @@
  
  
  // MENU SIDEBAR
+let touchStartX = 0;
+let touchEndX = 0;
 
- function openNav() {
-  // Get the current window width each time the function is called
-  const currentWidth = window.innerWidth
-
+function openNav() {
+  const currentWidth = window.innerWidth;
+  const navBar = document.getElementById("navBar");
+  
   if (currentWidth < 600) {
-    document.getElementById("navBar").style.width = "100vw"
-    document.getElementById("navBar").classList.add("open")
+    navBar.style.width = "100vw";
+    navBar.classList.add("open");
   } else {
-    document.getElementById("navBar").style.width = "30vw"
+    navBar.style.width = "30vw";
   }
+  
+  // Prevent body scrolling when sidebar is open
+  document.body.style.overflow = "hidden";
 }
 
 function closeNav() {
-  document.getElementById("navBar").style.width = "0"
-  document.getElementById("navBar").classList.remove("open")
+  const navBar = document.getElementById("navBar");
+  navBar.style.width = "0";
+  navBar.classList.remove("open");
+  
+  // Re-enable body scrolling
+  document.body.style.overflow = "auto";
 }
 
-// Add this to update width variable when window is resized
-window.addEventListener("resize", () => {
-  // This ensures the menu responds correctly if the window is resized while the menu is open
-  if (document.getElementById("navBar").style.width !== "0") {
-    openNav()
+// Add touch event listeners to prevent accidental swipes from opening sidebar
+document.addEventListener('touchstart', function(e) {
+  touchStartX = e.changedTouches[0].screenX;
+}, {passive: true});
+
+document.addEventListener('touchend', function(e) {
+  touchEndX = e.changedTouches[0].screenX;
+  // Only consider it a swipe if it's a significant movement
+  if (Math.abs(touchEndX - touchStartX) > 50) {
+    // If swiping right from very left edge, prevent default to avoid opening sidebar
+    if (touchStartX < 20 && touchEndX > touchStartX) {
+      e.preventDefault();
+    }
   }
-})
+}, {passive: false});
+
+// Update sidebar width on resize
+window.addEventListener("resize", () => {
+  const navBar = document.getElementById("navBar");
+  if (navBar.style.width !== "0" && navBar.style.width !== "") {
+    openNav();
+  }
+});
 
 // Customized YT thumbnail preview
 // This code loads the IFrame Player API code asynchronously.
@@ -150,5 +175,94 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
  
+ // Featured video with custom thumbnail (from original code)
+ var tag = document.createElement('script');
+ tag.src = "https://www.youtube.com/iframe_api";
+ var firstScriptTag = document.getElementsByTagName('script')[0];
+ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+ let featuredPlayer;
+ window.onYouTubeIframeAPIReady = function() {
+     featuredPlayer = new YT.Player('featuredPlayer', {
+         height: '100%',
+         width: '100%',
+         videoId: 'ntqivT3Nklg',
+         events: {
+             'onReady': onPlayerReady
+         }
+     });
+ }
+
+ function onPlayerReady(event) {
+     document.getElementById('featuredThumbnail').addEventListener('click', function() {
+         this.style.display = 'none';
+         event.target.playVideo();
+     });
+ }
+
+ // Lightbox functionality
+ document.addEventListener('DOMContentLoaded', function() {
+     const filmItems = document.querySelectorAll('.masonry-item');
+     const lightbox = document.getElementById('filmLightbox');
+     const closeBtn = document.querySelector('.close-btn');
+     const lightboxPlayer = document.getElementById('lightboxPlayer');
+     const lightboxTitle = document.getElementById('lightboxTitle');
+     const lightboxDesc = document.getElementById('lightboxDesc');
+     
+     filmItems.forEach(item => {
+         item.addEventListener('click', function() {
+             const videoId = this.getAttribute('data-id');
+             const title = this.getAttribute('data-title');
+             const desc = this.getAttribute('data-desc');
+             
+             lightboxPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+             lightboxTitle.textContent = title;
+             lightboxDesc.textContent = desc;
+             
+             lightbox.style.display = 'flex';
+             document.body.style.overflow = 'hidden';
+         });
+     });
+     
+     closeBtn.addEventListener('click', closeLightbox);
+     lightbox.addEventListener('click', function(e) {
+         if (e.target === lightbox) closeLightbox();
+     });
+     
+     function closeLightbox() {
+         lightbox.style.display = 'none';
+         lightboxPlayer.src = '';
+         document.body.style.overflow = 'auto';
+     }
+ });
+
+ // Initialize PDF.js
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
+
+// Load the PDF
+const loadingTask = pdfjsLib.getDocument('../PDF files/Unit 1 Learner Declaration.pdf');
+loadingTask.promise.then(function(pdf) {
+    const container = document.getElementById('pdf-viewer-container');
+    
+    // Loop through all pages and render them
+    for (let i = 1; i <= pdf.numPages; i++) {
+        pdf.getPage(i).then(function(page) {
+            const scale = 1;
+            const viewport = page.getViewport({ scale: scale });
+
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            container.appendChild(canvas);
+
+            page.render({
+                canvasContext: context,
+                viewport: viewport
+            });
+        });
+    }
+});
 
 
