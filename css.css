@@ -50,7 +50,6 @@ body{
   border: 3px solid var(--aristo-red);
   color: var(--aristo-red);
   padding: clamp(6px, 1.5vw, 12px) clamp(12px, 2vw, 16px);
-  margin: 0 clamp(4px, 1vw, 8px) 10px clamp(4px, 1vw, 8px);
   cursor: pointer;
   font-family: "futura-pt-bold", sans-serif;
   font-size: clamp(14px, 2vw, 16px);
@@ -288,7 +287,7 @@ click-spark{
 
 
 #dropdown{
-  z-index: 1;
+  z-index: 100;
   position:absolute;
   display:flex;
   flex-direction: column;
@@ -1405,7 +1404,6 @@ body:has(#camBoundingBox:not(:hover)) .filmContainer{
   width: 100%;
   top: 0;
   bottom: 0;
-  margin: auto
 }
 
 #featuredVid span{
@@ -1442,14 +1440,34 @@ body:has(#camBoundingBox:not(:hover)) .filmContainer{
 
 
 /* UNIT 1 PAGE */
+
+#brief {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+#brief:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--aristo-red);
+}
+
 h1#brief{
   text-align: center;
   background-color: var(--aristo-dark-yellow);
   padding:5px 0px;
 }
 
-#briefWrapper{
-  margin:0 0 80px 0;
+#briefWrapper {
+  background: white;
+  padding: 30px;
+  margin: 0 0 40px 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .gSlides{
@@ -1457,25 +1475,99 @@ h1#brief{
   height:30vw;
 }
 
-.unit1Section{
-  margin:40px 0px;
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
+.unit1Section {
+  flex-direction: column;
+  margin: 30px 0;
+  gap: 20px;
 }
 
-.activityDescript{
-  margin:0 0px 0px 30px;
+@media (min-width: 900px) {
+  .unit1Section {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .activityDescript {
+    flex: 1;
+    padding: 0 20px;
+  }
 }
 
-#jumpToFinal{
+@media (max-width: 600px) {
+  .unit1Section {
+    margin: 20px 0;
+    padding: 0 10px;
+  }
+  
+  .activityDescript {
+    padding: 15px;
+  }
+  
+  #briefWrapper {
+    padding: 20px 15px;
+  }
+  
+  #unit1Video {
+    height: 250px;
+  }
+  
+  #activity3Wrapper {
+    padding: 20px 10px;
+    margin-top: 50px;
+  }
+}
+
+.activityDescript {
+  background: var(--aristo-pale-yellow);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+#jumpToFinal {
+  background-color: #fff;
+  border: 3px solid var(--aristo-red);
+  color: var(--aristo-red);
+  padding: clamp(6px, 1.5vw, 12px) clamp(12px, 2vw, 16px);
+  margin: 20px auto; /* Centered with top/bottom margin */
+  cursor: pointer;
   font-family: "futura-pt-bold", sans-serif;
-  padding: 10px 10px;
-  background-color: var(--aristo-pale-yellow);
+  font-size: clamp(14px, 2vw, 16px);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  white-space: nowrap;
+  display: block; /* Changed to block for better centering */
+  width: fit-content; /* Only as wide as content needs */
+  text-align: center;
+  border-radius: 0; /* Match your .btn style */
 }
-.activityTitle{
-  margin:20px 0px;
+
+#jumpToFinal:hover {
+  background-color: var(--aristo-dark-yellow);
+  transform: translateY(-2px); /* Add subtle lift */
+  box-shadow: 0 4px 8px rgba(193, 39, 45, 0.2); /* Soft shadow */
 }
+
+#jumpToFinal:active {
+  transform: translateY(0); /* Remove lift when clicked */
+  box-shadow: none;
+}
+
+.activityTitle {
+  color: black;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.activityTitle:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--aristo-red);
+}
+
 
 #activity3Wrapper{
   margin:100px 0 0 0;
@@ -1485,14 +1577,34 @@ h1#brief{
   background: linear-gradient(103deg, var(--aristo-dark-yellow) 35%, var(--aristo-red) 25%)
 }
 
-#unit1Video{
-  border: 5px inset var(--aristo-dark-yellow);
+
+#unit1Video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  max-width: 800px;
 }
 
 @media (max-width: 800px) {
   .unit1Section {
     flex-direction: column;
   }
+}
+
+.unit1Section embed, 
+.unit1Section iframe {
+  width: 100%;
+  height: auto;
+  min-height: 400px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.unit1Section embed:hover,
+.unit1Section iframe:hover {
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+  transform: translateY(-3px);
+  transition: all 0.3s ease;
 }
 
 /* Parallax Styles - Adapted for Aristo Company */
@@ -2063,43 +2175,47 @@ body.loaded .aristo-preloader {
   max-width: 700px;
   aspect-ratio: 16/9;
   margin: 0 auto;
-  background: #000; /* Black background as fallback */
+  background: #000;
 }
 
 #featuredThumbnail {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden; /* Prevents any content from overflowing */
-}
-
-#featuredThumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures image covers container without repeating */
-  display: block;
-}
-
-.play-button-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 2;
+  cursor: pointer;
+  
+  /* Flex container for easy centering */
   display: flex;
   justify-content: center;
   align-items: center;
-  pointer-events: none; /* Allows clicks to pass through to thumbnail */
+}
+
+#featuredThumbnail img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .play-button {
+  /* Position relative to flex container */
   font-size: 4rem;
   color: white;
   opacity: 0.8;
   text-shadow: 0 0 20px rgba(0,0,0,0.7);
   transition: all 0.3s ease;
-  z-index: 2;
-  pointer-events: auto; /* Re-enable clicks on the button itself */
+  z-index: 3;
+  
+  /* Additional centering assurance */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
 }
 
 #featuredThumbnail:hover .play-button {
@@ -2107,6 +2223,10 @@ body.loaded .aristo-preloader {
   opacity: 1;
   transform: scale(1.1);
 }
+
+/* Debug borders - remove after verification */
+.debug #featuredThumbnail { border: 1px solid red; }
+.debug .play-button { border: 1px solid blue; }
 
 #featuredPlayer {
   width: 100%;
@@ -2168,7 +2288,6 @@ body.loaded .aristo-preloader {
 .masonry-item {
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
   aspect-ratio: 16/9; /* All items same aspect ratio */
@@ -2220,22 +2339,7 @@ body.loaded .aristo-preloader {
   opacity: 0.8;
 }
 
-.play-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 3rem;
-  opacity: 0;
-  transition: all 0.3s ease;
-  text-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
 
-.masonry-item:hover .play-icon {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1.1);
-}
 
 /* LIGHTBOX STYLES - SIDE BY SIDE */
 .lightbox {
@@ -2249,30 +2353,43 @@ body.loaded .aristo-preloader {
   z-index: 1000;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  box-sizing: border-box;
+}
+
+#lightboxDesc {
+  margin-bottom: 40px;
+}
+
+#btsBtn {
+  margin: 0;
 }
 
 .lightbox-content {
   position: relative;
-  width: 100%;
+  width: 90%;
   max-width: 1100px;
-  max-height: 90vh;
+  height: 90vh; /* Changed from max-height to fixed height */
   background: white;
   border-radius: 8px;
   overflow: hidden;
   animation: fadeIn 0.3s ease;
+  display: flex; /* Added to help with layout */
 }
 
 .lightbox-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  width: 100%; /* Ensure it takes full width */
+  height: 100%; /* Ensure it takes full height */
 }
 
 @media (min-width: 900px) {
   .lightbox-container {
-      flex-direction: row;
+    flex-direction: row;
+  }
+  
+  /* Adjust the lightbox content for wider screens */
+  .lightbox-content {
+    height: 80vh; /* Slightly smaller on desktop */
   }
 }
 
@@ -2294,106 +2411,81 @@ body.loaded .aristo-preloader {
   transition: all 0.3s ease;
 }
 
-.close-btn:hover {
-  background: var(--aristo-red);
-  transform: rotate(90deg);
-}
-
 .lightbox-media {
   position: relative;
   flex: 2;
-  min-height: 300px;
+  min-height: 0; /* Reset min-height */
   background: black;
-}
-
-@media (min-width: 900px) {
-  .lightbox-media {
-      min-height: auto;
-      height: 100%;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .lightbox-media iframe {
   width: 100%;
   height: 100%;
-  min-height: 300px;
   border: none;
 }
 
+/* Maintain 16:9 aspect ratio for the video */
+.lightbox-media::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+@media (min-width: 900px) {
+  .lightbox-media {
+    height: 100%;
+  }
+  
+  /* Override aspect ratio for desktop to use available height */
+  .lightbox-media::before {
+    display: none;
+  }
+  
+  .lightbox-media iframe {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
 .lightbox-info {
   flex: 1;
-  padding: 2rem;
+  padding: 6rem 2rem;
   overflow-y: auto;
   max-height: 40vh;
 }
 
 @media (min-width: 900px) {
   .lightbox-info {
-      max-height: none;
+    max-height: none;
+    height: 100%;
   }
-}
-
-.lightbox-info h3 {
-  font-family: "futura-pt-bold", sans-serif;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--aristo-red);
-}
-
-.lightbox-info p {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background: var(--aristo-red);
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  font-family: "futura-pt-bold", sans-serif;
-}
-
-.btn:hover {
-  background: #a01f24;
-  transform: translateY(-2px);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .masonry-grid {
-      grid-template-columns: repeat(2, 1fr);
-  }
-  
   .lightbox-content {
-      max-height: 95vh;
+    width: 95%;
+    height: 95vh;
   }
   
   .lightbox-info {
-      padding: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .featured-info h3 {
+    font-size: 1.5rem;
+  }
+  .featured-info p {
+    font-size: 0.9rem;
   }
 }
 
-
-
 @media (max-width: 480px) {
-  .masonry-grid {
-      grid-template-columns: 1fr;
-  }
-  
-  .masonry-item {
-      aspect-ratio: 16/9;
-  }
-  
   .lightbox-info {
-      padding: 1rem;
+    padding: 1rem;
   }
 }
