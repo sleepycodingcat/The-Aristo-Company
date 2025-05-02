@@ -1,6 +1,11 @@
 
 /*ACROSS ALL PAGES*/
 
+html {
+  scrollbar-gutter: stable; /* This reserves space for the scrollbar */
+}
+
+
 :root {
   --aristo-red: #c1272dff;
   --aristo-dark-yellow: #fbe492ff;
@@ -2013,8 +2018,9 @@ body.loaded .aristo-preloader {
 
 /* FEATURED FILM STYLES */
 #featuredFilm {
-  margin: 4rem 0;
-  text-align: center;
+  margin: 4rem auto;
+  max-width: 1200px;
+  padding: 0 1rem;
 }
 
 #featuredFilm h2 {
@@ -2022,67 +2028,84 @@ body.loaded .aristo-preloader {
   font-size: 1.8rem;
   margin-bottom: 2rem;
   color: var(--aristo-red);
-  letter-spacing: 1px;
+  text-align: center;
   position: relative;
-  display: inline-block;
 }
 
 #featuredFilm h2:after {
   content: '';
   position: absolute;
-  width: 50%;
+  width: 80px;
   height: 3px;
   background: var(--aristo-red);
   bottom: -10px;
-  left: 25%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .featured-container {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
 }
 
+@media (min-width: 900px) {
+  .featured-container {
+      flex-direction: row;
+      align-items: center;
+  }
+}
+
+/* FEATURED FILM STYLES */
 #featuredWrapper {
   position: relative;
   width: 100%;
+  max-width: 700px;
   aspect-ratio: 16/9;
-  background: #000;
+  margin: 0 auto;
+  background: #000; /* Black background as fallback */
 }
 
 #featuredThumbnail {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
   height: 100%;
-  cursor: pointer;
+  overflow: hidden; /* Prevents any content from overflowing */
 }
 
 #featuredThumbnail img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Ensures image covers container without repeating */
+  display: block;
 }
 
-#featuredThumbnail span {
+.play-button-container {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 5rem;
-  color: white;
-  text-shadow: 0 0 20px rgba(0,0,0,0.5);
-  opacity: 0.9;
-  transition: all 0.3s ease;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* Allows clicks to pass through to thumbnail */
 }
 
-#featuredThumbnail:hover span {
+.play-button {
+  font-size: 4rem;
+  color: white;
+  opacity: 0.8;
+  text-shadow: 0 0 20px rgba(0,0,0,0.7);
+  transition: all 0.3s ease;
+  z-index: 2;
+  pointer-events: auto; /* Re-enable clicks on the button itself */
+}
+
+#featuredThumbnail:hover .play-button {
   color: var(--aristo-red);
-  transform: translate(-50%, -50%) scale(1.1);
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 #featuredPlayer {
@@ -2091,7 +2114,7 @@ body.loaded .aristo-preloader {
 }
 
 .featured-info {
-  text-align: center;
+  flex: 1;
   padding: 0 1rem;
 }
 
@@ -2106,15 +2129,13 @@ body.loaded .aristo-preloader {
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* MASONRY GRID STYLES */
 #filmGrid {
-  margin: 4rem 0;
-  text-align: center;
+  margin: 4rem auto;
+  max-width: 1400px;
+  padding: 0 1rem;
 }
 
 #filmGrid h2 {
@@ -2122,35 +2143,26 @@ body.loaded .aristo-preloader {
   font-size: 1.8rem;
   margin-bottom: 2rem;
   color: var(--aristo-red);
-  letter-spacing: 1px;
+  text-align: center;
   position: relative;
-  display: inline-block;
 }
 
 #filmGrid h2:after {
   content: '';
   position: absolute;
-  width: 50%;
+  width: 80px;
   height: 3px;
   background: var(--aristo-red);
   bottom: -10px;
-  left: 25%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .masonry-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-auto-rows: minmax(200px, auto);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: 1fr; /* Makes all rows same height */
   grid-gap: 1.5rem;
-  padding: 0 1rem;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-  .masonry-grid {
-      grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 .masonry-item {
@@ -2159,21 +2171,10 @@ body.loaded .aristo-preloader {
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
-  aspect-ratio: 1/1;
+  aspect-ratio: 16/9; /* All items same aspect ratio */
   cursor: pointer;
 }
 
-.masonry-item:nth-child(3n+1) {
-  aspect-ratio: 16/9;
-}
-
-.masonry-item:nth-child(3n+2) {
-  aspect-ratio: 4/5;
-}
-
-.masonry-item:nth-child(3n+3) {
-  aspect-ratio: 1/1;
-}
 
 .masonry-item img {
   width: 100%;
@@ -2236,7 +2237,7 @@ body.loaded .aristo-preloader {
   transform: translate(-50%, -50%) scale(1.1);
 }
 
-/* LIGHTBOX STYLES */
+/* LIGHTBOX STYLES - SIDE BY SIDE */
 .lightbox {
   display: none;
   position: fixed;
@@ -2255,25 +2256,30 @@ body.loaded .aristo-preloader {
 .lightbox-content {
   position: relative;
   width: 100%;
-  max-width: 900px;
+  max-width: 1100px;
   max-height: 90vh;
   background: white;
   border-radius: 8px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
   animation: fadeIn 0.3s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+.lightbox-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@media (min-width: 900px) {
+  .lightbox-container {
+      flex-direction: row;
+  }
 }
 
 .close-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 15px;
+  right: 15px;
   font-size: 2rem;
   color: white;
   cursor: pointer;
@@ -2295,24 +2301,36 @@ body.loaded .aristo-preloader {
 
 .lightbox-media {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  flex: 2;
+  min-height: 300px;
   background: black;
-  flex-shrink: 0;
+}
+
+@media (min-width: 900px) {
+  .lightbox-media {
+      min-height: auto;
+      height: 100%;
+  }
 }
 
 .lightbox-media iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
+  min-height: 300px;
   border: none;
 }
 
 .lightbox-info {
-  padding: 1.5rem;
+  flex: 1;
+  padding: 2rem;
   overflow-y: auto;
-  max-height: 30vh;
+  max-height: 40vh;
+}
+
+@media (min-width: 900px) {
+  .lightbox-info {
+      max-height: none;
+  }
 }
 
 .lightbox-info h3 {
@@ -2324,10 +2342,32 @@ body.loaded .aristo-preloader {
 
 .lightbox-info p {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: 1.5rem;
 }
 
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: var(--aristo-red);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-family: "futura-pt-bold", sans-serif;
+}
+
+.btn:hover {
+  background: #a01f24;
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .masonry-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -2335,6 +2375,22 @@ body.loaded .aristo-preloader {
   
   .lightbox-content {
       max-height: 95vh;
+  }
+  
+  .lightbox-info {
+      padding: 1.5rem;
+  }
+}
+
+
+
+@media (max-width: 480px) {
+  .masonry-grid {
+      grid-template-columns: 1fr;
+  }
+  
+  .masonry-item {
+      aspect-ratio: 16/9;
   }
   
   .lightbox-info {

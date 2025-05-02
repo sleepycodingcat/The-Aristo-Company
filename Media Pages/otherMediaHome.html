@@ -48,18 +48,18 @@
   </header>
 
   <div id="sidebar-placeholder"></div>
-
-   <!-- Featured Film Section -->
-   <section id="featuredFilm">
+  <section id="featuredFilm">
     <h2>FEATURED FILM</h2>
     <div class="featured-container">
         <div id="featuredWrapper">
             <div id="featuredThumbnail">
-                <img src="../other media/The Human Touch freezeframe.jpg" alt='The Human Touch'>
-                <span>▶</span>
+              <img src="../other media/The Human Touch freezeframe.jpg" alt="Video thumbnail">
+              <div class="play-button-container">
+                <span class="play-button">▶</span>
+              </div>
             </div>
             <div id="featuredPlayer"></div>
-        </div>
+          </div>
         <div class="featured-info">
             <h3>The Human Touch</h3>
             <p>An award-winning short film exploring human connection in a digital age. This project showcases our ability to tell compelling stories through visual media.</p>
@@ -72,9 +72,9 @@
 <section id="filmGrid">
     <h2>OTHER WORKS</h2>
     <div class="masonry-grid">
-        <!-- Film 1 -->
-        <div class="masonry-item" data-id="imr5WP-2IwU" data-title="The Paper Trailer" data-desc="A mock Netflix trailer for an original thriller concept.">
-            <img src="../other media/Unit 1 preview.png" alt="The Paper Trailer">
+        <!-- Film 1 - The Paper Trailer -->
+        <div class="masonry-item" data-id="imr5WP-2IwU" data-title="The Paper Trailer" data-desc="A mock Netflix trailer for an original thriller concept. This project demonstrates our ability to create professional-quality promotional content.">
+            <img src="../other media/The Human Touch freezeframe.jpg" alt="The Paper Trailer">
             <div class="film-caption">
                 <h3>The Paper Trailer</h3>
                 <p>Netflix mock trailer</p>
@@ -84,9 +84,9 @@
             </div>
         </div>
         
-        <!-- Film 2 -->
-        <div class="masonry-item" data-id="T4TdrFHx6Kc" data-title="Come Alive Mini Enterprise Ad" data-desc="Promotional video for a student enterprise project.">
-            <img src="../other media/Come Alive freezeframe.jpg" alt="Come Alive Ad">
+        <!-- Film 2 - Come Alive -->
+        <div class="masonry-item" data-id="T4TdrFHx6Kc" data-title="Come Alive Mini Enterprise Ad" data-desc="A promotional video created for a student enterprise project. Highlights our commercial video production capabilities.">
+            <img src="../other media/The Human Touch freezeframe.jpg" alt="Come Alive Ad">
             <div class="film-caption">
                 <h3>Come Alive</h3>
                 <p>Enterprise ad</p>
@@ -96,25 +96,72 @@
             </div>
         </div>
         
-        <!-- [Rest of film items...] -->
+        <!-- Film 3 - HK Wanderlust -->
+        <div class="masonry-item" data-id="WELbl7RLxYE" data-title="HK Wanderlust Travel Ad" data-desc="A travel advertisement showcasing Hong Kong's vibrant culture. This project highlights our location shooting and editing skills.">
+            <img src="../other media/The Human Touch freezeframe.jpg" alt="HK Wanderlust">
+            <div class="film-caption">
+                <h3>HK Wanderlust</h3>
+                <p>Travel advertisement</p>
+            </div>
+            <div class="play-icon">
+                <span class="material-symbols-outlined">play_circle</span>
+            </div>
+        </div>
+        
+        <!-- Film 4 - Thumbs Music Video -->
+        <div class="masonry-item" data-id="YDMx8V6qyZo" data-title="Sabrina Carpenter | Thumbs Unofficial Music Video" data-desc="An unofficial music video for Sabrina Carpenter's 'Thumbs'. Demonstrates our music video production and creative storytelling abilities.">
+            <img src="../other media/The Human Touch freezeframe.jpg" alt="Thumbs Music Video">
+            <div class="film-caption">
+                <h3>Thumbs</h3>
+                <p>Music video</p>
+            </div>
+            <div class="play-icon">
+                <span class="material-symbols-outlined">play_circle</span>
+            </div>
+        </div>
+        
+        <!-- Film 5 - Splat! Stop Motion -->
+        <div class="masonry-item" data-id="6tCpbyyHU9o" data-title="Splat! Stop Motion" data-desc="A playful stop-motion animation showcasing our experimental approach to filmmaking and attention to detail.">
+            <img src="../other media/The Human Touch freezeframe.jpg" alt="Splat Stop Motion">
+            <div class="film-caption">
+                <h3>Splat!</h3>
+                <p>Stop motion</p>
+            </div>
+            <div class="play-icon">
+                <span class="material-symbols-outlined">play_circle</span>
+            </div>
+        </div>
+
+        <!-- Film 6 - Orange Juice -->
+        <div class="masonry-item" data-id="W3_OvLmiQXI" data-title="Splat! Stop Motion" data-desc="A playful stop-motion animation showcasing our experimental approach to filmmaking and attention to detail.">
+            <img src="../other media/The Human Touch freezeframe.jpg" alt="Orange Juice Narrative film">
+            <div class="film-caption">
+                <h3>Orange Juice</h3>
+                <p>Narrative Short</p>
+            </div>
+            <div class="play-icon">
+                <span class="material-symbols-outlined">play_circle</span>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- Film Lightbox -->
+<!-- Film Lightbox - Side-by-side layout -->
 <div id="filmLightbox" class="lightbox">
     <div class="lightbox-content">
         <span class="close-btn material-symbols-outlined">close</span>
-        <div class="lightbox-media">
-            <iframe id="lightboxPlayer" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="lightbox-info">
-            <h3 id="lightboxTitle"></h3>
-            <p id="lightboxDesc"></p>
-            <a href="#" id="btsBtn" class="btn">Behind the Scenes</a>
+        <div class="lightbox-container">
+            <div class="lightbox-media">
+                <iframe id="lightboxPlayer" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle"></h3>
+                <p id="lightboxDesc"></p>
+                <a href="#" id="btsBtn" class="btn">Behind the Scenes</a>
+            </div>
         </div>
     </div>
 </div>
-
 
     <div id="footer-placeholder"></div>
 
