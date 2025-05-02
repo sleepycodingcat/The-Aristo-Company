@@ -1887,7 +1887,6 @@ h1#brief{
 @media screen and (max-height: 500px) and (orientation: landscape) {
   #allParallaxContainer .parallax-one,
   #allParallaxContainer .parallax-three {
-    transform: scale(0.7);
     padding-top: 20%;
     padding-bottom: 60px;
   }
