@@ -236,7 +236,10 @@ btn:hover{
 }
 
 #logo {
-  height: clamp(40px, 6vw, 70px); /* Min 40px, max 70px, responsive in between */
+  display: block;
+  visibility: visible !important;
+  width: auto !important;
+  height: clamp(40px, 6vw, 70px) !important;
 }
 
 
@@ -382,6 +385,9 @@ click-spark{
 
   #logoContainer {
     flex: 0 0 auto; /* Don't grow or shrink */
+    display: block !important;
+    visibility: visible !important;
+    z-index: 10;
   }
 
   /* Show menu icon */
@@ -2489,3 +2495,5 @@ body.loaded .aristo-preloader {
     padding: 1rem;
   }
 }
+
+
