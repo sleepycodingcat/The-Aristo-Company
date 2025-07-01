@@ -283,8 +283,10 @@ click-spark{
 }
 
 .sideNav h1{
-  font-size: 10vw;
+  font-size: clamp(5vw, 5vw, 12vw);
+  color:var(--aristo-red);
 }
+
 
 /* DROP DOWN MENU */
 
