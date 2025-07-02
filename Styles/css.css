@@ -6,6 +6,10 @@ html {
   scrollbar-gutter: stable; /* Fixes the layout shifting issue when sidebar opens*/
 }
 
+body {
+  margin: 5vh 4vw;
+}
+
 /* Preloader */
 body {
   overflow: hidden; /* Prevent scrolling during preloader */
@@ -25,6 +29,7 @@ body {
   z-index: 9999;
   transition: opacity 0.5s ease-out;
   transform: scale(2);
+  padding: 20%;
 }
 
 .loader__filmstrip {
@@ -85,7 +90,7 @@ header {
   flex-wrap: wrap;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   margin: 20px 0vw 6vw 0px;
   padding: 0 10px;
   position: relative;
@@ -104,13 +109,32 @@ header a:hover {
   color: #c1272d;
   transition: color 0.2s;
 }
+header button {
+  border: none;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+}
 
 #menuIcon {
-  margin: 10px 0px 0px 0px;
-  font-size: clamp(30px, 5vw, 48px); /* Min 30px, max 48px, responsive in between */
+  font-size: clamp(30px, 5vw, 48px);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+  /* KEY FIX: Match the h1 margin to align baselines */
+  margin: 20px 10px 0px 10px;
+  /* Additional fixes for Material Icons alignment */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  /* Remove any default button styling that might affect alignment */
+  padding: 0;
+  vertical-align: baseline;
 }
 #menuIcon:hover {
-  cursor: pointer;
   color: #c1272d; /* Change color on hover */
 }
 
@@ -232,11 +256,6 @@ header a:hover {
   color: #c1272d; /* Change color on hover */
 }
 
-.sideNav h1 {
-  font-size: 5vw;
-  color: #c1272d;
-}
-
 /* Responsive breakpoints */
 /* Large tablets and smaller (1024px and below) */
 @media screen and (max-width: 1024px) {
@@ -246,6 +265,9 @@ header a:hover {
   header h1 {
     font-size: clamp(18px, 2.8vw, 26px); /* Slightly smaller text */
     margin: 15px 8px 0px 8px; /* Reduced spacing */
+  }
+  #menuIcon {
+    margin: 15px 8px 0px 8px;
   }
 }
 /* Medium tablets and smaller (768px and below) */
@@ -264,6 +286,9 @@ header a:hover {
   #dropdownContent {
     min-width: 100px; /* Slightly smaller width */
   }
+  #menuIcon {
+    margin: 15px 5px 0px 5px;
+  }
 }
 /* Small tablets and phones (600px and below) */
 @media screen and (max-width: 600px) {
@@ -281,7 +306,11 @@ header a:hover {
   /* Show menu icon */
   #menuIcon {
     display: block;
-    margin-left: auto; /* Push to the right */
+    margin-left: auto;
+    /* Reset margin for mobile - let margin-left: auto handle positioning */
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0;
   }
   /* Hide navigation text */
   header h1,

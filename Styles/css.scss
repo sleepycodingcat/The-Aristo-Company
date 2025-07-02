@@ -9,6 +9,9 @@ $aristoBlack: rgb(0, 0, 0);
 html {
   scrollbar-gutter: stable; /* Fixes the layout shifting issue when sidebar opens*/
 }
+body{
+  margin: 5vh 4vw;
+}
 
 
 @import "./preloader";

@@ -4,7 +4,7 @@ header{
   flex-wrap:wrap;
   display: flex;
   justify-content: space-between;
-  align-items: center; 
+  align-items: flex-end; 
   margin: 20px 0vw 6vw 0px;
   padding: 0 10px;
   position: relative;
@@ -25,13 +25,34 @@ header{
     }
   }
 
+  button{
+    border:none;
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+}
+
 }
 
 #menuIcon {
-  margin: 10px 0px 0px 0px;
-  font-size: clamp(30px, 5vw, 48px); /* Min 30px, max 48px, responsive in between */
-  &:hover{
-    cursor: pointer;
+  font-size: clamp(30px, 5vw, 48px);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+  /* KEY FIX: Match the h1 margin to align baselines */
+  margin: 20px 10px 0px 10px;
+  /* Additional fixes for Material Icons alignment */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  /* Remove any default button styling that might affect alignment */
+  padding: 0;
+  vertical-align: baseline;
+
+  &:hover {
     color: $aristoRed; /* Change color on hover */
   }
 }
@@ -164,11 +185,6 @@ header{
   }
 }
 
-.sideNav h1{
-  font-size: clamp(5vw, 5vw, 12vw);
-  color:$aristoRed;
-}
-
 
 /* Responsive breakpoints */
 
@@ -181,6 +197,9 @@ header{
   header h1 {
     font-size: clamp(18px, 2.8vw, 26px); /* Slightly smaller text */
     margin: 15px 8px 0px 8px; /* Reduced spacing */
+  }
+  #menuIcon {
+    margin: 15px 8px 0px 8px;
   }
 }
 
@@ -203,6 +222,10 @@ header{
   #dropdownContent {
     min-width: 100px; /* Slightly smaller width */
   }
+
+  #menuIcon {
+    margin: 15px 5px 0px 5px;
+  }
 }
 
 /* Small tablets and phones (600px and below) */
@@ -223,7 +246,11 @@ header{
   /* Show menu icon */
   #menuIcon {
     display: block;
-    margin-left: auto; /* Push to the right */
+    margin-left: auto;
+    /* Reset margin for mobile - let margin-left: auto handle positioning */
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0;
   }
 
   /* Hide navigation text */
