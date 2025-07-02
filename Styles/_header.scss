@@ -4,7 +4,7 @@ header{
   flex-wrap:wrap;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end; 
+  align-items: center; 
   margin: 20px 0vw 6vw 0px;
   padding: 0 10px;
   position: relative;
@@ -28,9 +28,9 @@ header{
   button{
     border:none;
     background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
+    color: inherit;
+    border: none;
+    padding: 0;
 }
 
 }
@@ -55,6 +55,8 @@ header{
   &:hover {
     color: $aristoRed; /* Change color on hover */
   }
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #videoLogo {
@@ -147,7 +149,6 @@ header{
 }
 
 /* MENU SIDEBAR */
-
 .sideNav {
   height: 100%;
   width: 0;
@@ -158,17 +159,72 @@ header{
   background-color: $aristoYellow;
   overflow-x: hidden;
   transition: 0.5s;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2); /* Add shadow */
-}
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
 
-.sideNav a{
-  text-decoration: none;
-  color:black;
-  font-size:2rem;
-}
+  a {
+    text-decoration: none;
+    font-family: "League Spartan", sans-serif;
+    color: black;
+    font-size: 2rem;
+    font-weight: 600; // SemiBold for main sidebar links
+    position: relative; // CRITICAL: This was missing!
+    overflow: hidden;
+    transition: color 0.3s ease;
+    z-index: 1;
+    display: block; // CRITICAL: Ensures proper block-level behavior
+    padding: 12px 20px; // Add padding for better click area
+    margin: 5px 0;
 
-.sideNav a:hover{
-  color:$aristoRed
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background-color: $aristoRed;
+      transition: all 0.4s ease;
+      z-index: -1;
+    }
+
+    &:hover {
+      color: white;
+      
+      &::before {
+        left: 0;
+      }
+    }
+
+    // Add visual markers for sub-pages in sidebar
+    &[href*="Unit"], &[href*="Learner"] {
+      font-weight: 500; // Medium weight for sub-pages
+      font-size: 1.8rem; // Slightly smaller
+      padding-left: 40px; // Extra indent for sub-pages
+      
+      &::after {
+        content: "└";
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $aristoRed;
+        font-weight: 400;
+        transition: left 0.3s ease;
+      }
+      
+      &:hover::after {
+        left: 20px; // Slide the marker in on hover
+      }
+    }
+
+    // Special handling for "Learner Declarations" text wrapping
+    &[href*="Learner"] {
+      line-height: 1.2;
+      white-space: normal;
+      word-wrap: break-word;
+      text-indent: -10px; // Hanging indent for wrapped text
+    }
+  }
 }
 
 #navContent{

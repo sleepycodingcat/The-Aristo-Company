@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
 }
@@ -90,7 +91,7 @@ header {
   flex-wrap: wrap;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   margin: 20px 0vw 6vw 0px;
   padding: 0 10px;
   position: relative;
@@ -133,6 +134,8 @@ header button {
   /* Remove any default button styling that might affect alignment */
   padding: 0;
   vertical-align: baseline;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 #menuIcon:hover {
   color: #c1272d; /* Change color on hover */
@@ -230,17 +233,62 @@ header button {
   background-color: #fbe492;
   overflow-x: hidden;
   transition: 0.5s;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2); /* Add shadow */
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
 }
-
 .sideNav a {
   text-decoration: none;
+  font-family: "League Spartan", sans-serif;
   color: black;
   font-size: 2rem;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease;
+  z-index: 1;
+  display: block;
+  padding: 12px 20px;
+  margin: 5px 0;
 }
-
+.sideNav a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #c1272d;
+  transition: all 0.4s ease;
+  z-index: -1;
+}
 .sideNav a:hover {
+  color: white;
+}
+.sideNav a:hover::before {
+  left: 0;
+}
+.sideNav a[href*=Unit], .sideNav a[href*=Learner] {
+  font-weight: 500;
+  font-size: 1.8rem;
+  padding-left: 40px;
+}
+.sideNav a[href*=Unit]::after, .sideNav a[href*=Learner]::after {
+  content: "└";
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
   color: #c1272d;
+  font-weight: 400;
+  transition: left 0.3s ease;
+}
+.sideNav a[href*=Unit]:hover::after, .sideNav a[href*=Learner]:hover::after {
+  left: 20px;
+}
+.sideNav a[href*=Learner] {
+  line-height: 1.2;
+  white-space: normal;
+  word-wrap: break-word;
+  text-indent: -10px;
 }
 
 #navContent {
