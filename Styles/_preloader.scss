@@ -1,0 +1,74 @@
+
+/* Preloader */
+
+body{
+    overflow: hidden; /* Prevent scrolling during preloader */
+}
+
+.aristo-preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $aristoBeige;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease-out;
+  transform: scale(2);
+}
+
+.loader__filmstrip {
+  position: relative;
+  width: 56px;
+  height: 70px;
+  background: #000; /* Black filmstrip */
+  z-index: 1;
+}
+
+.loader__filmstrip::before,
+.loader__filmstrip::after {
+  content: '';
+  position: absolute;
+  height: 120%;
+  border-left: 5px dashed $aristoBeige;
+  animation: roll 0.02s infinite linear;
+}
+
+.loader__filmstrip::before {
+  left: 5px;
+}
+
+.loader__filmstrip::after {
+  right: 5px;
+}
+
+.loader__text {
+  margin: 15px auto 0;
+  color: $aristoRed;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "futura-pt-bold", sans-serif;
+  font-size: clamp(10px, 3vw, 18px); /* Responsive font size */
+  text-align: center;
+  padding: 0 20vw;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+@keyframes roll {
+  0% { top: 0px; }
+  100% { top: -15px; }
+}
+
+/* Hide after load */
+body.loaded{
+    overflow: auto; /* Ensure scrolling is enabled */
+    .aristo-preloader{
+        opacity: 0;
+        pointer-events: none;
+    }
+}

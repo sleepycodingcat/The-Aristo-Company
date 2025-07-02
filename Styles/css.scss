@@ -1,0 +1,33 @@
+$aristoRed: #c1272dff;
+$aristoYellow:#fbe492ff;
+$aristoBeige: #fff9e1ff;
+$aristoBlack: rgb(0, 0, 0);
+
+@import "./preloader";
+@import"./header";
+
+click-spark{
+  --click-spark-color: #{$aristoRed};
+}
+
+h1{
+  font-family: "futura-pt-bold", sans-serif;
+  font-size: clamp(24px, 5vw, 48px);
+}
+
+h2{
+  font-family: "futura-pt-bold", sans-serif;
+  font-size: clamp(20px, 4vw, 36px);
+}
+
+h3{
+  font-family: "futura-pt-bold", sans-serif;
+  font-size: clamp(18px, 3vw, 24px);
+}
+
+p {
+  font-family: "Lexend", sans-serif;
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.6;
+}
+
