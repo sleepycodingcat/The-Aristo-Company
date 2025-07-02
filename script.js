@@ -10,42 +10,6 @@
 //   }, 1500);
 // }); 
  
- 
-//  // MENU SIDEBAR
-// let touchStartX = 0;
-// let touchEndX = 0;
-
-// function openNav() {
-//   const currentWidth = window.innerWidth;
-//   const navBar = document.getElementById("navBar");
-  
-//   if (currentWidth < 600) {
-//     navBar.style.width = "100vw";
-//     navBar.classList.add("open");
-//   } else {
-//     navBar.style.width = "30vw";
-//   }
-  
-//   // Prevent body scrolling when sidebar is open
-//   document.body.style.overflow = "hidden";
-// }
-
-// function closeNav() {
-//   const navBar = document.getElementById("navBar");
-//   navBar.style.width = "0";
-//   navBar.classList.remove("open");
-  
-//   // Re-enable body scrolling
-//   document.body.style.overflow = "auto";
-// }
-
-// // Update sidebar width on resize
-// window.addEventListener("resize", () => {
-//   const navBar = document.getElementById("navBar");
-//   if (navBar.style.width !== "0" && navBar.style.width !== "") {
-//     openNav();
-//   }
-// });
 
 // // // Customized YT thumbnail preview
 // // // This code loads the IFrame Player API code asynchronously.

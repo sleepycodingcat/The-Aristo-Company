@@ -161,19 +161,24 @@ header{
   transition: 0.5s;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
 
+  h1{
+    margin:20px 0px;
+    text-decoration: underline;
+    text-decoration-color: $aristoRed;;
+  }
+
   a {
     text-decoration: none;
     font-family: "League Spartan", sans-serif;
     color: black;
     font-size: 2rem;
     font-weight: 600; // SemiBold for main sidebar links
-    position: relative; // CRITICAL: This was missing!
+    position: relative; 
     overflow: hidden;
     transition: color 0.3s ease;
     z-index: 1;
     display: block; // CRITICAL: Ensures proper block-level behavior
-    padding: 12px 20px; // Add padding for better click area
-    margin: 5px 0;
+    padding: 10px 10px; // Reduced padding from 12px to 8px for tighter spacing
 
     &::before {
       content: "";
@@ -183,7 +188,7 @@ header{
       width: 100%;
       height: 100%;
       background-color: $aristoRed;
-      transition: all 0.4s ease;
+      transition: all 0.3s ease;
       z-index: -1;
     }
 
@@ -197,7 +202,7 @@ header{
 
     // Add visual markers for sub-pages in sidebar
     &[href*="Unit"], &[href*="Learner"] {
-      font-weight: 500; // Medium weight for sub-pages
+      font-weight: 400; // Medium weight for sub-pages
       font-size: 1.8rem; // Slightly smaller
       padding-left: 40px; // Extra indent for sub-pages
       
@@ -282,6 +287,15 @@ header{
   #menuIcon {
     margin: 15px 5px 0px 5px;
   }
+
+  .sideNav h1 {
+    font-size: 5vw; // Further reduced for tablets
+    margin: 8px 0 3px 0;
+  }
+  .sideNav a {
+    padding: 6px 20px; // Even tighter spacing on tablets
+    margin: 1px 0;
+  }
 }
 
 /* Small tablets and phones (600px and below) */
@@ -340,12 +354,15 @@ header{
 
   .sideNav a {
     font-size: 1.5rem; /* Slightly smaller for better fit */
+    padding: 5px 20px; // Tighter spacing on mobile
+    margin: 1px 0;
   }
 
   .sideNav h1 {
-    font-size:25vw;
-    margin:0;
-}
+    font-size: 18vw; // Significantly reduced from 25vw to 18vw to prevent overflow
+    margin: 5px 0 2px 0; // Much tighter margins
+    line-height: 0.8; // Even tighter line height for mobile
+  }
 
   #navBarClose {
     margin: 10px 0 20px 0;
@@ -377,8 +394,16 @@ header{
     padding: 15px 25px;
   }
 
+  
   .sideNav a {
     font-size: 1.3rem;
+    padding: 4px 20px; // Even tighter for very small screens
+    margin: 0;
+  }
+
+  .sideNav h1 {
+    font-size: 15vw; // Further reduced for very small screens
+    margin: 3px 0 1px 0; // Minimal margins
   }
 }
 
