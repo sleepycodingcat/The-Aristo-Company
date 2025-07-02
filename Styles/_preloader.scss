@@ -54,9 +54,8 @@ body{
   font-family: "futura-pt-bold", sans-serif;
   font-size: clamp(10px, 3vw, 18px); /* Responsive font size */
   text-align: center;
-  padding: 0 20vw;
-  max-width: 70%;
-  word-wrap: break-word;
+  max-width: 50%;
+  word-wrap: normal;
 }
 
 @keyframes roll {

@@ -1,3 +1,5 @@
+// INCLUDES HEADER & SIDEBAR
+
 header{
   flex-wrap:wrap;
   display: flex;
@@ -28,64 +30,281 @@ header{
 #menuIcon {
   margin: 10px 0px 0px 0px;
   font-size: clamp(30px, 5vw, 48px); /* Min 30px, max 48px, responsive in between */
+  &:hover{
+    cursor: pointer;
+    color: $aristoRed; /* Change color on hover */
+  }
 }
 
-#logo {
+#videoLogo {
   display: block;
   visibility: visible ;
   width: auto;
   height: clamp(40px, 6vw, 70px);
 }
 
-// DROPDOWN MENU
+#staticLogo {
+  display: none; // Hidden by default
+  height: clamp(40px, 6vw, 70px);
+  width: auto;
+}
 
-#dropdown{
+// DROPDOWN MENU
+#dropdown {
   z-index: 100;
-  position:absolute;
-  display:flex;
+  position: absolute;
+  display: flex;
   flex-direction: column;
   align-content: center;
-  align-items: center; /* horizontally center align */
+  align-items: center;
   text-align: center;
-  overflow:hidden;
+  overflow: hidden;
+  pointer-events: none; /* Allows clicks to pass through when not active */
+
+  &Content {
+    transform: translateY(-101%);
+    background-color: $aristoBlack;
+    color:$aristoYellow;
+    padding: 10px 15px;
+    transition: transform 0.4s ease;
+    min-width: 180px;
+    pointer-events: auto; /* Restores click events for content */
+
+    a {
+      width: 100%;
+      text-align: left;
+      color: $aristoYellow;
+      display: block;
+      white-space: normal;
+      margin: 9px 0;
+      padding: 4px 10px;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.3s ease;
+      z-index: 1;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background-color: $aristoRed;
+        transition: all 0.4s ease;
+        z-index: -1;
+      }
+
+      &:hover {        
+        &::before {
+          left: 0;
+        }
+      }
+    }
+  }
 }
 
-/* Create the animated background effect */
-#dropdown a::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%; /* Start off-screen to the left */
-  width: 100%;
-  height: 100%;
-  background-color: var(--aristo-red); /* Use the site's red color */
-  transition: all 0.4s ease; /* Animation speed */
-  z-index: -1; /* Place behind the text */
-}
-
-/* Animate the background on hover */
-#dropdown a:hover::before {
-  left: 0; /* Move in from the left */
-}
-
-
-#btecBtn:hover + #dropdown #dropdownContent,#dropdown #dropdownContent:hover {
+/* Dropdown trigger */
+#btecBtn:hover + #dropdown #dropdownContent,
+#dropdown #dropdownContent:hover {
   transform: translateY(0);
 }
 
-#dropdownContent{
-  transform: translateY(-101%);
-  background-color: black;
-  padding:10px 15px;
-  transition: transform 0.4s ease; 
-  min-width: 180px; /* Ensure minimum width for readability */
+
+#dropdown a {
+  width: 100%; /* Set the width of anchor tags to 100% */
+  text-align: left; /* center align the text within the anchor tags */
+  color:$aristoYellow;
+  display: block; /* Ensure it's a block element */
+  white-space: normal; /* Allow text to wrap */
+  margin: 9px 0;
+  padding: 4px 10px; /* Add padding for the hover effect */
+  position: relative; /* For the pseudo-element positioning */
+  overflow: hidden; /* Hide the overflow for the animation */
+  transition: color 0.3s ease; /* Smooth transition for text color */
+  z-index: 1; /* Ensure text stays above the animated background */
 }
 
-#dropdown {
-  pointer-events: none; /* Allows clicks to pass through when not active */
+/* MENU SIDEBAR */
+
+.sideNav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 102;
+  top: 0;
+  right: 0;
+  background-color: $aristoYellow;
+  overflow-x: hidden;
+  transition: 0.5s;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2); /* Add shadow */
 }
 
-#dropdown #dropdownContent {
-  pointer-events: auto; /* Restores click events for the actual dropdown content */
+.sideNav a{
+  text-decoration: none;
+  color:black;
+  font-size:2rem;
 }
 
+.sideNav a:hover{
+  color:$aristoRed
+}
+
+#navContent{
+  padding:10px 50px;
+}
+
+#navBarClose{
+  margin:2vh 0vh;
+  font-size: clamp(5vw,5vw,12vw);
+
+  &:hover{
+    cursor: pointer;
+    color: $aristoRed; /* Change color on hover */
+  }
+}
+
+.sideNav h1{
+  font-size: clamp(5vw, 5vw, 12vw);
+  color:$aristoRed;
+}
+
+
+/* Responsive breakpoints */
+
+/* Large tablets and smaller (1024px and below) */
+@media screen and (max-width: 1024px) {
+  header {
+    margin: 15px 0vw 5vw 0px; /* Slightly reduced margins */
+  }
+
+  header h1 {
+    font-size: clamp(18px, 2.8vw, 26px); /* Slightly smaller text */
+    margin: 15px 8px 0px 8px; /* Reduced spacing */
+  }
+}
+
+/* Medium tablets and smaller (768px and below) */
+@media screen and (max-width: 768px) {
+  header {
+    margin: 10px 0vw 4vw 0px; /* Reduced margins */
+    flex-wrap: nowrap; /* Prevent wrapping */
+  }
+
+  #navContent {
+    padding: 10px 30px;
+  }
+
+  header h1 {
+    font-size: clamp(16px, 2.5vw, 22px); /* Smaller text */
+    margin: 15px 5px 0px 5px; /* Reduced spacing */
+  }
+
+  #dropdownContent {
+    min-width: 100px; /* Slightly smaller width */
+  }
+}
+
+/* Small tablets and phones (600px and below) */
+@media screen and (max-width: 600px) {
+  header {
+    justify-content: space-between; /* Space between logo and menu icon */
+    padding: 0 15px; /* Add padding */
+    margin: 10px 0 20px 0; /* Adjusted margins */
+  }
+
+  #logoContainer {
+    flex: 0 0 auto; /* Don't grow or shrink */
+    display: block !important;
+    visibility: visible !important;
+    z-index: 10;
+  }
+
+  /* Show menu icon */
+  #menuIcon {
+    display: block;
+    margin-left: auto; /* Push to the right */
+  }
+
+  /* Hide navigation text */
+  header h1,
+  header a:not(#logoContainer a) {
+    display: none;
+  }
+
+  /* Enhance sidebar navigation for mobile */
+  .sideNav {
+    height: 100%;
+    position: fixed;
+    z-index: 100; /* Higher z-index */
+    top: 0;
+    right: 0;
+    background-color: $aristoYellow;
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+
+  .sideNav.open {
+    width: 100%; /* Take most of the screen */
+  }
+
+  #navContent {
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sideNav a {
+    font-size: 1.5rem; /* Slightly smaller for better fit */
+  }
+
+  .sideNav h1 {
+    font-size:25vw;
+    margin:0;
+}
+
+  #navBarClose {
+    margin: 10px 0 20px 0;
+    align-self: flex-end;
+  }
+}
+
+/* Very small phones (400px and below) */
+@media screen and (max-width: 400px) {
+  header {
+    padding: 0 10px;
+    margin: 5px 0 15px 0;
+  }
+
+  #logo {
+    height: clamp(35px, 5vw, 50px); /* Slightly smaller logo */
+  }
+
+  #menuIcon {
+    font-size: clamp(28px, 4.5vw, 40px); /* Slightly smaller icon */
+  }
+
+  /* Adjust sidebar for very small screens */
+  .sideNav.open {
+    width: 85%; /* Take more of the screen */
+  }
+
+  #navContent {
+    padding: 15px 25px;
+  }
+
+  .sideNav a {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #videoLogo {
+    display: none;
+  }
+  
+  #staticLogo {
+    display: block;
+  }
+}

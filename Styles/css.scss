@@ -3,6 +3,14 @@ $aristoYellow:#fbe492ff;
 $aristoBeige: #fff9e1ff;
 $aristoBlack: rgb(0, 0, 0);
 
+*{
+  box-sizing: border-box;
+}
+html {
+  scrollbar-gutter: stable; /* Fixes the layout shifting issue when sidebar opens*/
+}
+
+
 @import "./preloader";
 @import"./header";
 
@@ -11,23 +19,27 @@ click-spark{
 }
 
 h1{
-  font-family: "futura-pt-bold", sans-serif;
+  font-family:"League Spartan", sans-serif;
+  font-weight: 800;
   font-size: clamp(24px, 5vw, 48px);
 }
 
 h2{
-  font-family: "futura-pt-bold", sans-serif;
+  font-family:"League Spartan", sans-serif;
+  font-weight: 600;
   font-size: clamp(20px, 4vw, 36px);
 }
 
 h3{
-  font-family: "futura-pt-bold", sans-serif;
+  font-family:"League Spartan", sans-serif;
+  font-weight: 500;
   font-size: clamp(18px, 3vw, 24px);
 }
 
 p {
-  font-family: "Lexend", sans-serif;
+  font-family:"League Spartan", sans-serif;
+  font-weight: 400;
   font-size: clamp(16px, 2vw, 18px);
-  line-height: 1.6;
+  line-height: 1.4;
 }
 
