@@ -166,45 +166,65 @@ header{
     text-decoration: underline;
     text-decoration-color: $aristoRed;;
   }
-
   a {
     text-decoration: none;
     font-family: "League Spartan", sans-serif;
     color: black;
     font-size: 2rem;
-    font-weight: 600; // SemiBold for main sidebar links
+    font-weight: 600;
     position: relative; 
-    overflow: hidden;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     z-index: 1;
-    display: block; // CRITICAL: Ensures proper block-level behavior
-    padding: 10px 10px; // Reduced padding from 12px to 8px for tighter spacing
+    display: block;
+    padding: 15px 0;
+    min-height: 44px;
 
     &::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 3px;
       background-color: $aristoRed;
-      transition: all 0.3s ease;
-      z-index: -1;
+      transition: width 0.3s ease;
     }
 
-    &:hover {
-      color: white;
-      
-      &::before {
-        left: 0;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: $aristoRed;
+        
+        &::before {
+          width: 100%;
+        }
       }
     }
+
+    &:active {
+      color: $aristoRed;
+      
+      &::before {
+        width: 60%;
+      }
+    }
+
+    &:focus {
+      color: $aristoRed;
+      outline: 2px solid $aristoRed;
+      outline-offset: 2px;
+      
+      &::before {
+        width: 100%;
+      }
+    }
+
 
     // Add visual markers for sub-pages in sidebar
     &[href*="Unit"], &[href*="Learner"] {
       font-weight: 400; // Medium weight for sub-pages
       font-size: 1.8rem; // Slightly smaller
       padding-left: 40px; // Extra indent for sub-pages
+
       
       &::after {
         content: "└";
@@ -262,6 +282,27 @@ header{
   #menuIcon {
     margin: 15px 8px 0px 8px;
   }
+  .sideNav {
+    h1 {
+      font-size: 3.5rem;
+      margin: 12px 0 8px 0;
+    }
+
+    a {
+      font-size: 1.8rem;
+      padding: 8px 0; // Removed horizontal padding
+      margin: 2px 0;
+
+      &[href*="Unit"], &[href*="Learner"] {
+        font-size: 1.6rem;
+        padding-left: 40px; // Keep indent for sub-pages
+      }
+    }
+  }
+
+  #navContent {
+    padding: 10px 40px;
+  }
 }
 
 /* Medium tablets and smaller (768px and below) */
@@ -269,6 +310,29 @@ header{
   header {
     margin: 10px 0vw 4vw 0px; /* Reduced margins */
     flex-wrap: nowrap; /* Prevent wrapping */
+  }
+
+  .sideNav {
+    h1 {
+      font-size: 2rem;
+      margin: 10px 0 6px 0;
+      line-height: 0.9;
+    }
+
+    a {
+      font-size: 1.6rem;
+      padding: 6px 0; // Removed horizontal padding
+      margin: 1px 0;
+
+      &[href*="Unit"], &[href*="Learner"] {
+        font-size: 1.4rem;
+        padding-left: 35px; // Keep indent for sub-pages
+      }
+    }
+  }
+
+  #navContent {
+    padding: 10px 30px;
   }
 
   #navContent {
@@ -288,18 +352,17 @@ header{
     margin: 15px 5px 0px 5px;
   }
 
-  .sideNav h1 {
-    font-size: 5vw; // Further reduced for tablets
-    margin: 8px 0 3px 0;
-  }
-  .sideNav a {
-    padding: 6px 20px; // Even tighter spacing on tablets
-    margin: 1px 0;
-  }
 }
 
 /* Small tablets and phones (600px and below) */
 @media screen and (max-width: 600px) {
+  #videoLogo {
+    display: none;
+  }
+  
+  #staticLogo {
+    display: block;
+  }
   header {
     justify-content: space-between; /* Space between logo and menu icon */
     padding: 0 15px; /* Add padding */
@@ -331,41 +394,38 @@ header{
 
   /* Enhance sidebar navigation for mobile */
   .sideNav {
-    height: 100%;
-    position: fixed;
-    z-index: 100; /* Higher z-index */
-    top: 0;
-    right: 0;
-    background-color: $aristoYellow;
-    overflow-x: hidden;
-    transition: 0.5s;
-  }
+    &.open {
+      width: 100%;
+    }
 
-  .sideNav.open {
-    width: 100%; /* Take most of the screen */
+    h1 {
+      font-size: 2.2rem;
+      margin: 8px 0 4px 0;
+      line-height: 0.8;
+      font-weight: 700;
+    }
+
+    a {
+      font-size: 1.4rem;
+      padding: 5px 0; // Removed horizontal padding
+      margin: 1px 0;
+
+      &[href*="Unit"], &[href*="Learner"] {
+        font-size: 1.2rem;
+        padding-left: 30px; // Keep indent for sub-pages
+      }
+    }
   }
 
   #navContent {
-    padding: 20px 30px;
+    padding: 15px 25px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .sideNav a {
-    font-size: 1.5rem; /* Slightly smaller for better fit */
-    padding: 5px 20px; // Tighter spacing on mobile
-    margin: 1px 0;
-  }
-
-  .sideNav h1 {
-    font-size: 18vw; // Significantly reduced from 25vw to 18vw to prevent overflow
-    margin: 5px 0 2px 0; // Much tighter margins
-    line-height: 0.8; // Even tighter line height for mobile
-  }
-
   #navBarClose {
-    margin: 10px 0 20px 0;
+    margin: 8px 0 12px 0;
     align-self: flex-end;
   }
 }
@@ -386,33 +446,35 @@ header{
   }
 
   /* Adjust sidebar for very small screens */
-  .sideNav.open {
-    width: 85%; /* Take more of the screen */
+  .sideNav {
+    &.open {
+      width: 95%;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin: 10px 3px;
+      line-height: 0.8;
+    }
+
+    a {
+      font-size: 1.2rem;
+      padding: 4px 0; // Removed horizontal padding
+      margin: 0;
+
+      &[href*="Unit"], &[href*="Learner"] {
+        font-size: 1.1rem;
+        padding-left: 25px; // Keep indent for sub-pages
+      }
+    }
   }
 
   #navContent {
-    padding: 15px 25px;
+    padding: 12px 20px;
   }
 
-  
-  .sideNav a {
-    font-size: 1.3rem;
-    padding: 4px 20px; // Even tighter for very small screens
-    margin: 0;
-  }
-
-  .sideNav h1 {
-    font-size: 15vw; // Further reduced for very small screens
-    margin: 3px 0 1px 0; // Minimal margins
-  }
-}
-
-@media screen and (max-width: 600px) {
-  #videoLogo {
-    display: none;
-  }
-  
-  #staticLogo {
-    display: block;
+  #navBarClose {
+    margin: 6px 0 10px 0;
+    font-size: clamp(8vw, 8vw, 10vw);
   }
 }

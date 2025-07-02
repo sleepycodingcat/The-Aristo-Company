@@ -247,28 +247,43 @@ header button {
   font-size: 2rem;
   font-weight: 600;
   position: relative;
-  overflow: hidden;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   z-index: 1;
   display: block;
-  padding: 10px 10px;
+  padding: 15px 0;
+  min-height: 44px;
 }
 .sideNav a::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background-color: #c1272d;
-  transition: all 0.3s ease;
-  z-index: -1;
-}
-.sideNav a:hover {
-  color: white;
-}
-.sideNav a:hover::before {
   left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background-color: #c1272d;
+  transition: width 0.3s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .sideNav a:hover {
+    color: #c1272d;
+  }
+  .sideNav a:hover::before {
+    width: 100%;
+  }
+}
+.sideNav a:active {
+  color: #c1272d;
+}
+.sideNav a:active::before {
+  width: 60%;
+}
+.sideNav a:focus {
+  color: #c1272d;
+  outline: 2px solid #c1272d;
+  outline-offset: 2px;
+}
+.sideNav a:focus::before {
+  width: 100%;
 }
 .sideNav a[href*=Unit], .sideNav a[href*=Learner] {
   font-weight: 400;
@@ -321,12 +336,45 @@ header button {
   #menuIcon {
     margin: 15px 8px 0px 8px;
   }
+  .sideNav h1 {
+    font-size: 3.5rem;
+    margin: 12px 0 8px 0;
+  }
+  .sideNav a {
+    font-size: 1.8rem;
+    padding: 8px 0;
+    margin: 2px 0;
+  }
+  .sideNav a[href*=Unit], .sideNav a[href*=Learner] {
+    font-size: 1.6rem;
+    padding-left: 40px;
+  }
+  #navContent {
+    padding: 10px 40px;
+  }
 }
 /* Medium tablets and smaller (768px and below) */
 @media screen and (max-width: 768px) {
   header {
     margin: 10px 0vw 4vw 0px; /* Reduced margins */
     flex-wrap: nowrap; /* Prevent wrapping */
+  }
+  .sideNav h1 {
+    font-size: 2rem;
+    margin: 10px 0 6px 0;
+    line-height: 0.9;
+  }
+  .sideNav a {
+    font-size: 1.6rem;
+    padding: 6px 0;
+    margin: 1px 0;
+  }
+  .sideNav a[href*=Unit], .sideNav a[href*=Learner] {
+    font-size: 1.4rem;
+    padding-left: 35px;
+  }
+  #navContent {
+    padding: 10px 30px;
   }
   #navContent {
     padding: 10px 30px;
@@ -341,17 +389,15 @@ header button {
   #menuIcon {
     margin: 15px 5px 0px 5px;
   }
-  .sideNav h1 {
-    font-size: 5vw;
-    margin: 8px 0 3px 0;
-  }
-  .sideNav a {
-    padding: 6px 20px;
-    margin: 1px 0;
-  }
 }
 /* Small tablets and phones (600px and below) */
 @media screen and (max-width: 600px) {
+  #videoLogo {
+    display: none;
+  }
+  #staticLogo {
+    display: block;
+  }
   header {
     justify-content: space-between; /* Space between logo and menu icon */
     padding: 0 15px; /* Add padding */
@@ -378,37 +424,32 @@ header button {
     display: none;
   }
   /* Enhance sidebar navigation for mobile */
-  .sideNav {
-    height: 100%;
-    position: fixed;
-    z-index: 100; /* Higher z-index */
-    top: 0;
-    right: 0;
-    background-color: #fbe492;
-    overflow-x: hidden;
-    transition: 0.5s;
-  }
   .sideNav.open {
-    width: 100%; /* Take most of the screen */
+    width: 100%;
+  }
+  .sideNav h1 {
+    font-size: 2.2rem;
+    margin: 8px 0 4px 0;
+    line-height: 0.8;
+    font-weight: 700;
+  }
+  .sideNav a {
+    font-size: 1.4rem;
+    padding: 5px 0;
+    margin: 1px 0;
+  }
+  .sideNav a[href*=Unit], .sideNav a[href*=Learner] {
+    font-size: 1.2rem;
+    padding-left: 30px;
   }
   #navContent {
-    padding: 20px 30px;
+    padding: 15px 25px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
-  .sideNav a {
-    font-size: 1.5rem; /* Slightly smaller for better fit */
-    padding: 5px 20px;
-    margin: 1px 0;
-  }
-  .sideNav h1 {
-    font-size: 18vw;
-    margin: 5px 0 2px 0;
-    line-height: 0.8;
-  }
   #navBarClose {
-    margin: 10px 0 20px 0;
+    margin: 8px 0 12px 0;
     align-self: flex-end;
   }
 }
@@ -426,27 +467,28 @@ header button {
   }
   /* Adjust sidebar for very small screens */
   .sideNav.open {
-    width: 85%; /* Take more of the screen */
-  }
-  #navContent {
-    padding: 15px 25px;
-  }
-  .sideNav a {
-    font-size: 1.3rem;
-    padding: 4px 20px;
-    margin: 0;
+    width: 95%;
   }
   .sideNav h1 {
-    font-size: 15vw;
-    margin: 3px 0 1px 0;
+    font-size: 1.8rem;
+    margin: 10px 3px;
+    line-height: 0.8;
   }
-}
-@media screen and (max-width: 600px) {
-  #videoLogo {
-    display: none;
+  .sideNav a {
+    font-size: 1.2rem;
+    padding: 4px 0;
+    margin: 0;
   }
-  #staticLogo {
-    display: block;
+  .sideNav a[href*=Unit], .sideNav a[href*=Learner] {
+    font-size: 1.1rem;
+    padding-left: 25px;
+  }
+  #navContent {
+    padding: 12px 20px;
+  }
+  #navBarClose {
+    margin: 6px 0 10px 0;
+    font-size: 8vw;
   }
 }
 click-spark {

@@ -347,7 +347,7 @@ function openNav() {
     body.style.width = "100%"
     body.style.top = `-${window.scrollY}px`
   } else {
-    sidebar.style.width = "30vw"
+    sidebar.style.width = "40vw"
   }
 
   sidebar.classList.add("open")
