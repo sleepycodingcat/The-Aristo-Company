@@ -491,6 +491,121 @@ header button {
     font-size: 8vw;
   }
 }
+/*FOOTER STYLES*/
+/* Ultra-simple footer styles with no complex positioning */
+footer {
+  background-color: #fbe492;
+  padding: 2rem;
+  color: #333;
+  font-family: "futura-pt-bold", sans-serif;
+  margin-top: 3rem;
+  text-align: center;
+  /* Ensure footer doesn't cause horizontal overflow */
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Main heading */
+footer h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin: 0 0 0.3rem 0;
+  color: #c1272d;
+  line-height: 1.2;
+}
+
+/* Subheading */
+footer .subheading {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-family: "Lexend", sans-serif;
+  color: black;
+}
+
+/* Contact links container */
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Phone and email links */
+.phone-link,
+.email-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.phone-link:hover,
+.email-link:hover {
+  color: #c1272d;
+}
+
+/* Social links container */
+.social-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Social media buttons */
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #c1272d;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background-color: #a01f24;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Copyright text */
+.copyright {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  font-family: "Lexend", sans-serif;
+  margin: 1rem 0 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: left;
+  text-decoration: none;
+  display: block; /* Change from inline to block */
+  width: 100%; /* Take full width of container */
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .contact-container {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+  }
+}
+@media (max-width: 480px) {
+  footer {
+    padding: 1.5rem 1rem;
+  }
+  .phone-link,
+  .email-link {
+    font-size: 0.9rem;
+  }
+}
 click-spark {
   --click-spark-color: #c1272d;
 }
