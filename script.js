@@ -71,6 +71,36 @@
 // // });
 
 
+
+
+// Initialize everything when DOM is loaded
+document.addEventListener("DOMContentLoaded", async () => {
+  // Load sidebar first
+  await loadSidebar()
+
+  // Add global event listeners
+  document.addEventListener("click", handleOutsideClick)
+  document.addEventListener("keydown", handleEscapeKey)
+  document.addEventListener("touchstart", handleTouchStart)
+
+})
+
+// Preloader functionality
+window.addEventListener("load", () => {
+  document.body.classList.add("loaded")
+
+  // Ensure sidebar is properly closed on page load
+  const sidebar = document.getElementById("navBar")
+  if (sidebar) {
+    sidebar.style.width = "0"
+    sidebar.classList.remove("open")
+    sidebar.style.transform = "translateX(100%)"
+  }
+
+  sidebarOpen = false
+})
+
+
 // LOGO MOVES ON HOVER
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -418,30 +448,3 @@ function handleTouchStart(event) {
     sidebar.style.transform = "translateX(100%)"
   }
 }
-
-// Initialize everything when DOM is loaded
-document.addEventListener("DOMContentLoaded", async () => {
-  // Load sidebar first
-  await loadSidebar()
-
-  // Add global event listeners
-  document.addEventListener("click", handleOutsideClick)
-  document.addEventListener("keydown", handleEscapeKey)
-  document.addEventListener("touchstart", handleTouchStart)
-
-})
-
-// Preloader functionality
-window.addEventListener("load", () => {
-  document.body.classList.add("loaded")
-
-  // Ensure sidebar is properly closed on page load
-  const sidebar = document.getElementById("navBar")
-  if (sidebar) {
-    sidebar.style.width = "0"
-    sidebar.classList.remove("open")
-    sidebar.style.transform = "translateX(100%)"
-  }
-
-  sidebarOpen = false
-})

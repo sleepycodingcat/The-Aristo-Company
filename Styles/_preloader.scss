@@ -19,7 +19,7 @@ body{
   z-index: 9999;
   transition: opacity 0.5s ease-out;
   transform: scale(2);
-  padding: 20%;
+  padding:0px 10px;
 }
 
 .loader__filmstrip {
@@ -72,3 +72,7 @@ body.loaded{
         pointer-events: none;
     }
 }
+
+
+
+

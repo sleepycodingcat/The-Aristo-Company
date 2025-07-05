@@ -3,43 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Aristo Company Media</title>
+    <title>The Aristo Company</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel = "stylesheet" href = "../css.css">
-    <link rel="icon" href="../O favicon.png">
-    <link rel="stylesheet" href="https://use.typekit.net/how3ouk.css">
+    <link rel="stylesheet" href="../Styles/css.css">
+    <link rel="icon" href="../Favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Lexend:wght@100..900&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- SEO TAGS (ADD BELOW) -->
+    <meta name="description" content="Hong Kong IB Film student telling stories through film. Portfolio showcasing five years of work, including films for KGV School and Babel Film Workshop.">
+    
+    <!-- OPEN GRAPH/SOCIAL TAGS -->
+    <meta property="og:title" content="Rachell Aristo | Film Portfolio">
+    <meta property="og:description" content="Rachell Aristo - Hong Kong student filmmaker portfolio">
+    <meta property="og:image" content="https://raw.githubusercontent.com/sleepycodingcat/The-Aristo-Company/refs/heads/main/SEO/og_image_APOC.png"> 
+    <meta property="og:url" content="https://sleepycodingcat.github.io/The-Aristo-Company/Media%20Pages/mediaHome.html">
+    <meta property="og:type" content="website">
 </head>
 <body>
-    <header>
-        <div id = "logoContainer">
-            <a href = "mediaHome.html"><video playsinline muted id = "logo" src = "../The Aristo Company Logo white bg compressed.mp4"></video></a>
-        </div>
+  <header>
+      <div id="logoContainer">
+          <a href="mediaHome.html"><video playsinline muted id="videoLogo" src="../Logo video.mp4"></video></a>
+           <img id="staticLogo" src="../The Aristo Company logo.png" alt="The Aristo Company Logo">
+      </div>
 
-        <div>
-            <h1><a id = "btecBtn" href ="btecHome.html">BTEC L.2</a>  
-            <div id="dropdown">
-                <div id ="dropdownContent">
-                    <a href="Unit 1.html">Unit 1</a>
-                    <a href="Unit 4.html">Unit 4</a>
-                    <a id = "learnerDeclarations" href="Learner_Declarations.html">Learner <br> Declarations</a>
-                </div>
-            </div>
-            </h1>
-        </div>
+      <div>
+          <h1><a id="btecBtn" href="btecHome.html">BTEC L.2</a>  
+          <div id="dropdown">
+              <div id="dropdownContent">
+                  <a href="Unit 1.html">Unit 1</a>
+                  <a href="Unit 4.html">Unit 4</a>
+                  <a id="learnerDeclarations" href="Learner_Declarations.html">Learner <br> Declarations</a>
+              </div>
+          </div>
+          </h1>
+      </div>
 
-        <a href ="mediaPhotography.html">
-            <h1>PHOTOS</h1>
-        </a>
-        
-        <a href ="otherMediaHome.html">
-            <h1>FILMS</h1>
-        </a>
-        <btn onclick="openNav()" id = "menuIcon" class="material-symbols-outlined">
-            menu
-        </btn>
+      <a href="mediaPhotography.html">
+          <h1>PHOTOS</h1>
+      </a>
+      
+      <a href="otherMediaHome.html">
+          <h1>FILMS</h1>
+      </a>
+      
+      <button onclick="openNav()" id="menuIcon" class="material-symbols-outlined">
+          menu
+      </button>
     </header>
 
     <div id="sidebar-placeholder"></div>
