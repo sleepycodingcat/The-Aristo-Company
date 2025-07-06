@@ -19,6 +19,7 @@ body{
 @import "./footer";
 @import "./photoGallery";
 @import"./learnerDeclarations";
+@import"./mediaHome";
 
 click-spark{
   --click-spark-color: #{$aristoRed};
@@ -47,5 +48,10 @@ p {
   font-weight: 400;
   font-size: clamp(16px, 2vw, 18px);
   line-height: 1.4;
+}
+
+a{
+  font-family:"League Spartan", sans-serif;
+  font-weight: 400;
 }
 

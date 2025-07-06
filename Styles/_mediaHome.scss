@@ -1,0 +1,411 @@
+// Mixins for common patterns
+@mixin parallax-base {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background-attachment: fixed;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin button-base {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  padding: clamp(8px, 1.5vw, 15px) clamp(12px, 2vw, 30px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 10;
+  white-space: normal;
+  border: 2px solid;
+}
+
+@mixin responsive-padding {
+  padding-top: clamp(150px, 25vh, 250px);
+  padding-bottom: clamp(100px, 15vh, 200px);
+}
+
+// Helper classes
+.margin-top-10 { padding-top: 10px; }
+.margin-bot-10 { padding-bottom: 10px; }
+
+// Main container
+#allParallaxContainer {
+  
+  // Block sections
+  .block {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    text-align: justify;
+    padding: clamp(30px, 5vw, 60px);
+    margin: clamp(20px, 3vw, 40px) auto;
+
+    p {
+      font-size: clamp(16px, 1.8vw, 18px);
+      margin: 15px 0;
+    }
+
+    h2 {
+      text-align: center;
+      font-family: "futura-pt-bold", sans-serif;
+      color: white;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      padding: 30px;
+      margin: 50px 0;
+      background: $aristoRed;
+      box-shadow: 
+        0 5px 15px rgba(193, 39, 45, 0.4),
+        0 0 0 5px $aristoYellow,
+        0 0 0 8px $aristoRed;
+      transform: rotate(-1.2deg);
+      position: relative;
+      line-height: 1.4;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: float-quote 8s ease-in-out infinite;
+
+      &:hover {
+        transform: rotate(-0.5deg) scale(1.02);
+        box-shadow: 
+          0 8px 25px rgba(193, 39, 45, 0.5),
+          0 0 0 5px $aristoBeige,
+          0 0 0 8px $aristoRed,
+          0 0 30px -10px $aristoYellow;
+      }
+
+      // Improved mobile responsiveness for quote block
+      @media (max-width: 767px) {
+        font-size: clamp(1.4rem, 4vw, 1.8rem);
+        padding: clamp(15px, 4vw, 20px);
+        margin: clamp(25px, 6vw, 35px) 0;
+        transform: rotate(-0.8deg);
+        box-shadow: 
+          0 3px 10px rgba(193, 39, 45, 0.3),
+          0 0 0 3px $aristoYellow,
+          0 0 0 6px $aristoRed;
+        
+        &:hover {
+          transform: rotate(-0.3deg) scale(1.01);
+          box-shadow: 
+            0 5px 15px rgba(193, 39, 45, 0.4),
+            0 0 0 3px $aristoBeige,
+            0 0 0 6px $aristoRed,
+            0 0 20px -8px $aristoYellow;
+        }
+      }
+
+      @media (max-width: 480px) {
+        font-size: clamp(1.2rem, 5vw, 1.6rem);
+        padding: clamp(12px, 3.5vw, 18px);
+        margin: clamp(20px, 5vw, 30px) 0;
+        transform: rotate(-0.5deg);
+        line-height: 1.3;
+        box-shadow: 
+          0 2px 8px rgba(193, 39, 45, 0.25),
+          0 0 0 2px $aristoYellow,
+          0 0 0 4px $aristoRed;
+        
+        &:hover {
+          transform: rotate(-0.2deg) scale(1.005);
+          box-shadow: 
+            0 4px 12px rgba(193, 39, 45, 0.35),
+            0 0 0 2px $aristoBeige,
+            0 0 0 4px $aristoRed,
+            0 0 15px -6px $aristoYellow;
+        }
+      }
+
+      @media (max-width: 360px) {
+        font-size: clamp(1.1rem, 5.5vw, 1.4rem);
+        padding: clamp(10px, 3vw, 15px);
+        margin: clamp(15px, 4vw, 25px) 0;
+        transform: rotate(-0.3deg);
+        box-shadow: 
+          0 2px 6px rgba(193, 39, 45, 0.2),
+          0 0 0 2px $aristoYellow,
+          0 0 0 3px $aristoRed;
+        
+        &:hover {
+          transform: rotate(-0.1deg) scale(1.002);
+          box-shadow: 
+            0 3px 10px rgba(193, 39, 45, 0.3),
+            0 0 0 2px $aristoBeige,
+            0 0 0 3px $aristoRed,
+            0 0 12px -5px $aristoYellow;
+        }
+      }
+    }
+  }
+
+  // Parallax sections
+  .parallax-one {
+    @include parallax-base;
+    @include responsive-padding;
+    padding-top: 25%;
+    padding-bottom: 200px;
+    background-image: url("../Film BTS/APOC/edited.JPEG");
+    background-position: 60% 30%;
+
+    @media screen and (max-width: 480px) {
+      background-size: 130%;
+    }
+  }
+
+  .parallax-two {
+    @include parallax-base;
+    @include responsive-padding;
+    background-image: url("../other media/Come Alive thumbnail.png");
+    padding-top: 200px;
+    padding-bottom: 200px;
+    object-fit: cover;
+    background-position: center center;
+  }
+
+  .parallax-three {
+    @include parallax-base;
+    @include responsive-padding;
+    padding-top: 25%;
+    padding-bottom: 200px;
+    background-image: url("../Photography compressed/Stairs.png");
+    background-position: center center;
+
+    &:hover .parallax-three-overlay {
+      background: rgba(251, 228, 146, 0.3);
+    }
+  }
+
+  .line-break {
+    border-bottom: 2px solid black;
+    width: clamp(100px, 20vw, 150px);
+    margin: clamp(10px, 2vw, 20px) auto;
+
+  }
+
+  // Media queries for blocks and parallax
+  @media screen and (max-width: 959px) and (min-width: 768px) {
+    .block { padding: 40px; width: 620px; }
+  }
+
+  @media screen and (max-width: 767px) {
+    .block { padding: 30px; width: 420px; }
+    h2 { font-size: 30px; }
+    
+    .parallax-one,
+    .parallax-two,
+    .parallax-three {
+      padding-top: 100px;
+      padding-bottom: 100px;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    .block { padding: 30px 15px; width: 300px; }
+  }
+
+  // Mobile parallax adjustments
+  @media screen and (max-width: 600px) {
+    .parallax-one,
+    .parallax-two,
+    .parallax-three {
+      transform: scale(0.9);
+      padding-top: 40%;
+      padding-bottom: 100px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .parallax-one,
+    .parallax-two,
+    .parallax-three {
+      transform: scale(1);
+      padding-top: 40%;
+      padding-bottom: 80px;
+    }
+
+    .parallax-one {
+      background-size: 130%;
+    }
+  }
+
+  @media screen and (max-width: 360px) {
+    .parallax-one,
+    .parallax-two,
+    .parallax-three {
+      padding-top: 40%;
+      padding-bottom: 60px;
+    }
+
+    .parallax-one {
+      background-size: 130%;
+    }
+  }
+
+  @media screen and (max-height: 500px) and (orientation: landscape) {
+    .parallax-one,
+    .parallax-two,
+    .parallax-three {
+      padding-top: 20%;
+      padding-bottom: 60px;
+    }
+  }
+}
+
+// Parallax overlay
+.parallax-three-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(251, 228, 146, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.8s ease;
+
+  @media screen and (max-width: 768px) {
+    justify-content: flex-start;
+    padding-left: 20px;
+  }
+}
+
+// Video container
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 40%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    transform: scale(1.4);
+  }
+
+  &:hover .video-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  @media screen and (max-width: 768px) {
+    padding-bottom: 50%;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding-bottom: 50%;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding-bottom: 60%;
+  }
+
+  @media screen and (max-width: 360px) {
+    padding-bottom: 60%;
+  }
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.8s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+// Buttons
+#allPhotos {
+  @include button-base;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: $aristoRed;
+  background-color: rgba(255, 249, 225, 0.537);
+  border-color: $aristoRed;
+  opacity: 1 !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+  &:hover {
+    background-color: $aristoRed;
+    color: white;
+  }
+
+  @media screen and (max-height: 500px) and (orientation: landscape) {
+    padding: 8px 16px;
+    font-size: 1rem;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 70%;
+    box-sizing: border-box;
+  }
+}
+
+#allFilms {
+  @include button-base;
+  color: $aristoBeige;
+  background-color: rgba(251, 228, 146, 0.338);
+  border-color: $aristoBeige;
+
+  &:hover {
+    background-color: $aristoYellow;
+    border-color: $aristoRed;
+    color: $aristoRed;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 70%;
+    box-sizing: border-box;
+  }
+}
+
+// Miscellaneous
+.parallax {
+  will-change: transform;
+}
+
+#filmReel {
+  width: 1000px;
+}
+
+.imgCaption {
+  color: #ffffff;
+  left: 1.5%;
+  bottom: -4px;
+  position: absolute;
+  text-shadow: 0px 0px 6px #000;
+
+  @media screen and (max-width: 600px) {
+    font-size: 14px;
+    left: 10px;
+    bottom: 10px;
+  }
+
+  @media screen and (max-width: 360px) {
+    font-size: 10px;
+    left: 10px;
+    bottom: 10px;
+  }
+}
+
+// Animations
+@keyframes float-quote {
+  0% { transform: rotate(-1deg) translateY(0); }
+  50% { transform: rotate(-1.5deg) translateY(-5px); }
+  100% { transform: rotate(-1deg) translateY(0); }
+}

@@ -35,6 +35,10 @@ header{
 
 }
 
+#btecBtn{
+  @extend h1
+}
+
 #menuIcon {
   font-size: clamp(30px, 5vw, 48px);
   background: none;

@@ -96,7 +96,7 @@ header {
   padding: 0 10px;
   position: relative;
 }
-header h1 {
+header h1, header #btecBtn {
   font-size: clamp(30px, 2.8vw, 50px); /* Min 16px, max 24px, responsive in between */
   margin: 20px 10px 0px 10px; /* Add horizontal spacing */
   white-space: nowrap; /* Prevent text wrapping */
@@ -235,7 +235,7 @@ header button {
   transition: 0.5s;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
 }
-.sideNav h1 {
+.sideNav h1, .sideNav #btecBtn {
   margin: 20px 0px;
   text-decoration: underline;
   text-decoration-color: #c1272d;
@@ -329,14 +329,14 @@ header button {
   header {
     margin: 15px 0vw 5vw 0px; /* Slightly reduced margins */
   }
-  header h1 {
+  header h1, header #btecBtn {
     font-size: clamp(18px, 2.8vw, 26px); /* Slightly smaller text */
     margin: 15px 8px 0px 8px; /* Reduced spacing */
   }
   #menuIcon {
     margin: 15px 8px 0px 8px;
   }
-  .sideNav h1 {
+  .sideNav h1, .sideNav #btecBtn {
     font-size: 3.5rem;
     margin: 12px 0 8px 0;
   }
@@ -359,7 +359,7 @@ header button {
     margin: 10px 0vw 4vw 0px; /* Reduced margins */
     flex-wrap: nowrap; /* Prevent wrapping */
   }
-  .sideNav h1 {
+  .sideNav h1, .sideNav #btecBtn {
     font-size: 2rem;
     margin: 10px 0 6px 0;
     line-height: 0.9;
@@ -379,7 +379,7 @@ header button {
   #navContent {
     padding: 10px 30px;
   }
-  header h1 {
+  header h1, header #btecBtn {
     font-size: clamp(16px, 2.5vw, 22px); /* Smaller text */
     margin: 15px 5px 0px 5px; /* Reduced spacing */
   }
@@ -419,7 +419,7 @@ header button {
     margin-right: 0;
   }
   /* Hide navigation text */
-  header h1,
+  header h1, header #btecBtn,
   header a:not(#logoContainer a) {
     display: none;
   }
@@ -427,7 +427,7 @@ header button {
   .sideNav.open {
     width: 100%;
   }
-  .sideNav h1 {
+  .sideNav h1, .sideNav #btecBtn {
     font-size: 2.2rem;
     margin: 8px 0 4px 0;
     line-height: 0.8;
@@ -469,7 +469,7 @@ header button {
   .sideNav.open {
     width: 95%;
   }
-  .sideNav h1 {
+  .sideNav h1, .sideNav #btecBtn {
     font-size: 1.8rem;
     margin: 10px 3px;
     line-height: 0.8;
@@ -1317,11 +1317,404 @@ footer .subheading {
     height: 100%;
   }
 }
+.margin-top-10 {
+  padding-top: 10px;
+}
+
+.margin-bot-10 {
+  padding-bottom: 10px;
+}
+
+#allParallaxContainer .block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  text-align: justify;
+  padding: clamp(30px, 5vw, 60px);
+  margin: clamp(20px, 3vw, 40px) auto;
+}
+#allParallaxContainer .block p {
+  font-size: clamp(16px, 1.8vw, 18px);
+  margin: 15px 0;
+}
+#allParallaxContainer .block h2 {
+  text-align: center;
+  font-family: "futura-pt-bold", sans-serif;
+  color: white;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  padding: 30px;
+  margin: 50px 0;
+  background: #c1272d;
+  box-shadow: 0 5px 15px rgba(193, 39, 45, 0.4), 0 0 0 5px #fbe492, 0 0 0 8px #c1272d;
+  transform: rotate(-1.2deg);
+  position: relative;
+  line-height: 1.4;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: float-quote 8s ease-in-out infinite;
+}
+#allParallaxContainer .block h2:hover {
+  transform: rotate(-0.5deg) scale(1.02);
+  box-shadow: 0 8px 25px rgba(193, 39, 45, 0.5), 0 0 0 5px #fff9e1, 0 0 0 8px #c1272d, 0 0 30px -10px #fbe492;
+}
+@media (max-width: 767px) {
+  #allParallaxContainer .block h2 {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    padding: clamp(15px, 4vw, 20px);
+    margin: clamp(25px, 6vw, 35px) 0;
+    transform: rotate(-0.8deg);
+    box-shadow: 0 3px 10px rgba(193, 39, 45, 0.3), 0 0 0 3px #fbe492, 0 0 0 6px #c1272d;
+  }
+  #allParallaxContainer .block h2:hover {
+    transform: rotate(-0.3deg) scale(1.01);
+    box-shadow: 0 5px 15px rgba(193, 39, 45, 0.4), 0 0 0 3px #fff9e1, 0 0 0 6px #c1272d, 0 0 20px -8px #fbe492;
+  }
+}
+@media (max-width: 480px) {
+  #allParallaxContainer .block h2 {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+    padding: clamp(12px, 3.5vw, 18px);
+    margin: clamp(20px, 5vw, 30px) 0;
+    transform: rotate(-0.5deg);
+    line-height: 1.3;
+    box-shadow: 0 2px 8px rgba(193, 39, 45, 0.25), 0 0 0 2px #fbe492, 0 0 0 4px #c1272d;
+  }
+  #allParallaxContainer .block h2:hover {
+    transform: rotate(-0.2deg) scale(1.005);
+    box-shadow: 0 4px 12px rgba(193, 39, 45, 0.35), 0 0 0 2px #fff9e1, 0 0 0 4px #c1272d, 0 0 15px -6px #fbe492;
+  }
+}
+@media (max-width: 360px) {
+  #allParallaxContainer .block h2 {
+    font-size: clamp(1.1rem, 5.5vw, 1.4rem);
+    padding: clamp(10px, 3vw, 15px);
+    margin: clamp(15px, 4vw, 25px) 0;
+    transform: rotate(-0.3deg);
+    box-shadow: 0 2px 6px rgba(193, 39, 45, 0.2), 0 0 0 2px #fbe492, 0 0 0 3px #c1272d;
+  }
+  #allParallaxContainer .block h2:hover {
+    transform: rotate(-0.1deg) scale(1.002);
+    box-shadow: 0 3px 10px rgba(193, 39, 45, 0.3), 0 0 0 2px #fff9e1, 0 0 0 3px #c1272d, 0 0 12px -5px #fbe492;
+  }
+}
+#allParallaxContainer .parallax-one {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background-attachment: fixed;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: clamp(150px, 25vh, 250px);
+  padding-bottom: clamp(100px, 15vh, 200px);
+  padding-top: 25%;
+  padding-bottom: 200px;
+  background-image: url("../Film BTS/APOC/edited.JPEG");
+  background-position: 60% 30%;
+}
+@media screen and (max-width: 480px) {
+  #allParallaxContainer .parallax-one {
+    background-size: 130%;
+  }
+}
+#allParallaxContainer .parallax-two {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background-attachment: fixed;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: clamp(150px, 25vh, 250px);
+  padding-bottom: clamp(100px, 15vh, 200px);
+  background-image: url("../other media/Come Alive thumbnail.png");
+  padding-top: 200px;
+  padding-bottom: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-position: center center;
+}
+#allParallaxContainer .parallax-three {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background-attachment: fixed;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: clamp(150px, 25vh, 250px);
+  padding-bottom: clamp(100px, 15vh, 200px);
+  padding-top: 25%;
+  padding-bottom: 200px;
+  background-image: url("../Photography compressed/Stairs.png");
+  background-position: center center;
+}
+#allParallaxContainer .parallax-three:hover .parallax-three-overlay {
+  background: rgba(251, 228, 146, 0.3);
+}
+#allParallaxContainer .line-break {
+  border-bottom: 2px solid black;
+  width: clamp(100px, 20vw, 150px);
+  margin: clamp(10px, 2vw, 20px) auto;
+}
+@media screen and (max-width: 959px) and (min-width: 768px) {
+  #allParallaxContainer .block {
+    padding: 40px;
+    width: 620px;
+  }
+}
+@media screen and (max-width: 767px) {
+  #allParallaxContainer .block {
+    padding: 30px;
+    width: 420px;
+  }
+  #allParallaxContainer h2 {
+    font-size: 30px;
+  }
+  #allParallaxContainer .parallax-one,
+  #allParallaxContainer .parallax-two,
+  #allParallaxContainer .parallax-three {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-size: cover;
+    background-position: center;
+  }
+}
+@media screen and (max-width: 479px) {
+  #allParallaxContainer .block {
+    padding: 30px 15px;
+    width: 300px;
+  }
+}
+@media screen and (max-width: 600px) {
+  #allParallaxContainer .parallax-one,
+  #allParallaxContainer .parallax-two,
+  #allParallaxContainer .parallax-three {
+    transform: scale(0.9);
+    padding-top: 40%;
+    padding-bottom: 100px;
+  }
+}
+@media screen and (max-width: 480px) {
+  #allParallaxContainer .parallax-one,
+  #allParallaxContainer .parallax-two,
+  #allParallaxContainer .parallax-three {
+    transform: scale(1);
+    padding-top: 40%;
+    padding-bottom: 80px;
+  }
+  #allParallaxContainer .parallax-one {
+    background-size: 130%;
+  }
+}
+@media screen and (max-width: 360px) {
+  #allParallaxContainer .parallax-one,
+  #allParallaxContainer .parallax-two,
+  #allParallaxContainer .parallax-three {
+    padding-top: 40%;
+    padding-bottom: 60px;
+  }
+  #allParallaxContainer .parallax-one {
+    background-size: 130%;
+  }
+}
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  #allParallaxContainer .parallax-one,
+  #allParallaxContainer .parallax-two,
+  #allParallaxContainer .parallax-three {
+    padding-top: 20%;
+    padding-bottom: 60px;
+  }
+}
+
+.parallax-three-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(251, 228, 146, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.8s ease;
+}
+@media screen and (max-width: 768px) {
+  .parallax-three-overlay {
+    justify-content: flex-start;
+    padding-left: 20px;
+  }
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 40%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  transform: scale(1.4);
+}
+.video-container:hover .video-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+@media screen and (max-width: 768px) {
+  .video-container {
+    padding-bottom: 50%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .video-container {
+    padding-bottom: 50%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .video-container {
+    padding-bottom: 60%;
+  }
+}
+@media screen and (max-width: 360px) {
+  .video-container {
+    padding-bottom: 60%;
+  }
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.8s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+#allPhotos {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  padding: clamp(8px, 1.5vw, 15px) clamp(12px, 2vw, 30px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 10;
+  white-space: normal;
+  border: 2px solid;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: #c1272d;
+  background-color: rgba(255, 249, 225, 0.537);
+  border-color: #c1272d;
+  opacity: 1 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#allPhotos:hover {
+  background-color: #c1272d;
+  color: white;
+}
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  #allPhotos {
+    padding: 8px 16px;
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  #allPhotos {
+    width: 70%;
+    box-sizing: border-box;
+  }
+}
+
+#allFilms {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  padding: clamp(8px, 1.5vw, 15px) clamp(12px, 2vw, 30px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 10;
+  white-space: normal;
+  border: 2px solid;
+  color: #fff9e1;
+  background-color: rgba(251, 228, 146, 0.338);
+  border-color: #fff9e1;
+}
+#allFilms:hover {
+  background-color: #fbe492;
+  border-color: #c1272d;
+  color: #c1272d;
+}
+@media screen and (max-width: 480px) {
+  #allFilms {
+    width: 70%;
+    box-sizing: border-box;
+  }
+}
+
+.parallax {
+  will-change: transform;
+}
+
+#filmReel {
+  width: 1000px;
+}
+
+.imgCaption {
+  color: #ffffff;
+  left: 1.5%;
+  bottom: -4px;
+  position: absolute;
+  text-shadow: 0px 0px 6px #000;
+}
+@media screen and (max-width: 600px) {
+  .imgCaption {
+    font-size: 14px;
+    left: 10px;
+    bottom: 10px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .imgCaption {
+    font-size: 10px;
+    left: 10px;
+    bottom: 10px;
+  }
+}
+
+@keyframes float-quote {
+  0% {
+    transform: rotate(-1deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-1.5deg) translateY(-5px);
+  }
+  100% {
+    transform: rotate(-1deg) translateY(0);
+  }
+}
 click-spark {
   --click-spark-color: #c1272d;
 }
 
-h1 {
+h1, #btecBtn {
   font-family: "League Spartan", sans-serif;
   font-weight: 800;
   font-size: clamp(24px, 5vw, 48px);
@@ -1344,4 +1737,9 @@ p {
   font-weight: 400;
   font-size: clamp(16px, 2vw, 18px);
   line-height: 1.4;
+}
+
+a {
+  font-family: "League Spartan", sans-serif;
+  font-weight: 400;
 }/*# sourceMappingURL=css.css.map */

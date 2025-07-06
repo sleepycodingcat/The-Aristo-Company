@@ -184,122 +184,43 @@ document.addEventListener('DOMContentLoaded', () => {
 // //             });
 // //         }
 
-// //         // Lightbox functionality
-// //         document.addEventListener('DOMContentLoaded', function() {
-// //             const filmItems = document.querySelectorAll('.masonry-item');
-// //             const lightbox = document.getElementById('filmLightbox');
-// //             const closeBtn = document.querySelector('.close-btn');
-// //             const lightboxPlayer = document.getElementById('lightboxPlayer');
-// //             const lightboxTitle = document.getElementById('lightboxTitle');
-// //             const lightboxDesc = document.getElementById('lightboxDesc');
+//         // Lightbox functionality
+//         document.addEventListener('DOMContentLoaded', function() {
+//             const filmItems = document.querySelectorAll('.masonry-item');
+//             const lightbox = document.getElementById('filmLightbox');
+//             const closeBtn = document.querySelector('.close-btn');
+//             const lightboxPlayer = document.getElementById('lightboxPlayer');
+//             const lightboxTitle = document.getElementById('lightboxTitle');
+//             const lightboxDesc = document.getElementById('lightboxDesc');
             
-// //             filmItems.forEach(item => {
-// //                 item.addEventListener('click', function() {
-// //                     const videoId = this.getAttribute('data-id');
-// //                     const title = this.getAttribute('data-title');
-// //                     const desc = this.getAttribute('data-desc');
+//             filmItems.forEach(item => {
+//                 item.addEventListener('click', function() {
+//                     const videoId = this.getAttribute('data-id');
+//                     const title = this.getAttribute('data-title');
+//                     const desc = this.getAttribute('data-desc');
                     
-// //                     lightboxPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-// //                     lightboxTitle.textContent = title;
-// //                     lightboxDesc.textContent = desc;
+//                     lightboxPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+//                     lightboxTitle.textContent = title;
+//                     lightboxDesc.textContent = desc;
                     
-// //                     lightbox.style.display = 'flex';
-// //                     document.body.style.overflow = 'hidden';
-// //                 });
-// //             });
+//                     lightbox.style.display = 'flex';
+//                     document.body.style.overflow = 'hidden';
+//                 });
+//             });
             
-// //             closeBtn.addEventListener('click', closeLightbox);
-// //             lightbox.addEventListener('click', function(e) {
-// //                 if (e.target === lightbox) closeLightbox();
-// //             });
+//             closeBtn.addEventListener('click', closeLightbox);
+//             lightbox.addEventListener('click', function(e) {
+//                 if (e.target === lightbox) closeLightbox();
+//             });
             
-// //             function closeLightbox() {
-// //                 lightbox.style.display = 'none';
-// //                 lightboxPlayer.src = '';
-// //                 document.body.style.overflow = 'auto';
-// //             }
-// //         });
+//             function closeLightbox() {
+//                 lightbox.style.display = 'none';
+//                 lightboxPlayer.src = '';
+//                 document.body.style.overflow = 'auto';
+//             }
+//         });
  
 
-
-
-// Initialize PDF.js
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
-
-// Function to render PDF
-function renderPDF(pdfUrl, containerId) {
-    const loadingTask = pdfjsLib.getDocument(pdfUrl);
-    
-    loadingTask.promise.then(function(pdf) {
-        const container = document.getElementById(containerId);
-        container.innerHTML = ''; // Clear previous content
-        
-        // Loop through all pages and render them
-        for (let i = 1; i <= pdf.numPages; i++) {
-            pdf.getPage(i).then(function(page) {
-                // Calculate scale to fit container width
-                const containerWidth = container.clientWidth - 40;
-                const unscaledViewport = page.getViewport({ scale: 1 });
-                const scale = Math.min(1.5, containerWidth / unscaledViewport.width);
-                const viewport = page.getViewport({ scale: scale });
-                
-                // High-DPI setup
-                const dpi = window.devicePixelRatio || 1;
-                const canvas = document.createElement('canvas');
-                const context = canvas.getContext('2d');
-                
-                // Set dimensions
-                canvas.width = viewport.width * dpi;
-                canvas.height = viewport.height * dpi;
-                canvas.style.width = viewport.width + 'px';
-                canvas.style.height = viewport.height + 'px';
-                canvas.style.display = 'block';
-                canvas.style.margin = '0 auto 20px';
-                
-                // Scale context
-                context.scale(dpi, dpi);
-                
-                // Render page
-                page.render({
-                    canvasContext: context,
-                    viewport: viewport
-                });
-                
-                container.appendChild(canvas);
-                
-                // Add divider between pages (except last)
-                if (i < pdf.numPages) {
-                    const divider = document.createElement('div');
-                    divider.style.height = '1px';
-                    divider.style.background = '#f0f0f0';
-                    divider.style.margin = '20px auto';
-                    divider.style.width = '80%';
-                    container.appendChild(divider);
-                }
-            });
-        }
-    }).catch(function(error) {
-        console.error('PDF loading error:', error);
-        document.getElementById(containerId).innerHTML = `
-            <div class="pdf-error">
-                <p>Error loading PDF document.</p>
-                <a href="${pdfUrl}" download class="btn">Download PDF</a>
-            </div>
-        `;
-    });
-}
-
-// Load both PDFs when page loads
-window.addEventListener('load', function() {
-    renderPDF('../PDF files/Unit 1 Learner Declaration.pdf', 'pdf-viewer-container-1');
-    renderPDF('../PDF files/Unit 4 Learner Declaration.pdf', 'pdf-viewer-container-4');
-});
-
-// Handle window resize
-window.addEventListener('resize', function() {
-    renderPDF('../PDF files/Unit 1 Learner Declaration.pdf', 'pdf-viewer-container-1');
-    renderPDF('../PDF files/Unit 4 Learner Declaration.pdf', 'pdf-viewer-container-4');
-});
 
 
 // Check if device is mobile
