@@ -70,7 +70,8 @@
 // //   }, 1500);
 // // });
 
-
+let sidebarOpen = false;
+let isMobile = false;
 
 
 // Initialize everything when DOM is loaded
