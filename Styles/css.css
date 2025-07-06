@@ -587,6 +587,7 @@ footer .subheading {
   text-decoration: none;
   display: block; /* Change from inline to block */
   width: 100%; /* Take full width of container */
+  color: black;
 }
 
 /* Responsive adjustments */
