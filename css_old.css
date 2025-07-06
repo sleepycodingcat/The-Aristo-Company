@@ -1762,9 +1762,6 @@ h1#brief{
 
 /* Learner Declarations */
 
-#declarationsContainer{
-  display:flex;
-}
 
 .declarations{
   margin: 20px;
