@@ -157,68 +157,71 @@ document.addEventListener('DOMContentLoaded', () => {
     logoContainer.addEventListener('mouseleave', pauseVideo);
 });
 
-// //  var tag = document.createElement('script');
-// //         tag.src = "https://www.youtube.com/iframe_api";
-// //         var firstScriptTag = document.getElementsByTagName('script')[0];
-// //         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-// //         let featuredPlayer;
-// //         window.onYouTubeIframeAPIReady = function() {
-// //             featuredPlayer = new YT.Player('featuredPlayer', {
-// //                 height: '100%',
-// //                 width: '100%',
-// //                 videoId: 'ntqivT3Nklg',
-// //                 playerVars: {
-// //                     'playsinline': 1
-// //                 },
-// //                 events: {
-// //                     'onReady': onPlayerReady
-// //                 }
-// //             });
-// //         }
+// ALL FILMS PAGE LIGHTBOX
 
-// //         function onPlayerReady(event) {
-// //             document.getElementById('featuredThumbnail').addEventListener('click', function() {
-// //                 this.style.display = 'none';
-// //                 event.target.playVideo();
-// //             });
-// //         }
+ var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-//         // Lightbox functionality
-//         document.addEventListener('DOMContentLoaded', function() {
-//             const filmItems = document.querySelectorAll('.masonry-item');
-//             const lightbox = document.getElementById('filmLightbox');
-//             const closeBtn = document.querySelector('.close-btn');
-//             const lightboxPlayer = document.getElementById('lightboxPlayer');
-//             const lightboxTitle = document.getElementById('lightboxTitle');
-//             const lightboxDesc = document.getElementById('lightboxDesc');
+        let featuredPlayer;
+        window.onYouTubeIframeAPIReady = function() {
+            featuredPlayer = new YT.Player('featuredPlayer', {
+                height: '100%',
+                width: '100%',
+                videoId: 'ntqivT3Nklg',
+                playerVars: {
+                    'playsinline': 1
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            document.getElementById('featuredThumbnail').addEventListener('click', function() {
+                this.style.display = 'none';
+                event.target.playVideo();
+            });
+        }
+
+        // Lightbox functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filmItems = document.querySelectorAll('.masonry-item');
+            const lightbox = document.getElementById('filmLightbox');
+            const closeBtn = document.querySelector('.close-btn');
+            const lightboxPlayer = document.getElementById('lightboxPlayer');
+            const lightboxTitle = document.getElementById('lightboxTitle');
+            const lightboxDesc = document.getElementById('lightboxDesc');
             
-//             filmItems.forEach(item => {
-//                 item.addEventListener('click', function() {
-//                     const videoId = this.getAttribute('data-id');
-//                     const title = this.getAttribute('data-title');
-//                     const desc = this.getAttribute('data-desc');
+            filmItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const videoId = this.getAttribute('data-id');
+                    const title = this.getAttribute('data-title');
+                    const desc = this.getAttribute('data-desc');
                     
-//                     lightboxPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-//                     lightboxTitle.textContent = title;
-//                     lightboxDesc.textContent = desc;
+                    lightboxPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                    lightboxTitle.textContent = title;
+                    lightboxDesc.textContent = desc;
                     
-//                     lightbox.style.display = 'flex';
-//                     document.body.style.overflow = 'hidden';
-//                 });
-//             });
+                    lightbox.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
             
-//             closeBtn.addEventListener('click', closeLightbox);
-//             lightbox.addEventListener('click', function(e) {
-//                 if (e.target === lightbox) closeLightbox();
-//             });
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) closeLightbox();
+            });
             
-//             function closeLightbox() {
-//                 lightbox.style.display = 'none';
-//                 lightboxPlayer.src = '';
-//                 document.body.style.overflow = 'auto';
-//             }
-//         });
+            function closeLightbox() {
+                lightbox.style.display = 'none';
+                lightboxPlayer.src = '';
+                document.body.style.overflow = 'auto';
+            }
+        });
  
 
 
