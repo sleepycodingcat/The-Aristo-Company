@@ -1710,6 +1710,92 @@ footer .subheading {
     transform: rotate(-1deg) translateY(0);
   }
 }
+/* BTEC Home */
+.unit-section {
+  position: relative;
+  height: 50vh;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+#unit1 {
+  background-image: url("../other media/Unit 1 preview.png");
+  background-color: #fbe492;
+}
+
+#unit2 {
+  background-image: url("../other media/Unit 4 preview.png");
+  background-color: #fbe492;
+}
+
+/* Adapted .btn style for unit buttons */
+.unit-btn.btn {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  padding: clamp(8px, 1.5vw, 15px) clamp(12px, 2vw, 30px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 10;
+  white-space: normal;
+  border: 2px solid;
+  font-size: 3rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-weight: 500;
+  color: #c1272d;
+  background-color: rgba(249, 193, 193, 0.537);
+  border-color: #c1272d;
+  opacity: 1 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.unit-btn.btn:hover {
+  background-color: #c1272d;
+  color: white;
+}
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .unit-btn.btn {
+    padding: 8px 16px;
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .unit-btn.btn {
+    width: 70%;
+    box-sizing: border-box;
+  }
+}
+
+.unit-btn.btn[href*="Unit 4.html"] {
+  background-color: rgba(251, 228, 146, 0.313);
+  color: #fbe492;
+}
+.unit-btn.btn[href*="Unit 4.html"]:hover {
+  background-color: #fbe492;
+  color: white;
+  color: #c1272d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .unit-section {
+    height: 40vh;
+    min-height: 300px;
+  }
+  .unit-btn.btn {
+    font-size: 2rem;
+    padding: 12px 24px;
+    min-width: 180px;
+  }
+}
 click-spark {
   --click-spark-color: #c1272d;
 }
@@ -1741,5 +1827,6 @@ p {
 
 a {
   font-family: "League Spartan", sans-serif;
+  color: black;
   font-weight: 400;
 }/*# sourceMappingURL=css.css.map */

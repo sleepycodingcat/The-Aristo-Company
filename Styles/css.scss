@@ -20,6 +20,7 @@ body{
 @import "./photoGallery";
 @import"./learnerDeclarations";
 @import"./mediaHome";
+@import "./btecHome";
 
 click-spark{
   --click-spark-color: #{$aristoRed};
@@ -52,6 +53,7 @@ p {
 
 a{
   font-family:"League Spartan", sans-serif;
+  color:black;
   font-weight: 400;
 }
 
