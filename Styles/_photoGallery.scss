@@ -1,0 +1,500 @@
+/* PHOTOS PAGE */
+
+.imgRow {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  
+}
+.imgColumn {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.imgColumn .picture {
+  margin-top: 10px;
+  vertical-align: middle;
+  width: 100%;
+  cursor: pointer;
+}
+
+.imgColumn .picture:hover{
+  transition:transform 0.2s ease-in;
+  transform: scale(1.03);
+}
+
+.imgColumn .picture:hover ~ .hoverStickPpl{
+  transition:opacity 0.4s;
+  opacity:100%;
+}
+
+.hoverStickPpl {
+  opacity:100%;
+}
+
+.myModal:hover + .hoverStickPpl {
+  display: none;
+}
+
+.imgColumn .picture:not(:hover) ~ .hoverStickPpl{
+  transition:opacity 0.3s;
+  opacity: 0%;
+}
+
+
+#runningStick:hover{
+  opacity:100%;
+}
+
+#bookStick:hover{
+  opacity:100%;
+}
+
+#jailStick:hover{
+  opacity:100%;
+}
+
+
+#stairStick:hover{
+  opacity:100%;
+}
+
+.imgColumn .picture:not(:hover){
+  transition:transform 0.2s ease-out;
+  transform: scale(1);
+}
+
+@media screen and (max-width: 800px) {
+  .imgColumn {
+    flex: 50%;
+    max-width: 50%;
+  }
+  .imgRow{
+    margin:24px 0;
+  }
+}
+
+.imgContainer{
+  overflow:hidden;
+  object-fit: contain;
+  position:relative;
+}
+
+#runningStick{
+  position:absolute;
+  left: 68%;
+  top:44%;
+  width:10%;
+  z-index: 1;
+}
+
+#stairStick{
+  position:absolute;
+  left: 6%;
+  top:5%;
+  width:10%;
+  z-index: 1;
+}
+
+#bookStick{
+  position:absolute;
+  left: 20%;
+  top:30%;
+  width:35%;
+  z-index: 1;
+}
+
+#jailStick{
+  position:absolute;
+  left: 7%;
+  top:10%;
+  width:78%;
+  z-index: 1;
+}
+
+/* IMAGE LIGHTBOX */
+
+/* RESPONSIVE MODAL/LIGHTBOX STYLES */
+
+/* Base modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000; /* Higher z-index to ensure it's on top */
+  padding: 20px 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  touch-action: pan-y; /* Enable vertical scrolling on touch devices */
+}
+
+/* Modal content container */
+.modal-content {
+  position: relative;
+  margin: auto;
+  padding: 0;
+  width: 80%; /* Default width for larger screens */
+  max-width: 1200px;
+  animation: modalFadeIn 0.3s ease-in-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  color: #333;
+  font-size: 35px;
+  font-weight: bold;
+  z-index: 1010; /* Above modal content */
+  transition: color 0.2s;
+}
+
+.close:hover,
+.close:focus {
+  color: $aristoRed;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Slides */
+.mySlides {
+  display: block; /* Always show the active slide */
+  padding: 10px;
+}
+
+.mySlides img {
+  width: 100%;
+  height: auto;
+  max-height: 80vh; /* Limit height on larger screens */
+  object-fit: contain; /* Maintain aspect ratio */
+  display: block;
+  margin: 0 auto;
+  /* Removed box-shadow */
+}
+
+/* Image info */
+.imgInfo {
+  font-family: "Lexend", sans-serif;
+  text-align: center;
+  margin: 15px 0;
+  padding: 0 10px;
+}
+
+.imgInfo h2 {
+  margin-bottom: 8px;
+  font-size: 24px;
+}
+
+.imgInfo p {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+/* Navigation buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  height: 60px;
+  margin-top: -30px;
+  padding: 0;
+  color: #333;
+  font-weight: bold;
+  font-size: 30px;
+  transition: 0.3s ease;
+  border-radius: 50%;
+  user-select: none;
+  -webkit-user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  /* Removed box-shadow */
+  z-index: 1020; /* Ensure buttons are clickable */
+}
+
+/* Repositioned navigation buttons to not obscure the image */
+.prev {
+  left: -70px; /* Position outside the image */
+}
+
+.next {
+  right: -70px; /* Position outside the image */
+}
+
+.prev:hover,
+.next:hover {
+  background-color: $aristoRed;
+  color: white;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  font-family:"League Spartan", sans-serif;
+  color: #333;
+  font-size: 18px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+}
+
+/* Large screens (1200px and above) */
+@media screen and (min-width: 1200px) {
+  .modal-content {
+    width: 70%;
+  }
+
+  .prev,
+  .next {
+    width: 70px;
+    height: 70px;
+    font-size: 36px;
+  }
+
+  .imgInfo h2 {
+    font-size: 28px;
+  }
+
+  .imgInfo p {
+    font-size: 18px;
+  }
+}
+
+/* Medium screens (768px to 1199px) */
+@media screen and (max-width: 1199px) {
+  .modal-content {
+    width: 85%;
+  }
+
+  /* Adjust navigation buttons for medium screens */
+  .prev {
+    left: -60px;
+  }
+
+  .next {
+    right: -60px;
+  }
+}
+
+/* Small tablets and phones (767px and below) */
+@media screen and (max-width: 767px) {
+  .modal-content {
+    width: 95%;
+    margin-top: 20px;
+  }
+
+  .close {
+    top: 5px;
+    right: 15px;
+    font-size: 30px;
+  }
+
+  .prev,
+  .next {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    /* Move buttons to the edges of the screen on smaller devices */
+    top: 50%;
+  }
+
+  .prev {
+    left: 5px;
+  }
+
+  .next {
+    right: 5px;
+  }
+
+  .numbertext {
+    font-size: 16px;
+    padding: 6px 10px;
+  }
+
+  .imgInfo h2 {
+    font-size: 20px;
+  }
+
+  .imgInfo p {
+    font-size: 14px;
+  }
+}
+
+/* Very small phones (480px and below) */
+@media screen and (max-width: 480px) {
+  .modal {
+    padding: 10px 0;
+  }
+
+  .modal-content {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .close {
+    top: 5px;
+    right: -20px;
+    font-size: 28px;
+  }
+
+  .prev,
+  .next {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    margin-top: -20px;
+  }
+
+  .numbertext {
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+
+  .imgInfo h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  .imgInfo p {
+    font-size: 12px;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .modal-content {
+    margin-top: 5px;
+  }
+
+  .mySlides img {
+    max-height: 70vh;
+  }
+
+  .imgInfo {
+    margin: 5px 0;
+  }
+
+  .imgInfo h2 {
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+
+  .imgInfo p {
+    font-size: 12px;
+  }
+
+  .prev,
+  .next {
+    top: 40%;
+  }
+}
+
+
+
+/* PHOTO FILTER BUTTONS */
+/* Responsive Filter Buttons with 2x2 Layout on Mobile */
+.gallery-filters {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 30px 0;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.filter-btn {
+  background-color: #fff;
+  border: 2px solid $aristoRed;
+  color: $aristoRed;
+  padding: 8px 16px;
+  margin: 0 8px 10px 8px;
+  cursor: pointer;
+  font-family:"League Spartan", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: $aristoYellow;
+}
+
+.filter-btn.active {
+  background-color: $aristoRed;
+  color: white;
+}
+
+/* Medium screens (768px to 991px) */
+@media (max-width: 991px) {
+  .filter-btn {
+    padding: 7px 14px;
+    margin: 0 6px 8px 6px;
+    font-size: 15px;
+  }
+}
+
+/* Small tablets (600px to 767px) */
+@media (max-width: 767px) {
+  .filter-btn {
+    padding: 7px 12px;
+    margin: 0 5px 8px 5px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile phones (599px and below) - 2x2 Grid Layout */
+@media (max-width: 599px) {
+  .gallery-filters {
+    padding: 0 5px;
+    /* Create a more structured layout */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .filter-btn {
+    padding: 6px 8px;
+    margin: 0;
+    font-size: 14px;
+    /* Make each button fill its grid cell */
+    width: 100%;
+    /* Remove min-width to let the grid control sizing */
+    min-width: 0;
+  }
+}
+
+/* Very small phones (400px and below) */
+@media (max-width: 400px) {
+  .gallery-filters {
+    max-width: 280px;
+    grid-gap: 6px;
+  }
+
+  .filter-btn {
+    padding: 5px 6px;
+    font-size: 13px;
+  }
+}
+
