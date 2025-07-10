@@ -4,7 +4,6 @@ footer {
   background-color: $aristoYellow;
   padding: 2rem;
   color: #333;
-  font-family: "futura-pt-bold", sans-serif;
   margin-top: 3rem;
   text-align: center;
 
@@ -26,7 +25,6 @@ footer h2 {
 /* Subheading */
 footer .subheading {
   font-size: clamp(1rem, 2.5vw, 1.4rem);
-  font-family: "Lexend", sans-serif;
   color:black;
 }
 
@@ -87,7 +85,6 @@ footer .subheading {
 .copyright {
   font-size: 0.8rem;
   opacity: 0.7;
-  font-family: "Lexend", sans-serif;
   margin: 1rem 0 0 0;
   padding-top: 1rem;
   border-top: 1px solid rgba(0, 0, 0, 0.1);

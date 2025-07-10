@@ -370,3 +370,4 @@ function handleTouchStart(event) {
     sidebar.style.transform = "translateX(100%)"
   }
 }
+
