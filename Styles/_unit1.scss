@@ -50,27 +50,26 @@ h1#brief {
 // Alternating layout for desktop
 @media (min-width: 900px) {
   .unit1Section {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
     align-items: stretch;
     gap: 40px;
   }
   
-  // Alternate layout - odd sections: content left, description right
-  .unit1Section:nth-child(odd) {
-    flex-direction: row;
-  }
-  
   // Even sections: description left, content right
   .unit1Section:nth-child(even) {
-    flex-direction: row-reverse;
+    grid-template-columns: 1fr 1.2fr;
   }
   
-  .unit1Section > div:first-child {
-    flex: 1.2;
+  .unit1Section:nth-child(even) > div:first-child {
+    order: 2;
+  }
+  
+  .unit1Section:nth-child(even) > div:last-child {
+    order: 1;
   }
   
   .activityDescript {
-    flex: 1;
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -79,9 +78,9 @@ h1#brief {
   
   // Desktop slides sizing - proper 16:9 aspect ratio
   .gSlides {
-    width: 100%; // Take full width of flex container
+    width: 100%;
     height: auto;
-    aspect-ratio: 16/9; // Force 16:9 aspect ratio
+    aspect-ratio: 16/9;
     min-height: 300px;
   }
 }

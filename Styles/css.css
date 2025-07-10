@@ -2210,21 +2210,21 @@ h1#brief {
 
 @media (min-width: 900px) {
   .unit1Section {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
     align-items: stretch;
     gap: 40px;
   }
-  .unit1Section:nth-child(odd) {
-    flex-direction: row;
-  }
   .unit1Section:nth-child(even) {
-    flex-direction: row-reverse;
+    grid-template-columns: 1fr 1.2fr;
   }
-  .unit1Section > div:first-child {
-    flex: 1.2;
+  .unit1Section:nth-child(even) > div:first-child {
+    order: 2;
+  }
+  .unit1Section:nth-child(even) > div:last-child {
+    order: 1;
   }
   .activityDescript {
-    flex: 1;
     padding: 30px;
     display: flex;
     flex-direction: column;
