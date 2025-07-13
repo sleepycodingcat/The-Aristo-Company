@@ -593,3 +593,56 @@ h1#brief {
     min-height: 250px;
   }
 }
+
+// New styles for the "More BTS content here!" section
+.bts-link-section {
+  text-align: center;
+  margin: 60px auto; // Adjust vertical margin as needed
+  padding: 30px 20px;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  max-width: 600px; // Limit width for better centering on large screens
+  border-radius: 8px; // Slightly rounded corners for a softer look
+  border: 1px solid lighten($aristoBeige, 5%); // Subtle border
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+  }
+
+  h3 {
+    color: $aristoBlack; // Ensure the h3 text is black
+    margin-bottom: 0; // Remove default h3 margin to control spacing
+    // The existing .orange-juice-bts h3 rule already handles centering and underline
+  }
+
+  a {
+    color: $aristoRed; // Set link color to red
+    font-weight: 600; // Make the link text bolder
+    text-decoration: underline; // Add underline for clarity
+    text-decoration-color: $aristoRed; // Match underline color
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+
+    &:hover {
+      color: darken($aristoRed, 10%); // Darken red on hover
+      text-decoration-color: darken($aristoRed, 10%);
+    }
+  }
+}
+
+// Responsive adjustments for the new section
+@media (max-width: 768px) {
+  .bts-link-section {
+    margin: 40px auto;
+    padding: 25px 15px;
+    max-width: 90%; // Allow it to be wider on smaller screens
+  }
+}
+
+@media (max-width: 480px) {
+  .bts-link-section {
+    margin: 30px auto;
+    padding: 20px 10px;
+  }
+}

@@ -8,8 +8,7 @@
 //       document.querySelector('.aristo-preloader').remove();
 //     }, 500);
 //   }, 1500);
-// }); 
- 
+// });
 
 // // // Customized YT thumbnail preview
 // // // This code loads the IFrame Player API code asynchronously.
@@ -70,9 +69,8 @@
 // //   }, 1500);
 // // });
 
-let sidebarOpen = false;
-let isMobile = false;
-
+let sidebarOpen = false
+let isMobile = false
 
 // Initialize everything when DOM is loaded
 document.addEventListener("DOMContentLoaded", async () => {
@@ -83,7 +81,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.addEventListener("click", handleOutsideClick)
   document.addEventListener("keydown", handleEscapeKey)
   document.addEventListener("touchstart", handleTouchStart)
-
 })
 
 // Preloader functionality
@@ -101,130 +98,134 @@ window.addEventListener("load", () => {
   sidebarOpen = false
 })
 
-
 // LOGO MOVES ON HOVER
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Load the footer
-  fetch('footer.html')
-    .then(response => {
+  fetch("footer.html")
+    .then((response) => {
       if (!response.ok) {
-        throw new Error(`Failed to load footer: ${response.statusText}`);
+        throw new Error(`Failed to load footer: ${response.statusText}`)
       }
-      return response.text();
+      return response.text()
     })
-    .then(data => {
-      console.log(data); // Log the fetched content
+    .then((data) => {
+      console.log(data) // Log the fetched content
 
-      document.getElementById('footer-placeholder').innerHTML = data;
+      document.getElementById("footer-placeholder").innerHTML = data
     })
-    .catch(error => {
-      console.error(error);
-      document.getElementById('footer-placeholder').innerHTML = `
+    .catch((error) => {
+      console.error(error)
+      document.getElementById("footer-placeholder").innerHTML = `
         <footer>
           <p>Error loading footer content.</p>
         </footer>
-      `;
-    });
+      `
+    })
 
   // Load the sidebar
-  fetch('sidebar.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('sidebar-placeholder').innerHTML = data;
-    });
+  fetch("sidebar.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("sidebar-placeholder").innerHTML = data
+    })
 
-    const logoContainer = document.querySelector('#logoContainer');
-    const video = document.querySelector('#videoLogo');
-    
-    
-    function playVideo() {
-      // Only play if video is visible
-      if (window.getComputedStyle(video).display !== 'none') {
-        video.play();
-      }
+  const logoContainer = document.querySelector("#logoContainer")
+  const video = document.querySelector("#videoLogo")
+
+  function playVideo() {
+    // Only play if video is visible
+    if (window.getComputedStyle(video).display !== "none") {
+      video.play()
     }
-
-    function pauseVideo() {
-      // Only pause if video is visible
-      if (window.getComputedStyle(video).display !== 'none') {
-        video.pause();
-        video.currentTime = 0;
-      }
   }
 
-    logoContainer.addEventListener('mouseenter', playVideo);
-    logoContainer.addEventListener('mouseleave', pauseVideo);
-});
+  function pauseVideo() {
+    // Only pause if video is visible
+    if (window.getComputedStyle(video).display !== "none") {
+      video.pause()
+      video.currentTime = 0
+    }
+  }
 
+  logoContainer.addEventListener("mouseenter", playVideo)
+  logoContainer.addEventListener("mouseleave", pauseVideo)
+})
 
 // ALL FILMS PAGE LIGHTBOX
 
- var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var tag = document.createElement("script")
+tag.src = "https://www.youtube.com/iframe_api"
+var firstScriptTag = document.getElementsByTagName("script")[0]
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
 
-        let featuredPlayer;
-        window.onYouTubeIframeAPIReady = function() {
-            featuredPlayer = new YT.Player('featuredPlayer', {
-                height: '100%',
-                width: '100%',
-                videoId: 'ntqivT3Nklg',
-                playerVars: {
-                    'playsinline': 1
-                },
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
-        }
+let featuredPlayer
+window.onYouTubeIframeAPIReady = () => {
+  featuredPlayer = new YT.Player("featuredPlayer", {
+    height: "100%",
+    width: "100%",
+    videoId: "ntqivT3Nklg",
+    playerVars: {
+      playsinline: 1,
+    },
+    events: {
+      onReady: onPlayerReady,
+    },
+  })
+}
 
-        function onPlayerReady(event) {
-            document.getElementById('featuredThumbnail').addEventListener('click', function() {
-                this.style.display = 'none';
-                event.target.playVideo();
-            });
-        }
+function onPlayerReady(event) {
+  document.getElementById("featuredThumbnail").addEventListener("click", function () {
+    this.style.display = "none"
+    event.target.playVideo()
+  })
+}
 
-        // Lightbox functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const filmItems = document.querySelectorAll('.masonry-item');
-            const lightbox = document.getElementById('filmLightbox');
-            const closeBtn = document.querySelector('.close-btn');
-            const lightboxPlayer = document.getElementById('lightboxPlayer');
-            const lightboxTitle = document.getElementById('lightboxTitle');
-            const lightboxDesc = document.getElementById('lightboxDesc');
-            
-            filmItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const videoId = this.getAttribute('data-id');
-                    const title = this.getAttribute('data-title');
-                    const desc = this.getAttribute('data-desc');
-                    
-                    lightboxPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-                    lightboxTitle.textContent = title;
-                    lightboxDesc.textContent = desc;
-                    
-                    lightbox.style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-            
-            closeBtn.addEventListener('click', closeLightbox);
-            lightbox.addEventListener('click', function(e) {
-                if (e.target === lightbox) closeLightbox();
-            });
-            
-            function closeLightbox() {
-                lightbox.style.display = 'none';
-                lightboxPlayer.src = '';
-                document.body.style.overflow = 'auto';
-            }
-        });
- 
+// Lightbox functionality
+document.addEventListener("DOMContentLoaded", () => {
+  const filmItems = document.querySelectorAll(".masonry-item")
+  const lightbox = document.getElementById("filmLightbox")
+  const closeBtn = document.querySelector(".close-btn")
+  const lightboxPlayer = document.getElementById("lightboxPlayer")
+  const lightboxTitle = document.getElementById("lightboxTitle")
+  const lightboxDesc = document.getElementById("lightboxDesc")
 
+  filmItems.forEach((item) => {
+    item.addEventListener("click", function () {
+      const videoId = this.getAttribute("data-id")
+      const title = this.getAttribute("data-title")
+      const desc = this.getAttribute("data-desc")
+      const btsLink = this.getAttribute("data-bts-link") // Get the BTS link
 
+      lightboxPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`
+      lightboxTitle.textContent = title
+      lightboxDesc.textContent = desc
+
+      // Set the BTS button href
+      const btsBtn = document.getElementById("btsBtn")
+      if (btsBtn && btsLink) {
+        btsBtn.href = btsLink
+        btsBtn.style.display = "inline-block" // Ensure button is visible if a link exists
+      } else if (btsBtn) {
+        btsBtn.style.display = "none" // Hide button if no BTS link is provided
+      }
+
+      lightbox.style.display = "flex"
+      document.body.style.overflow = "hidden"
+    })
+  })
+
+  closeBtn.addEventListener("click", closeLightbox)
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox()
+  })
+
+  function closeLightbox() {
+    lightbox.style.display = "none"
+    lightboxPlayer.src = ""
+    document.body.style.overflow = "auto"
+  }
+})
 
 // Check if device is mobile
 function checkMobile() {
@@ -370,4 +371,3 @@ function handleTouchStart(event) {
     sidebar.style.transform = "translateX(100%)"
   }
 }
-

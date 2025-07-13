@@ -4,3 +4,16 @@ Check it out here: https://sleepycodingcat.github.io/The-Aristo-Company/
 
 ![image](https://github.com/user-attachments/assets/7c9ffa7e-f177-4ddf-a33f-c7b540c74b57)
 
+
+
+<!-- Google Analytics -->
+<script async src=
+      "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX">
+</script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){   dataLayer.push(arguments);   }
+    gtag('js', new Date());
+
+    gtag('config', 'G-Z20GTZGMZ5');
+</script>

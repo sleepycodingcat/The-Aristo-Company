@@ -617,6 +617,19 @@ footer .subheading {
   padding: 0 4px;
 }
 
+/* Responsive adjustments for .imgColumn */
+@media screen and (max-width: 768px) {
+  .imgColumn {
+    flex: 50%; /* 2 columns */
+    max-width: 50%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .imgColumn {
+    flex: 100%; /* 1 column */
+    max-width: 100%;
+  }
+}
 .imgColumn .picture {
   margin-top: 10px;
   vertical-align: middle;
@@ -668,15 +681,6 @@ footer .subheading {
   transform: scale(1);
 }
 
-@media screen and (max-width: 800px) {
-  .imgColumn {
-    flex: 50%;
-    max-width: 50%;
-  }
-  .imgRow {
-    margin: 24px 0;
-  }
-}
 .imgContainer {
   overflow: hidden;
   -o-object-fit: contain;
@@ -718,22 +722,24 @@ footer .subheading {
 
 /* IMAGE LIGHTBOX */
 /* RESPONSIVE MODAL/LIGHTBOX STYLES */
-/* Base modal styles */
+/* Base modal styles - Corrected to be hidden by default */
 .modal {
-  display: none;
+  display: none; /* Changed back to none, removed !important */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
   position: fixed;
   z-index: 1000; /* Higher z-index to ensure it's on top */
-  padding: 20px 0;
+  padding: 0; /* Removed padding as flexbox handles spacing */
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   background-color: rgba(255, 255, 255, 0.95);
   touch-action: pan-y; /* Enable vertical scrolling on touch devices */
 }
 
-/* Modal content container */
+/* Modal content container - Added flex properties and height */
 .modal-content {
   position: relative;
   margin: auto;
@@ -741,6 +747,12 @@ footer .subheading {
   width: 80%; /* Default width for larger screens */
   max-width: 1200px;
   animation: modalFadeIn 0.3s ease-in-out;
+  height: 100%; /* Make it fill the modal's height */
+  max-height: 95vh; /* Limit max height to prevent content from touching edges */
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Horizontally center content within modal-content */
+  justify-content: center; /* Vertically center content within modal-content */
 }
 
 @keyframes modalFadeIn {
@@ -770,15 +782,18 @@ footer .subheading {
   cursor: pointer;
 }
 
-/* Slides */
+/* Slides - Set to display: none by default in CSS, added vertical centering */
 .mySlides {
-  display: block; /* Always show the active slide */
+  display: none; /* Set to none by default */
   padding: 10px;
+  flex-grow: 0; /* Removed flex-grow to allow modal-content to center the block */
+  flex-direction: column; /* Stack its children vertically */
+  align-items: center; /* Horizontally center content within mySlides */
 }
 
 .mySlides img {
   width: 100%;
-  height: auto;
+  height: 100%; /* Changed from auto to 100% to fill flex container */
   max-height: 80vh; /* Limit height on larger screens */
   -o-object-fit: contain;
      object-fit: contain; /* Maintain aspect ratio */
@@ -787,12 +802,13 @@ footer .subheading {
   /* Removed box-shadow */
 }
 
-/* Image info */
+/* Image info - Added padding-top and padding-bottom */
 .imgInfo {
   font-family: "Lexend", sans-serif;
   text-align: center;
   margin: 15px 0;
-  padding: 0 10px;
+  padding: 10px 10px 20px 10px; /* Added padding-top and padding-bottom */
+  flex-shrink: 0; /* Prevent it from shrinking */
 }
 
 .imgInfo h2 {
@@ -809,7 +825,7 @@ footer .subheading {
 .prev,
 .next {
   cursor: pointer;
-  position: absolute;
+  position: absolute; /* Now relative to .modal (fixed position) */
   top: 50%;
   width: 60px;
   height: 60px;
@@ -831,13 +847,12 @@ footer .subheading {
   z-index: 1020; /* Ensure buttons are clickable */
 }
 
-/* Repositioned navigation buttons to not obscure the image */
 .prev {
-  left: -70px; /* Position outside the image */
+  left: 20px; /* Position from the left edge of the modal */
 }
 
 .next {
-  right: -70px; /* Position outside the image */
+  right: 20px; /* Position from the right edge of the modal */
 }
 
 .prev:hover,
@@ -884,21 +899,22 @@ footer .subheading {
   }
   /* Adjust navigation buttons for medium screens */
   .prev {
-    left: -60px;
+    left: 15px; /* Adjusted for medium screens */
   }
   .next {
-    right: -60px;
+    right: 15px; /* Adjusted for medium screens */
   }
 }
 /* Small tablets and phones (767px and below) */
 @media screen and (max-width: 767px) {
   .modal-content {
     width: 95%;
-    margin-top: 20px;
+    margin-top: 0; /* Removed margin-top as flexbox handles centering */
+    padding: 0; /* Remove padding from modal-content */
   }
   .close {
     top: 5px;
-    right: 15px;
+    right: 15px; /* Corrected position */
     font-size: 30px;
   }
   .prev,
@@ -906,38 +922,45 @@ footer .subheading {
     width: 50px;
     height: 50px;
     font-size: 24px;
-    /* Move buttons to the edges of the screen on smaller devices */
     top: 50%;
+    margin-top: -25px; /* Adjust margin-top for 50px height */
+    background-color: rgba(255, 255, 255, 0.7); /* Reverted hover transparency */
   }
   .prev {
-    left: 5px;
+    left: 10px; /* Padding from screen edge */
   }
   .next {
-    right: 5px;
+    right: 10px; /* Padding from screen edge */
   }
   .numbertext {
     font-size: 16px;
     padding: 6px 10px;
   }
-  .imgInfo h2 {
-    font-size: 20px;
+  .lightbox-media-container {
+    flex-grow: 1; /* Allow it to grow and take available vertical space */
+    max-height: 80vh; /* Increased size for mobile */
   }
-  .imgInfo p {
-    font-size: 14px;
+  .mySlides img, .mySlides video {
+    max-height: 80vh; /* Increased size for mobile */
+  }
+  .imgInfo {
+    padding: 5px 10px; /* Reduced vertical padding for mobile */
+    margin: 5px 0; /* Reduced margin for mobile */
   }
 }
 /* Very small phones (480px and below) */
 @media screen and (max-width: 480px) {
   .modal {
-    padding: 10px 0;
+    padding: 0;
   }
   .modal-content {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 0;
+    padding: 0; /* Remove padding from modal-content */
   }
   .close {
     top: 5px;
-    right: -20px;
+    right: 10px; /* Corrected position for very small screens */
     font-size: 28px;
   }
   .prev,
@@ -945,11 +968,29 @@ footer .subheading {
     width: 40px;
     height: 40px;
     font-size: 20px;
-    margin-top: -20px;
+    margin-top: -20px; /* Adjust margin-top for 40px height */
+    background-color: rgba(255, 255, 255, 0.7); /* Reverted hover transparency */
+  }
+  .prev {
+    left: 5px; /* Padding from screen edge */
+  }
+  .next {
+    right: 5px; /* Padding from screen edge */
   }
   .numbertext {
     font-size: 14px;
     padding: 4px 8px;
+  }
+  .lightbox-media-container {
+    flex-grow: 1; /* Allow it to grow and take available vertical space */
+    max-height: 75vh; /* Increased size for very small mobile */
+  }
+  .mySlides img, .mySlides video {
+    max-height: 75vh; /* Increased size for very small mobile */
+  }
+  .imgInfo {
+    padding: 5px 10px;
+    margin: 5px 0;
   }
   .imgInfo h2 {
     font-size: 18px;
@@ -962,7 +1003,7 @@ footer .subheading {
 /* Landscape orientation on mobile */
 @media screen and (max-height: 500px) and (orientation: landscape) {
   .modal-content {
-    margin-top: 5px;
+    margin-top: 0;
   }
   .mySlides img {
     max-height: 70vh;
@@ -2686,6 +2727,599 @@ h1#brief {
   }
   .unit1Section iframe:not(.gSlides) {
     min-height: 250px;
+  }
+}
+.bts-link-section {
+  text-align: center;
+  margin: 60px auto;
+  padding: 30px 20px;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  border-radius: 8px;
+  border: 1px solid #fffefb;
+  transition: all 0.3s ease;
+}
+.bts-link-section:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+.bts-link-section h3 {
+  color: rgb(0, 0, 0);
+  margin-bottom: 0;
+}
+.bts-link-section a {
+  color: #c1272d;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: #c1272d;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+.bts-link-section a:hover {
+  color: #971e23;
+  text-decoration-color: #971e23;
+}
+
+@media (max-width: 768px) {
+  .bts-link-section {
+    margin: 40px auto;
+    padding: 25px 15px;
+    max-width: 90%;
+  }
+}
+@media (max-width: 480px) {
+  .bts-link-section {
+    margin: 30px auto;
+    padding: 20px 10px;
+  }
+}
+.orange-juice-bts #pageTitle:first-of-type {
+  position: relative;
+  text-align: center;
+  color: #c1272d;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin: 2rem 0 4rem 0;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #fff9e1 0%, #fbe492 100%);
+  border: 4px solid #c1272d;
+  box-shadow: 0 8px 20px rgba(193, 39, 45, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  transform: rotate(-0.5deg);
+  transition: all 0.3s ease;
+}
+.orange-juice-bts #pageTitle:first-of-type:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 0 12px 30px rgba(193, 39, 45, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.orange-juice-bts p:first-of-type {
+  font-size: clamp(16px, 2.2vw, 20px);
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: white;
+  box-shadow: 0 4px 20px rgba(193, 39, 45, 0.1);
+  font-style: italic;
+  position: relative;
+}
+.orange-juice-bts p:first-of-type::before {
+  content: "Director's Note";
+  position: absolute;
+  font-family: "League Spartan", sans-serif;
+  top: -12px;
+  left: 20px;
+  background: #c1272d;
+  color: white;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-style: normal;
+}
+
+.orange-juice-bts h3 {
+  color: #c1272d;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin: 3rem 0 2rem 0;
+  text-align: center;
+  position: relative;
+}
+.orange-juice-bts h3::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: #c1272d;
+}
+
+.image-item {
+  width: 100%;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  background: white;
+  position: relative; /* Important for positioning the ::after pseudo-element */
+  display: flex; /* To center the image inside the wrapper */
+  justify-content: center;
+  align-items: center;
+  flex: 1; /* Allows flex items to grow and shrink */
+}
+.image-item img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+}
+.image-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+.image-item::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "League Spartan", sans-serif;
+  background: #c1272d;
+  color: white;
+  padding: 3px 8px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.orange-juice-bts div:has(img[src*="OJ Script1"]) {
+  display: grid;
+  grid-template-columns: 1fr; /* Only one column for the script image */
+  grid-template-rows: auto auto; /* Script row, then image row */
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background: rgba(255, 249, 225, 0.2);
+  border: 1px solid rgba(193, 39, 45, 0.1);
+  position: relative;
+}
+.orange-juice-bts div:has(img[src*="OJ Script1"])::before {
+  content: "Scene 1";
+  font-family: "League Spartan", sans-serif;
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: #c1272d;
+  color: white;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.orange-juice-bts div:has(img[src*="OJ Script1"]) img[src*=Script] {
+  grid-column: 1/-1;
+  grid-row: 1;
+  width: 100%;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  background: white;
+  padding: 10px;
+}
+.orange-juice-bts div:has(img[src*="OJ Script1"]) img[src*=Script]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+.orange-juice-bts div:has(img[src*="OJ Script1"]) .image-row-scene1 {
+  grid-column: 1/-1; /* Span full width of the grid */
+  grid-row: 2; /* Place in the second row */
+  display: flex;
+  gap: 1.5rem;
+  align-items: center; /* Vertically align images in the row */
+}
+
+.orange-juice-bts div:has(img[src*="OJ Script2"]) {
+  display: grid;
+  grid-template-columns: 1fr; /* Only one column for the script image */
+  grid-template-rows: auto auto; /* Script row, then image row */
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+  padding: 2rem 2rem 3rem 2rem;
+  background: rgba(251, 228, 146, 0.15);
+  border: 1px solid rgba(193, 39, 45, 0.15);
+  position: relative;
+}
+.orange-juice-bts div:has(img[src*="OJ Script2"])::before {
+  content: "Scene 2";
+  position: absolute;
+  font-family: "League Spartan", sans-serif;
+  top: -12px;
+  left: 20px;
+  background: #c1272d;
+  color: white;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.orange-juice-bts div:has(img[src*="OJ Script2"]) img[src*=Script] {
+  grid-column: 1/-1;
+  grid-row: 1;
+  width: 100%;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  background: white;
+  padding: 10px;
+}
+.orange-juice-bts div:has(img[src*="OJ Script2"]) img[src*=Script]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+.orange-juice-bts div:has(img[src*="OJ Script2"]) .image-row-scene2 {
+  grid-column: 1/-1; /* Span full width of the grid */
+  grid-row: 2; /* Place in the second row */
+  display: flex;
+  gap: 1.5rem;
+  align-items: center; /* Vertically align images in the row */
+}
+
+.orange-juice-bts h3:last-of-type {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+.orange-juice-bts .imgRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  padding: 0 2rem;
+}
+.orange-juice-bts .imgContainer {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: calc(25% - 15px);
+  min-width: 200px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.orange-juice-bts .imgContainer .picture {
+  width: 100%;
+  height: 200px; /* Fixed height for consistent thumbnails */
+  -o-object-fit: cover;
+     object-fit: cover; /* Crop to fill, maintaining aspect ratio */
+  transition: transform 0.2s ease-in;
+}
+.orange-juice-bts .imgContainer .picture:hover {
+  transform: scale(1.03);
+}
+.orange-juice-bts .video-thumbnail .play-icon-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: background-color 0.3s ease;
+}
+.orange-juice-bts .video-thumbnail .play-icon-overlay .material-symbols-outlined {
+  font-size: 3rem;
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  transition: transform 0.2s ease-in-out;
+}
+.orange-juice-bts .video-thumbnail:hover .play-icon-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.orange-juice-bts .video-thumbnail:hover .play-icon-overlay .material-symbols-outlined {
+  transform: scale(1.1);
+}
+
+/* Base modal styles - Corrected to be hidden by default */
+.modal {
+  display: none; /* Changed back to none, removed !important */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  position: fixed;
+  z-index: 1000; /* Higher z-index to ensure it's on top */
+  padding: 0; /* Removed padding as flexbox handles spacing */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Changed from auto to hidden */
+  background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
+  touch-action: pan-y; /* Enable vertical scrolling on touch devices */
+}
+
+/* Modal content container - Added flex properties and height */
+.modal-content {
+  position: relative;
+  margin: auto;
+  padding: 0;
+  width: 80%; /* Default width for larger screens */
+  max-width: 1200px;
+  animation: modalFadeIn 0.3s ease-in-out;
+  border-radius: 0;
+  height: 100%; /* Make it fill the modal's height */
+  max-height: 95vh; /* Limit max height to prevent content from touching edges */
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Horizontally center content within modal-content */
+  justify-content: center; /* Vertically center content within modal-content */
+}
+
+/* MySlides - Set to display: none by default in CSS, added vertical centering */
+.mySlides {
+  display: none; /* Set to none by default */
+  padding: 10px;
+  flex-grow: 0; /* Removed flex-grow to allow modal-content to center the block */
+  flex-direction: column; /* Stack its children vertically */
+  align-items: center; /* Horizontally center content within mySlides */
+}
+
+.lightbox-media-container {
+  width: 100%;
+  height: auto;
+  max-height: 80vh; /* Limit height on larger screens */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  position: relative;
+  flex-grow: 1; /* Allow it to grow and take available vertical space */
+  flex-shrink: 1; /* Allow shrinking */
+  flex-basis: auto; /* Allow content to determine its size */
+}
+.lightbox-media-container img, .lightbox-media-container video {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+.lightbox-media-container video {
+  width: 100%;
+  height: 100%;
+}
+
+/* Image info - Removed top/bottom padding for BTS page */
+.modal .imgInfo {
+  font-family: "Lexend", sans-serif;
+  text-align: center;
+  margin: 15px 0;
+  padding: 0 10px; /* Only horizontal padding for BTS page */
+  flex-shrink: 0; /* Prevent it from shrinking */
+}
+
+.modal .numbertext {
+  font-family: "League Spartan", sans-serif;
+  color: #333;
+  font-size: 18px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .orange-juice-bts #pageTitle {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0 2rem 0;
+    border-width: 2px; /* Lower border thickness for mobile */
+  }
+  .orange-juice-bts div:has(img[src*="OJ Script1"]),
+  .orange-juice-bts div:has(img[src*="OJ Script2"]) {
+    display: flex; /* Change to flex for mobile stacking */
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+  .orange-juice-bts div:has(img[src*="OJ Script1"])::before,
+  .orange-juice-bts div:has(img[src*="OJ Script2"])::before {
+    top: -10px;
+    left: 15px;
+    font-size: 0.6rem;
+    padding: 2px 6px;
+  }
+  .orange-juice-bts div:has(img[src*="OJ Script1"]) img, .orange-juice-bts div:has(img[src*="OJ Script1"]) iframe,
+  .orange-juice-bts div:has(img[src*="OJ Script2"]) img,
+  .orange-juice-bts div:has(img[src*="OJ Script2"]) iframe {
+    -o-object-fit: contain;
+       object-fit: contain;
+    background: white;
+  }
+  .orange-juice-bts div:has(img[src*="OJ Script1"]) img[src*=Script], .orange-juice-bts div:has(img[src*="OJ Script1"]) iframe[src*=Script],
+  .orange-juice-bts div:has(img[src*="OJ Script2"]) img[src*=Script],
+  .orange-juice-bts div:has(img[src*="OJ Script2"]) iframe[src*=Script] {
+    padding: 8px;
+  }
+  .orange-juice-bts div:has(img[src*="OJ Script1"]) .image-row-scene1, .orange-juice-bts div:has(img[src*="OJ Script1"]) .image-row-scene2,
+  .orange-juice-bts div:has(img[src*="OJ Script2"]) .image-row-scene1,
+  .orange-juice-bts div:has(img[src*="OJ Script2"]) .image-row-scene2 {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .orange-juice-bts div:has(img[src*="OJ Script1"]) .image-item::after,
+  .orange-juice-bts div:has(img[src*="OJ Script2"]) .image-item::after {
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    background: rgba(193, 39, 45, 0.85);
+    color: white;
+    white-space: nowrap;
+    border-radius: 3px;
+  }
+  .orange-juice-bts p:first-of-type {
+    padding: 1rem;
+    font-size: clamp(14px, 3vw, 18px);
+    line-height: 1.4;
+  }
+  .orange-juice-bts p:first-of-type::before {
+    font-size: 0.6rem;
+    padding: 2px 8px;
+  }
+  .orange-juice-bts .imgRow {
+    gap: 10px;
+    padding: 0 1.5rem;
+    justify-content: flex-start;
+  }
+  .orange-juice-bts .imgContainer {
+    flex-basis: calc(50% - 10px);
+    min-width: 150px;
+  }
+  .orange-juice-bts .imgContainer .picture {
+    height: 150px; /* Smaller fixed height for tablet */
+  }
+  .lightbox-media-container {
+    flex-grow: 1; /* Allow it to grow and take available vertical space */
+    max-height: 80vh;
+  }
+  .modal .numbertext {
+    font-size: 16px;
+    padding: 6px 10px;
+    top: 10px;
+    left: 10px;
+  }
+  .modal-content {
+    padding: 0; /* Remove padding from modal-content */
+  }
+  .prev,
+  .next {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    top: 50%;
+    margin-top: -25px; /* Adjust margin-top for 50px height */
+    background-color: rgba(255, 255, 255, 0.7); /* Reverted hover transparency */
+  }
+  .prev {
+    left: 10px; /* Padding from screen edge */
+  }
+  .next {
+    right: 10px; /* Padding from screen edge */
+  }
+  .modal .imgInfo {
+    padding: 5px 10px; /* Reduced vertical padding for mobile */
+    margin: 5px 0; /* Reduced margin for mobile */
+  }
+}
+@media (max-width: 480px) {
+  .orange-juice-bts #pageTitle {
+    transform: rotate(0deg);
+  }
+  .orange-juice-bts div:has(img[src*="OJ Script1"]),
+  .orange-juice-bts div:has(img[src*="OJ Script2"]) {
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+  .orange-juice-bts div:has(img[src*="OJ Script1"])::before,
+  .orange-juice-bts div:has(img[src*="OJ Script2"])::before {
+    font-size: 0.5rem;
+    padding: 2px 5px;
+  }
+  .orange-juice-bts div:has(img[src*="OJ Script1"]) img[src*=Script], .orange-juice-bts div:has(img[src*="OJ Script1"]) iframe[src*=Script],
+  .orange-juice-bts div:has(img[src*="OJ Script2"]) img[src*=Script],
+  .orange-juice-bts div:has(img[src*="OJ Script2"]) iframe[src*=Script] {
+    padding: 5px;
+  }
+  .orange-juice-bts p:first-of-type {
+    line-height: 1.3;
+  }
+  .orange-juice-bts p:first-of-type::before {
+    font-size: 0.5rem;
+    padding: 2px 6px;
+  }
+  .orange-juice-bts .imgRow {
+    gap: 8px;
+    padding: 0 1rem;
+    justify-content: center;
+  }
+  .orange-juice-bts .imgContainer {
+    flex-basis: 100%;
+    min-width: auto;
+  }
+  .orange-juice-bts .imgContainer .picture {
+    height: 120px; /* Even smaller fixed height */
+    max-width: 300px; /* Optional: limit max width of image in single column */
+  }
+  .lightbox-media-container {
+    flex-grow: 1; /* Allow it to grow and take available vertical space */
+    max-height: 75vh;
+  }
+  .modal .numbertext {
+    font-size: 14px;
+    padding: 4px 8px;
+    top: 10px;
+    left: 10px;
+  }
+  .modal-content {
+    padding: 0; /* Remove padding from modal-content */
+  }
+  .prev,
+  .next {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    margin-top: -20px; /* Adjust margin-top for 40px height */
+    background-color: rgba(255, 255, 255, 0.7); /* Reverted hover transparency */
+  }
+  .prev {
+    left: 5px; /* Padding from screen edge */
+  }
+  .next {
+    right: 5px; /* Padding from screen edge */
+  }
+  .modal .imgInfo {
+    padding: 5px 10px;
+    margin: 5px 0;
+  }
+  .imgInfo h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  .imgInfo p {
+    font-size: 12px;
   }
 }
 click-spark {

@@ -1,0 +1,629 @@
+// Orange Juice BTS Page Styles
+
+// ========================================
+// TITLE DESIGN OPTIONS
+// ========================================
+
+.orange-juice-bts #pageTitle {
+  &:first-of-type {
+    position: relative;
+    text-align: center;
+    color: $aristoRed;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin: 2rem 0 4rem 0; // Increased bottom margin for more space before director's note
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, $aristoBeige 0%, $aristoYellow 100%);
+    border: 4px solid $aristoRed;
+    box-shadow: 
+      0 8px 20px rgba(193, 39, 45, 0.2),
+      inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    transform: rotate(-0.5deg);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: rotate(0deg) scale(1.02);
+      box-shadow: 
+        0 12px 30px rgba(193, 39, 45, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
+    }
+  }
+}
+
+// OPTION 4: Modern card style
+.orange-juice-bts p:first-of-type {
+  font-size: clamp(16px, 2.2vw, 20px);
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: white;
+  box-shadow: 0 4px 20px rgba(193, 39, 45, 0.1);
+  font-style: italic;
+  position: relative;
+  
+  &::before {
+    content: 'Director\'s Note';
+    position: absolute;
+    font-family:"League Spartan", sans-serif;
+    top: -12px;
+    left: 20px;
+    background: $aristoRed;
+    color: white;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-style: normal;
+  }
+}
+
+// Script to Screen section
+.orange-juice-bts h3 {
+  color: $aristoRed;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin: 3rem 0 2rem 0;
+  text-align: center;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: $aristoRed;
+  }
+}
+
+// ========================================
+// T-SHAPE IMAGE GRID LAYOUT WITH SEPARATION
+// ========================================
+
+// Common styles for image wrappers
+.image-item {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  background: white;
+  position: relative; /* Important for positioning the ::after pseudo-element */
+  display: flex; /* To center the image inside the wrapper */
+  justify-content: center;
+  align-items: center;
+  flex: 1; /* Allows flex items to grow and shrink */
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  // --- LABEL POSITIONING OPTIONS ---
+  // Default for desktop: Bottom-center, slightly outside 
+  &::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: -25px; 
+    left: 50%;
+    transform: translateX(-50%);
+    font-family:"League Spartan", sans-serif;
+    background: $aristoRed;
+    color: white;
+    padding: 3px 8px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    z-index: 1;
+  }
+}
+
+
+// First set of images (Script1, Reference, Storyboard1, Scene1) - Light background
+.orange-juice-bts div:has(img[src*="OJ Script1"]) {
+  display: grid;
+  grid-template-columns: 1fr; /* Only one column for the script image */
+  grid-template-rows: auto auto; /* Script row, then image row */
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background: rgba($aristoBeige, 0.2);
+  border: 1px solid rgba($aristoRed, 0.1);
+  position: relative;
+  
+  // Scene number label
+  &::before {
+    content: "Scene 1";
+    font-family:"League Spartan", sans-serif;
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: $aristoRed;
+    color: white;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  // Script image spans full width (all three columns)
+  img[src*="Script"] {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    background: white;
+    padding: 10px;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  // New flex container for the three images
+  .image-row-scene1 {
+    grid-column: 1 / -1; /* Span full width of the grid */
+    grid-row: 2; /* Place in the second row */
+    display: flex;
+    gap: 1.5rem;
+    align-items: center; /* Vertically align images in the row */
+  }
+}
+
+// Second set of images (Script2, Storyboard2, Still2) - Darker background - 2 COLUMNS ONLY
+.orange-juice-bts div:has(img[src*="OJ Script2"]) {
+  display: grid;
+  grid-template-columns: 1fr; /* Only one column for the script image */
+  grid-template-rows: auto auto; /* Script row, then image row */
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+  padding: 2rem 2rem 3rem 2rem; // Extra bottom padding for labels
+  background: rgba($aristoYellow, 0.15);
+  border: 1px solid rgba($aristoRed, 0.15);
+  position: relative;
+  
+  &::before {
+    content: "Scene 2";
+    position: absolute;
+    font-family:"League Spartan", sans-serif;
+    top: -12px;
+    left: 20px;
+    background: $aristoRed;
+    color: white;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  // Script image spans full width
+  img[src*="Script"] {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    background: white;
+    padding: 10px;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  // New flex container for the two images
+  .image-row-scene2 {
+    grid-column: 1 / -1; /* Span full width of the grid */
+    grid-row: 2; /* Place in the second row */
+    display: flex;
+    gap: 1.5rem;
+    align-items: center; /* Vertically align images in the row */
+  }
+}
+
+// BTS Photos & Videos section
+.orange-juice-bts h3:last-of-type {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+// ========================================
+// BTS IMAGE/VIDEO GALLERY STYLES (Simplified)
+// ========================================
+
+.orange-juice-bts {
+  .imgRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; // Consistent gap for both horizontal and vertical
+    justify-content: center; // Center items on desktop if the last row is incomplete
+    padding: 0 2rem; // Add padding to the row itself for overall spacing from page edges
+  }
+
+  .imgContainer {
+    flex-grow: 1; // Allow items to grow to fill space
+    flex-shrink: 1; // Allow items to shrink
+    flex-basis: calc(25% - 15px); // Default to 4 columns on larger screens (adjust 25% for more/fewer)
+    min-width: 200px; // Minimum width before wrapping
+    position: relative; // For play icon overlay
+    overflow: hidden; // For hover effects
+    cursor: pointer; // Add pointer cursor for all thumbnails
+
+    // Ensure images and videos inside containers take full width and maintain aspect ratio
+    .picture {
+      width: 100%;
+      height: 200px; /* Fixed height for consistent thumbnails */
+      object-fit: cover; /* Crop to fill, maintaining aspect ratio */
+      transition: transform 0.2s ease-in;
+    }
+
+    .picture:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  .video-thumbnail {
+    .play-icon-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4); // Semi-transparent overlay
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1; // Always visible on video thumbnails
+      transition: background-color 0.3s ease;
+
+      .material-symbols-outlined {
+        font-size: 3rem; // Large play icon
+        color: white;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        transition: transform 0.2s ease-in-out;
+      }
+    }
+
+    &:hover .play-icon-overlay {
+      background-color: rgba(0, 0, 0, 0.6); // Darker on hover
+      .material-symbols-outlined {
+        transform: scale(1.1); // Slightly larger play icon on hover
+      }
+    }
+  }
+}
+
+/* Base modal styles - Corrected to be hidden by default */
+.modal {
+  display: none; /* Changed back to none, removed !important */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  position: fixed;
+  z-index: 1000; /* Higher z-index to ensure it's on top */
+  padding: 0; /* Removed padding as flexbox handles spacing */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Changed from auto to hidden */
+  background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
+  touch-action: pan-y; /* Enable vertical scrolling on touch devices */
+}
+
+/* Modal content container - Added flex properties and height */
+.modal-content {
+  position: relative;
+  margin: auto;
+  padding: 0;
+  width: 80%; /* Default width for larger screens */
+  max-width: 1200px;
+  animation: modalFadeIn 0.3s ease-in-out;
+  border-radius: 0; // Removed rounded corners
+  height: 100%; /* Make it fill the modal's height */
+  max-height: 95vh; /* Limit max height to prevent content from touching edges */
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Horizontally center content within modal-content */
+  justify-content: center; /* Vertically center content within modal-content */
+}
+
+/* MySlides - Set to display: none by default in CSS, added vertical centering */
+.mySlides {
+  display: none; /* Set to none by default */
+  padding: 10px;
+  flex-grow: 0; /* Removed flex-grow to allow modal-content to center the block */
+  flex-direction: column; /* Stack its children vertically */
+  align-items: center; /* Horizontally center content within mySlides */
+}
+
+// Lightbox media container styles - Background changed to transparent, flex-grow added
+.lightbox-media-container {
+  width: 100%;
+  height: auto;
+  max-height: 80vh; /* Limit height on larger screens */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent; // Changed from black to transparent
+  position: relative; // For absolute positioning of media
+  flex-grow: 1; /* Allow it to grow and take available vertical space */
+  flex-shrink: 1; /* Allow shrinking */
+  flex-basis: auto; /* Allow content to determine its size */
+  
+  img, video {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain; // Ensure media fits within container
+    display: block;
+    margin: 0 auto;
+  }
+
+  video {
+    // Ensure video controls are visible and video fills space
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Image info - Removed top/bottom padding for BTS page */
+.modal .imgInfo {
+  font-family: "Lexend", sans-serif;
+  text-align: center;
+  margin: 15px 0;
+  padding: 0 10px; /* Only horizontal padding for BTS page */
+  flex-shrink: 0; /* Prevent it from shrinking */
+}
+
+// Lightbox number text (e.g., "1/8")
+.modal .numbertext {
+  font-family: "League Spartan", sans-serif;
+  color: #333;
+  font-size: 18px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+  z-index: 10; // Ensure it's above other elements
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .orange-juice-bts #pageTitle {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0 2rem 0;
+    border-width: 2px; /* Lower border thickness for mobile */
+  }
+  
+  // Stack everything vertically on mobile
+  .orange-juice-bts div:has(img[src*="OJ Script1"]),
+  .orange-juice-bts div:has(img[src*="OJ Script2"]) {
+    display: flex; /* Change to flex for mobile stacking */
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    
+    &::before {
+      top: -10px;
+      left: 15px;
+      font-size: 0.6rem; // Made smaller for mobile
+      padding: 2px 6px; // Reduced padding
+    }
+    
+    img, iframe {
+      object-fit: contain;
+      background: white;
+      
+      &[src*="Script"] {
+        padding: 8px;
+      }
+    }
+
+    // Ensure image rows also stack on mobile
+    .image-row-scene1, .image-row-scene2 {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    // Re-enable and style labels for mobile (overlapping)
+    .image-item::after {
+      display: block; // Make it visible on mobile
+      position: absolute; // Keep absolute positioning relative to .image-item
+      bottom: 5px; // Overlap the image slightly from the bottom
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.6rem; // Smaller font size for mobile
+      padding: 2px 6px; // Smaller padding
+      background: rgba($aristoRed, 0.85); // Semi-transparent background for readability
+      color: white;
+      white-space: nowrap; // Keep text on one line
+      border-radius: 3px; // Slightly rounded corners
+    }
+  }
+  
+  .orange-juice-bts p:first-of-type {
+    padding: 1rem;
+    font-size: clamp(14px, 3vw, 18px);
+    line-height: 1.4; // Decreased line spacing on mobile
+    
+    &::before {
+      font-size: 0.6rem; // Made Director's Note tag smaller on mobile
+      padding: 2px 8px;
+    }
+  }
+
+  .orange-juice-bts .imgRow {
+    gap: 10px; // Smaller gap on tablet
+    padding: 0 1.5rem; // Adjust padding for tablet
+    justify-content: flex-start; // Align items to the start on tablet (2 columns)
+  }
+
+  .orange-juice-bts .imgContainer {
+    flex-basis: calc(50% - 10px); // 2 columns on tablet
+    min-width: 150px; // Smaller min-width for tablets
+    .picture {
+      height: 150px; /* Smaller fixed height for tablet */
+    }
+  }
+
+  .lightbox-media-container {
+    flex-grow: 1; /* Allow it to grow and take available vertical space */
+    max-height: 80vh; // Increased size for mobile
+  }
+
+  .modal .numbertext {
+    font-size: 16px;
+    padding: 6px 10px;
+    top: 10px; // Keep consistent with photography page
+    left: 10px; // Keep consistent with photography page
+  }
+
+  .modal-content {
+    padding: 0; /* Remove padding from modal-content */
+  }
+
+  .prev,
+  .next {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    top: 50%;
+    margin-top: -25px; /* Adjust margin-top for 50px height */
+    background-color: rgba(255, 255, 255, 0.7); /* Reverted hover transparency */
+  }
+  
+  .prev {
+    left: 10px; /* Padding from screen edge */
+  }
+  .next {
+    right: 10px; /* Padding from screen edge */
+  }
+
+  .modal .imgInfo {
+    padding: 5px 10px; /* Reduced vertical padding for mobile */
+    margin: 5px 0; /* Reduced margin for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .orange-juice-bts #pageTitle {
+    transform: rotate(0deg);
+  }
+  
+  .orange-juice-bts div:has(img[src*="OJ Script1"]),
+  .orange-juice-bts div:has(img[src*="OJ Script2"]) {
+    gap: 0.8rem;
+    padding: 1rem;
+    
+    &::before {
+      font-size: 0.5rem; // Even smaller on very small screens
+      padding: 2px 5px;
+    }
+    
+    img, iframe {
+      &[src*="Script"] {
+        padding: 5px;
+      }
+    }
+  }
+  
+  .orange-juice-bts p:first-of-type {
+    line-height: 1.3; // Further decreased line spacing
+    
+    &::before {
+      font-size: 0.5rem;
+      padding: 2px 6px;
+    }
+  }
+
+  .orange-juice-bts .imgRow {
+    gap: 8px; // Even smaller gap on phone
+    padding: 0 1rem; // Even smaller padding
+    justify-content: center; // Center the single column on phone
+  }
+
+  .orange-juice-bts .imgContainer {
+    flex-basis: 100%; // Force single column on phone
+    min-width: auto; // Remove min-width constraint
+    .picture {
+      height: 120px; /* Even smaller fixed height */
+      max-width: 300px; /* Optional: limit max width of image in single column */
+    }
+  }
+
+  .lightbox-media-container {
+    flex-grow: 1; /* Allow it to grow and take available vertical space */
+    max-height: 75vh; // Increased size for very small mobile
+  }
+
+  .modal .numbertext {
+    font-size: 14px;
+    padding: 4px 8px;
+    top: 10px; // Keep consistent with photography page
+    left: 10px; // Keep consistent with photography page
+  }
+
+  .modal-content {
+    padding: 0; /* Remove padding from modal-content */
+  }
+
+  .prev,
+  .next {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    margin-top: -20px; /* Adjust margin-top for 40px height */
+    background-color: rgba(255, 255, 255, 0.7); /* Reverted hover transparency */
+  }
+  
+  .prev {
+    left: 5px; /* Padding from screen edge */
+  }
+  .next {
+    right: 5px; /* Padding from screen edge */
+  }
+
+  .modal .imgInfo {
+    padding: 5px 10px;
+    margin: 5px 0;
+  }
+
+  .imgInfo h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  .imgInfo p {
+    font-size: 12px;
+  }
+}
