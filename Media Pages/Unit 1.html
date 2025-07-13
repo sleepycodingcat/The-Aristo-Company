@@ -57,9 +57,8 @@
       </button>
     </header>
 
+    <!-- Placeholder for the sidebar content -->
     <div id="sidebar-placeholder"></div>
-
-
 
     <div id="briefWrapper">
         <h1 id="brief">Brief</h1>
@@ -73,7 +72,8 @@
 
     <div class="unit1Section">
         <div>
-            <embed src="../PDF files/Unit 1 Research Plan 2024.pdf#toolbar=0&navpanes=0&scrollbar=0" width="500" height="600" type="application/pdf">
+            <!-- Lazy load PDF embed -->
+            <embed class="lazy-load-media" data-src="../PDF files/Unit 1 Research Plan 2024.pdf#toolbar=0&navpanes=0&scrollbar=0" width="500" height="600" type="application/pdf">
         </div>
         <div class="activityDescript">
             <h1 class="activityTitle" id="activity11">Activity 1.1</h1>
@@ -86,7 +86,8 @@
 
     <div class="unit1Section">
         <div>
-            <iframe class="gSlides" src="https://docs.google.com/presentation/d/e/2PACX-1vRRWr-fZYsV1ivnnhFGUtc6a-jbfnRDmNLUK4Dk3egsaeiNncuARj-Qt9hG1e58fuBTSCFCtCIIqwfd/pubembed?start=false&loop=true&delayms=3000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            <!-- Lazy load Google Slides iframe -->
+            <iframe class="gSlides lazy-load-media" data-src="https://docs.google.com/presentation/d/e/2PACX-1vRRWr-fZYsV1ivnnhFGUtc6a-jbfnRDmNLUK4Dk3egsaeiNncuARj-Qt9hG1e58fuBTSCFCtCIIqwfd/pubembed?start=false&loop=true&delayms=3000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
         </div>
         <div class="activityDescript">
             <h1 class="activityTitle" id="activity12">Activity 1.2</h1>
@@ -97,7 +98,8 @@
 
     <div class="unit1Section">
         <div>
-            <iframe class="gSlides" src="https://docs.google.com/presentation/d/e/2PACX-1vRS5gUSR26-BSVTOc2taSQ7QsynimCUfLDW6bbweRMyWoI_0rIoxohD3Br4pfLfVEmVO3f0uqWwCa3O/pubembed?start=false&loop=true&delayms=3000" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            <!-- Lazy load Google Slides iframe -->
+            <iframe class="gSlides lazy-load-media" data-src="https://docs.google.com/presentation/d/e/2PACX-1vRS5gUSR26-BSVTOc2taSQ7QsynimCUfLDW6bbweRMyWoI_0rIoxohD3Br4pfLfVEmVO3f0uqWwCa3O/pubembed?start=false&loop=true&delayms=3000" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
         </div>
         <div class="activityDescript">
             <h1 class="activityTitle" id="activity2">Activity 2</h1>
@@ -109,13 +111,13 @@
     <div id="activity3Wrapper">
         <div id="activity3">
             <h1 class="activityTitle" >Activity 3 - Final Product</h1>
-            <iframe id="unit1Video" height="400" width="800" src="https://drive.google.com/file/d/1p8sPISLnwcbtRtPem0bRTy2j4J_UMCkH/preview" allow="autoplay"></iframe>
+            <!-- Lazy load Google Drive video iframe -->
+            <iframe id="unit1Video" class="lazy-load-media" data-src="https://drive.google.com/file/d/1p8sPISLnwcbtRtPem0bRTy2j4J_UMCkH/preview" allow="autoplay" height="400" width="800"></iframe>
         </div>
     </div> 
 
+    <!-- Placeholder for the footer content -->
     <div id="footer-placeholder"></div>
-
-
    
     <click-spark></click-spark>
     <script src="../script.js"></script>
