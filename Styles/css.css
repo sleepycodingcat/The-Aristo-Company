@@ -2082,14 +2082,15 @@ footer .subheading {
 
 .lightbox-content {
   position: relative;
-  width: 90%;
-  max-width: 1100px;
+  width: 95%;
+  max-width: 1600px;
   height: 90vh; /* Changed from max-height to fixed height */
   background: white;
   border-radius: 8px;
   overflow: hidden;
   animation: fadeIn 0.3s ease;
   display: flex; /* Added to help with layout */
+  margin: 2rem auto;
 }
 
 .lightbox-container {
@@ -2105,7 +2106,8 @@ footer .subheading {
   }
   /* Adjust the lightbox content for wider screens */
   .lightbox-content {
-    height: 80vh; /* Slightly smaller on desktop */
+    height: 85vh; /* Slightly smaller on desktop */
+    max-width: 1600px;
   }
 }
 .close-btn {
@@ -2128,7 +2130,7 @@ footer .subheading {
 
 .lightbox-media {
   position: relative;
-  flex: 2;
+  flex: 3;
   min-height: 0; /* Reset min-height */
   background: black;
   display: flex;
@@ -2180,6 +2182,7 @@ footer .subheading {
   .lightbox-content {
     width: 95%;
     height: 95vh;
+    margin: 1rem auto;
   }
   .lightbox-info {
     padding: 1.5rem;
