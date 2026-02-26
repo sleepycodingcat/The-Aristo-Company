@@ -642,10 +642,10 @@ footer .subheading {
   transform: scale(1.03);
 }
 
-.imgColumn .picture:hover ~ .hoverStickPpl {
+/* .imgColumn .picture:hover ~ .hoverStickPpl {
   transition: opacity 0.4s;
   opacity: 100%;
-}
+} */
 
 .hoverStickPpl {
   opacity: 0%; /* temp turning off stickppl */
@@ -660,7 +660,7 @@ footer .subheading {
   opacity: 0%;
 }
 
-#runningStick:hover {
+/* #runningStick:hover {
   opacity: 100%;
 }
 
@@ -674,7 +674,7 @@ footer .subheading {
 
 #stairStick:hover {
   opacity: 100%;
-}
+} */
 
 .imgColumn .picture:not(:hover) {
   transition: transform 0.2s ease-out;
@@ -693,7 +693,7 @@ footer .subheading {
   left: 68%;
   top: 44%;
   width: 10%;
-  z-index: 1;
+  z-index: -1; /*temp - og z-index was 1*/
 }
 
 #stairStick {
@@ -701,7 +701,7 @@ footer .subheading {
   left: 6%;
   top: 5%;
   width: 10%;
-  z-index: 1;
+  z-index: -1;/*temp - og z-index was 1*/
 }
 
 #bookStick {
@@ -709,7 +709,7 @@ footer .subheading {
   left: 20%;
   top: 30%;
   width: 35%;
-  z-index: 1;
+  z-index: -1;/*temp - og z-index was 1*/
 }
 
 #jailStick {
@@ -717,7 +717,7 @@ footer .subheading {
   left: 7%;
   top: 10%;
   width: 78%;
-  z-index: 1;
+  z-index: -1;/*temp - og z-index was 1*/
 }
 
 /* IMAGE LIGHTBOX */
