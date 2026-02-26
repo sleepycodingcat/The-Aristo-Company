@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeBtn = document.querySelector(".close-btn")
   const lightboxPlayer = document.getElementById("lightboxPlayer")
   const lightboxTitle = document.getElementById("lightboxTitle")
+  const lightboxMeta = document.getElementById("lightboxMeta")
   const lightboxDesc = document.getElementById("lightboxDesc")
 
   filmItems.forEach((item) => {
@@ -43,10 +44,25 @@ document.addEventListener("DOMContentLoaded", () => {
       const title = this.getAttribute("data-title")
       const desc = this.getAttribute("data-desc")
       const btsLink = this.getAttribute("data-bts-link") // Get the BTS link
+      const runtime = this.getAttribute("data-runtime")
+      const year = this.getAttribute("data-year")
+      const role = this.getAttribute("data-role")
 
       lightboxPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`
       lightboxTitle.textContent = title
       lightboxDesc.textContent = desc
+
+      // Build metadata line
+      if (year || runtime || role) {
+        const metaParts = []
+        if (year) metaParts.push(year)
+        if (runtime) metaParts.push(runtime)
+        if (role) metaParts.push(role)
+        lightboxMeta.textContent = metaParts.join(" • ")
+        lightboxMeta.style.display = "block"
+      } else {
+        lightboxMeta.style.display = "none"
+      }
 
       // Set the BTS button href
       const btsBtn = document.getElementById("btsBtn")

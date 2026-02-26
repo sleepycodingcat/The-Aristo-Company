@@ -2076,6 +2076,13 @@ footer .subheading {
   margin-bottom: 40px;
 }
 
+#lightboxMeta {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+
 #btsBtn {
   margin: 0;
 }
