@@ -648,7 +648,7 @@ footer .subheading {
 }
 
 .hoverStickPpl {
-  opacity: 100%;
+  opacity: 0%; /* temp turning off stickppl */
 }
 
 .myModal:hover + .hoverStickPpl {
