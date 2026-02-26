@@ -50,8 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       lightboxPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`
       lightboxTitle.textContent = title
-      lightboxDesc.textContent = desc
-
+      lightboxDesc.innerHTML = desc.replace('|', '<br><br>')
       // Build metadata line
       if (year || runtime || role) {
         const metaParts = []
