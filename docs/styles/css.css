@@ -1439,7 +1439,7 @@ footer .subheading {
   padding-bottom: clamp(100px, 15vh, 200px);
   padding-top: 25%;
   padding-bottom: 200px;
-  background-image: url("../archive/Film%20BTS/APOC/edited.JPEG");
+  background-image: url("../../archive/Film%20BTS/APOC/edited.JPEG");
   background-position: 60% 30%;
 }
 @media screen and (max-width: 480px) {
@@ -1458,7 +1458,7 @@ footer .subheading {
   background-repeat: no-repeat;
   padding-top: clamp(150px, 25vh, 250px);
   padding-bottom: clamp(100px, 15vh, 200px);
-  background-image: url("../assets/media/Come%20Alive%20thumbnail.png");
+  background-image: url("assets/media/Come%20Alive%20thumbnail.png");
   padding-top: 200px;
   padding-bottom: 200px;
   -o-object-fit: cover;
@@ -1478,7 +1478,7 @@ footer .subheading {
   padding-bottom: clamp(100px, 15vh, 200px);
   padding-top: 25%;
   padding-bottom: 200px;
-  background-image: url("../dist/photos/compressed/Stairs.jpeg");
+  background-image: url("../../dist/photos/compressed/Stairs.jpeg");
   background-position: center center;
 }
 #allParallaxContainer .parallax-three:hover .parallax-three-overlay {
@@ -1753,12 +1753,12 @@ footer .subheading {
 }
 
 #unit1 {
-  background-image: url("../assets/media/Unit%201%20preview.png");
+  background-image: url("assets/media/Unit%201%20preview.png");
   background-color: #fbe492;
 }
 
 #unit2 {
-  background-image: url("../assets/media/Unit%204%20preview.png");
+  background-image: url("assets/media/Unit%204%20preview.png");
   background-color: #fbe492;
 }
 
