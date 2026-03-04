@@ -1,6 +1,19 @@
 let sidebarOpen = false
 let isMobile = false
 
+async function fetchComponentHtml(fileName) {
+  const componentBases = ["components", "../components"]
+
+  for (const basePath of componentBases) {
+    const response = await fetch(`${basePath}/${fileName}`)
+    if (response.ok) {
+      return response.text()
+    }
+  }
+
+  throw new Error(`Failed to load component: ${fileName}`)
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener("DOMContentLoaded", async () => {
   // Load sidebar first
@@ -12,13 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.addEventListener("touchstart", handleTouchStart)
 
   // Load the footer
-  fetch("../components/footer.html")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Failed to load footer: ${response.statusText}`)
-      }
-      return response.text()
-    })
+  fetchComponentHtml("footer.html")
     .then((data) => {
       const footerPlaceholder = document.getElementById("footer-placeholder")
       if (footerPlaceholder) {
@@ -35,22 +42,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           </footer>
         `
       }
-    })
-
-  // Load the sidebar (already handled by loadSidebar function)
-  // The fetch for sidebar.html here is redundant if loadSidebar is called.
-  // Keeping it for now as it was in your original script, but it's effectively
-  // handled by the initial `await loadSidebar()` call.
-  fetch("../components/sidebar.html")
-    .then((response) => response.text())
-    .then((data) => {
-      const sidebarPlaceholder = document.getElementById("sidebar-placeholder")
-      if (sidebarPlaceholder) {
-        sidebarPlaceholder.innerHTML = data
-      }
-    })
-    .catch((error) => {
-      console.error("Error loading sidebar (redundant fetch):", error)
     })
 
   const logoContainer = document.querySelector("#logoContainer")
@@ -106,11 +97,7 @@ window.addEventListener("resize", checkMobile)
 // Load sidebar from external file
 async function loadSidebar() {
   try {
-    const response = await fetch("../components/sidebar.html") // Adjust path as needed
-    if (!response.ok) {
-      throw new Error(`Failed to load sidebar: ${response.statusText}`)
-    }
-    const sidebarHTML = await response.text()
+    const sidebarHTML = await fetchComponentHtml("sidebar.html")
 
     // Insert sidebar into placeholder
     const placeholder = document.getElementById("sidebar-placeholder")
