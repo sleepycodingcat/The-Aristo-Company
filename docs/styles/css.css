@@ -1439,7 +1439,7 @@ footer .subheading {
   padding-bottom: clamp(100px, 15vh, 200px);
   padding-top: 25%;
   padding-bottom: 200px;
-  background-image: url("../archive/Film%20BTS/APOC/edited.JPEG");
+  background-image: url("../../archive/Film%20BTS/APOC/edited.JPEG");
   background-position: 60% 30%;
 }
 @media screen and (max-width: 480px) {
@@ -1478,7 +1478,7 @@ footer .subheading {
   padding-bottom: clamp(100px, 15vh, 200px);
   padding-top: 25%;
   padding-bottom: 200px;
-  background-image: url("../dist/photos/compressed/Stairs.jpeg");
+  background-image: url("../../dist/photos/compressed/Stairs.jpeg");
   background-position: center center;
 }
 #allParallaxContainer .parallax-three:hover .parallax-three-overlay {
