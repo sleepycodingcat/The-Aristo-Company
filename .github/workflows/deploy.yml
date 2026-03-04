@@ -1,0 +1,77 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create docs directory structure
+        run: |
+          mkdir -p docs
+          mkdir -p docs/components
+          mkdir -p docs/styles
+          mkdir -p docs/assets
+          mkdir -p docs/js
+
+      - name: Copy HTML pages
+        run: |
+          cp src/html/pages/*.html docs/
+
+      - name: Copy components
+        run: |
+          cp src/html/components/*.html docs/components/
+
+      - name: Copy styles
+        run: |
+          cp -r src/styles/* docs/styles/
+
+      - name: Copy assets
+        run: |
+          cp -r src/assets/* docs/assets/
+
+      - name: Copy JavaScript
+        run: |
+          cp -r src/js/* docs/js/
+
+      - name: Copy dist (photos)
+        run: |
+          mkdir -p docs/dist
+          cp -r dist/photos docs/dist/
+
+      - name: Update HTML relative paths
+        run: |
+          find docs -maxdepth 1 -name "*.html" -type f -exec sed -i 's|../../styles/|styles/|g' {} \;
+          find docs -maxdepth 1 -name "*.html" -type f -exec sed -i 's|../../assets/|assets/|g' {} \;
+          find docs -maxdepth 1 -name "*.html" -type f -exec sed -i 's|../../js/|js/|g' {} \;
+          find docs -maxdepth 1 -name "*.html" -type f -exec sed -i 's|../../dist/|dist/|g' {} \;
+
+      - name: Update CSS relative paths in compiled CSS
+        run: |
+          sed -i 's|url("\.\./\.\./\.\./dist/|url("dist/|g' docs/styles/css.css
+          sed -i 's|url("\.\./\.\./\.\./archive/|url("archive/|g' docs/styles/css.css
+          sed -i 's|url("\.\./assets/|url("assets/|g' docs/styles/css.css
+
+      - name: Commit and push built docs
+        run: |
+          cd docs
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit"
+          else
+            git config --global user.name "GitHub Actions"
+            git config --global user.email "actions@github.com"
+            git add -A
+            git commit -m "Deploy: Update docs folder from src/ [skip ci]"
+            git push origin $(git rev-parse --abbrev-ref HEAD)
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

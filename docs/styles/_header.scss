@@ -1,0 +1,484 @@
+// INCLUDES HEADER & SIDEBAR
+
+header{
+  flex-wrap:wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  margin: 20px 0vw 6vw 0px;
+  padding: 0 10px;
+  position: relative;
+
+  h1{
+    font-size: clamp(30px, 2.8vw, 50px); /* Min 16px, max 24px, responsive in between */
+    margin: 20px 10px 0px 10px; /* Add horizontal spacing */
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+
+  a{
+    display:flex;
+    text-decoration: none;
+    color:black;
+    &:hover{
+        color: $aristoRed;
+        transition: color 0.2s; 
+    }
+  }
+
+  button{
+    border:none;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+}
+
+}
+
+#btecBtn{
+  @extend h1
+}
+
+#menuIcon {
+  font-size: clamp(30px, 5vw, 48px);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+  /* KEY FIX: Match the h1 margin to align baselines */
+  margin: 20px 10px 0px 10px;
+  /* Additional fixes for Material Icons alignment */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  /* Remove any default button styling that might affect alignment */
+  padding: 0;
+  vertical-align: baseline;
+
+  &:hover {
+    color: $aristoRed; /* Change color on hover */
+  }
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#videoLogo {
+  display: block;
+  visibility: visible ;
+  width: auto;
+  height: clamp(40px, 6vw, 70px);
+}
+
+#staticLogo {
+  display: none; // Hidden by default
+  height: clamp(40px, 6vw, 70px);
+  width: auto;
+}
+
+// DROPDOWN MENU
+#dropdown {
+  z-index: 100;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  pointer-events: none; /* Allows clicks to pass through when not active */
+
+  &Content {
+    transform: translateY(-101%);
+    background-color: $aristoBlack;
+    color:$aristoYellow;
+    padding: 10px 15px;
+    transition: transform 0.4s ease;
+    min-width: 180px;
+    pointer-events: auto; /* Restores click events for content */
+
+    a {
+      width: 100%;
+      text-align: left;
+      color: $aristoYellow;
+      display: block;
+      white-space: normal;
+      margin: 9px 0;
+      padding: 4px 10px;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.3s ease;
+      z-index: 1;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background-color: $aristoRed;
+        transition: all 0.4s ease;
+        z-index: -1;
+      }
+
+      &:hover {        
+        &::before {
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+/* Dropdown trigger */
+#btecBtn:hover + #dropdown #dropdownContent,
+#dropdown #dropdownContent:hover {
+  transform: translateY(0);
+}
+
+
+#dropdown a {
+  width: 100%; /* Set the width of anchor tags to 100% */
+  text-align: left; /* center align the text within the anchor tags */
+  color:$aristoYellow;
+  display: block; /* Ensure it's a block element */
+  white-space: normal; /* Allow text to wrap */
+  margin: 9px 0;
+  padding: 4px 10px; /* Add padding for the hover effect */
+  position: relative; /* For the pseudo-element positioning */
+  overflow: hidden; /* Hide the overflow for the animation */
+  transition: color 0.3s ease; /* Smooth transition for text color */
+  z-index: 1; /* Ensure text stays above the animated background */
+}
+
+/* MENU SIDEBAR */
+.sideNav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 102;
+  top: 0;
+  right: 0;
+  background-color: $aristoYellow;
+  overflow-x: hidden;
+  transition: 0.5s;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+
+  h1{
+    margin:20px 0px;
+    text-decoration: underline;
+    text-decoration-color: $aristoRed;;
+  }
+  a {
+    text-decoration: none;
+    font-family: "League Spartan", sans-serif;
+    color: black;
+    font-size: 2rem;
+    font-weight: 600;
+    position: relative; 
+    transition: all 0.3s ease;
+    z-index: 1;
+    display: block;
+    padding: 15px 0;
+    min-height: 44px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      background-color: $aristoRed;
+      transition: width 0.3s ease;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: $aristoRed;
+        
+        &::before {
+          width: 100%;
+        }
+      }
+    }
+
+    &:active {
+      color: $aristoRed;
+      
+      &::before {
+        width: 60%;
+      }
+    }
+
+    &:focus {
+      color: $aristoRed;
+      outline: 2px solid $aristoRed;
+      outline-offset: 2px;
+      
+      &::before {
+        width: 100%;
+      }
+    }
+
+
+    // Add visual markers for sub-pages in sidebar
+    &[href*="Unit"], &[href*="Learner"] {
+      font-weight: 400; // Medium weight for sub-pages
+      font-size: 1.8rem; // Slightly smaller
+      padding-left: 40px; // Extra indent for sub-pages
+
+      
+      &::after {
+        content: "└";
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $aristoRed;
+        font-weight: 400;
+        transition: left 0.3s ease;
+      }
+      
+      &:hover::after {
+        left: 20px; // Slide the marker in on hover
+      }
+    }
+
+    // Special handling for "Learner Declarations" text wrapping
+    &[href*="Learner"] {
+      line-height: 1.2;
+      white-space: normal;
+      word-wrap: break-word;
+      text-indent: -10px; // Hanging indent for wrapped text
+    }
+  }
+}
+
+#navContent{
+  padding:10px 50px;
+}
+
+#navBarClose{
+  margin:2vh 0vh;
+  font-size: clamp(5vw,5vw,12vw);
+
+  &:hover{
+    cursor: pointer;
+    color: $aristoRed; /* Change color on hover */
+  }
+}
+
+
+/* Responsive breakpoints */
+
+/* Large tablets and smaller (1024px and below) */
+@media screen and (max-width: 1024px) {
+  header {
+    margin: 15px 0vw 5vw 0px; /* Slightly reduced margins */
+  }
+
+  header h1 {
+    font-size: clamp(18px, 2.8vw, 26px); /* Slightly smaller text */
+    margin: 15px 8px 0px 8px; /* Reduced spacing */
+  }
+  #menuIcon {
+    margin: 15px 8px 0px 8px;
+  }
+  .sideNav {
+    h1 {
+      font-size: 3.5rem;
+      margin: 12px 0 8px 0;
+    }
+
+    a {
+      font-size: 1.8rem;
+      padding: 8px 0; // Removed horizontal padding
+      margin: 2px 0;
+
+      &[href*="Unit"], &[href*="Learner"] {
+        font-size: 1.6rem;
+        padding-left: 40px; // Keep indent for sub-pages
+      }
+    }
+  }
+
+  #navContent {
+    padding: 10px 40px;
+  }
+}
+
+/* Medium tablets and smaller (768px and below) */
+@media screen and (max-width: 768px) {
+  header {
+    margin: 10px 0vw 4vw 0px; /* Reduced margins */
+    flex-wrap: nowrap; /* Prevent wrapping */
+  }
+
+  .sideNav {
+    h1 {
+      font-size: 2rem;
+      margin: 10px 0 6px 0;
+      line-height: 0.9;
+    }
+
+    a {
+      font-size: 1.6rem;
+      padding: 6px 0; // Removed horizontal padding
+      margin: 1px 0;
+
+      &[href*="Unit"], &[href*="Learner"] {
+        font-size: 1.4rem;
+        padding-left: 35px; // Keep indent for sub-pages
+      }
+    }
+  }
+
+  #navContent {
+    padding: 10px 30px;
+  }
+
+  #navContent {
+    padding: 10px 30px;
+  }
+
+  header h1 {
+    font-size: clamp(16px, 2.5vw, 22px); /* Smaller text */
+    margin: 15px 5px 0px 5px; /* Reduced spacing */
+  }
+
+  #dropdownContent {
+    min-width: 100px; /* Slightly smaller width */
+  }
+
+  #menuIcon {
+    margin: 15px 5px 0px 5px;
+  }
+
+}
+
+/* Small tablets and phones (600px and below) */
+@media screen and (max-width: 600px) {
+  #videoLogo {
+    display: none;
+  }
+  
+  #staticLogo {
+    display: block;
+  }
+  header {
+    justify-content: space-between; /* Space between logo and menu icon */
+    padding: 0 15px; /* Add padding */
+    margin: 10px 0 20px 0; /* Adjusted margins */
+  }
+
+  #logoContainer {
+    flex: 0 0 auto; /* Don't grow or shrink */
+    display: block !important;
+    visibility: visible !important;
+    z-index: 10;
+  }
+
+  /* Show menu icon */
+  #menuIcon {
+    display: block;
+    margin-left: auto;
+    /* Reset margin for mobile - let margin-left: auto handle positioning */
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+
+  /* Hide navigation text */
+  header h1,
+  header a:not(#logoContainer a) {
+    display: none;
+  }
+
+  /* Enhance sidebar navigation for mobile */
+  .sideNav {
+    &.open {
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin: 8px 0 4px 0;
+      line-height: 0.8;
+      font-weight: 700;
+    }
+
+    a {
+      font-size: 1.4rem;
+      padding: 5px 0; // Removed horizontal padding
+      margin: 1px 0;
+
+      &[href*="Unit"], &[href*="Learner"] {
+        font-size: 1.2rem;
+        padding-left: 30px; // Keep indent for sub-pages
+      }
+    }
+  }
+
+  #navContent {
+    padding: 15px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #navBarClose {
+    margin: 8px 0 12px 0;
+    align-self: flex-end;
+  }
+}
+
+/* Very small phones (400px and below) */
+@media screen and (max-width: 400px) {
+  header {
+    padding: 0 10px;
+    margin: 5px 0 15px 0;
+  }
+
+  #logo {
+    height: clamp(35px, 5vw, 50px); /* Slightly smaller logo */
+  }
+
+  #menuIcon {
+    font-size: clamp(28px, 4.5vw, 40px); /* Slightly smaller icon */
+  }
+
+  /* Adjust sidebar for very small screens */
+  .sideNav {
+    &.open {
+      width: 95%;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin: 10px 3px;
+      line-height: 0.8;
+    }
+
+    a {
+      font-size: 1.2rem;
+      padding: 4px 0; // Removed horizontal padding
+      margin: 0;
+
+      &[href*="Unit"], &[href*="Learner"] {
+        font-size: 1.1rem;
+        padding-left: 25px; // Keep indent for sub-pages
+      }
+    }
+  }
+
+  #navContent {
+    padding: 12px 20px;
+  }
+
+  #navBarClose {
+    margin: 6px 0 10px 0;
+    font-size: clamp(8vw, 8vw, 10vw);
+  }
+}
