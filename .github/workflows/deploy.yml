@@ -50,6 +50,7 @@ jobs:
 
       - name: Update HTML relative paths
         run: |
+          find docs -maxdepth 1 -name "*.html" -type f -exec sed -i 's|../../../dist/|dist/|g' {} \;
           find docs -maxdepth 1 -name "*.html" -type f -exec sed -i 's|../../styles/|styles/|g' {} \;
           find docs -maxdepth 1 -name "*.html" -type f -exec sed -i 's|../../assets/|assets/|g' {} \;
           find docs -maxdepth 1 -name "*.html" -type f -exec sed -i 's|../../js/|js/|g' {} \;
