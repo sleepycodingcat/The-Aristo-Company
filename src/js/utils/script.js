@@ -2,12 +2,22 @@ let sidebarOpen = false
 let isMobile = false
 
 async function fetchComponentHtml(fileName) {
-  const componentBases = ["components", "../components"]
+  const pathSegments = window.location.pathname.split("/").filter(Boolean)
+  const siteBase = pathSegments.length > 0 ? `/${pathSegments[0]}` : ""
+  const candidatePaths = [
+    siteBase ? `${siteBase}/components/${fileName}` : "",
+    `components/${fileName}`,
+    `../components/${fileName}`,
+  ].filter(Boolean)
 
-  for (const basePath of componentBases) {
-    const response = await fetch(`${basePath}/${fileName}`)
-    if (response.ok) {
-      return response.text()
+  for (const candidatePath of [...new Set(candidatePaths)]) {
+    try {
+      const response = await fetch(candidatePath)
+      if (response.ok) {
+        return response.text()
+      }
+    } catch {
+      continue
     }
   }
 
