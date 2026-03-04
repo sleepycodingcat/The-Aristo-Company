@@ -18,7 +18,7 @@
     <meta property="og:title" content="Rachell Aristo | Film Portfolio">
     <meta property="og:description" content="Rachell Aristo - Hong Kong student filmmaker portfolio">
     <meta property="og:image" content="https://raw.githubusercontent.com/sleepycodingcat/The-Aristo-Company/refs/heads/main/SEO/og_image_APOC.png"> 
-    <meta property="og:url" content="https://sleepycodingcat.github.io/The-Aristo-Company/Media%20Pages/mediaHome.html">
+    <meta property="og:url" content="https://sleepycodingcat.github.io/The-Aristo-Company/">
     <meta property="og:type" content="website">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z20GTZGMZ5"></script>
@@ -31,290 +31,122 @@
     </script>
 </head>
 <body>
-  <click-spark></click-spark>
-  <header>
+
+    <div class="aristo-preloader">
+        <div class="loader__filmstrip"></div>
+        <h2 class="loader__text">Hold on tight! I'm looking for the SD card 😬</h2>
+    </div>
+
+    <header>
       <div id="logoContainer">
-          <a href="mediaHome.html"><video playsinline muted id="videoLogo" src="assets/logos/Logo video.mp4"></video></a>
-           <img id="staticLogo" src="assets/logos/The Aristo Company logo.png" alt="The Aristo Company Logo">
+          <a href="index.html"><video playsinline muted id="videoLogo" src="assets/logos/Logo video.mp4"></video></a>
+           <a href="index.html"><img id="staticLogo" src="assets/logos/The Aristo Company logo.png" alt="The Aristo Company Logo"></a>
+      </div>
+
+      <a href="otherMediaHome.html">
+          <h1>FILMS</h1>
+      </a>
+
+      <a href="mediaPhotography.html">
+          <h1>PHOTOS</h1>
+      </a>
+
+      <div>
+          <h1><a id="btecBtn" href="btecHome.html">BTEC L.2</a>
+          <div id="dropdown">
+              <div id="dropdownContent">
+                  <a href="Unit 1.html">Unit 1</a>
+                  <a href="Unit 4.html">Unit 4</a>
+                  <a id="learnerDeclarations" href="Learner_Declarations.html">Learner <br> Declarations</a>
+              </div>
+          </div>
+          </h1>
       </div>
       
       <button onclick="openNav()" id="menuIcon" class="material-symbols-outlined">
           menu
       </button>
     </header>
-  <div id="navBar" class="sideNav">
-    <div id = "navContent">
-        <btn class="material-symbols-outlined" id="navBarClose" onclick="closeNav()">
-            close
-        </btn>
-        <h1>FILM</h1>
-        <a href = "mediaPhotography.html">Photos</a><br>
-        <a href = "btecHome.html">BTEC L2</a><br>
-        <a href="Unit 1.html">&emsp;Unit 1</a><br>
-        <a href="Unit 4.html">&emsp;Unit 4</a><br>
-        <a href = "otherMediaHome.html">Other</a><br>
+
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Parallax Content -->
+    <div id="allParallaxContainer">
+
+        <!-- First Parallax Section -->
+        <section>
+            <div class="parallax-one">
+                <p class ="imgCaption">A Piece of Cake with Babel Film Workshop 2025</p>
+            </div>
+        </section>
+
+        <!-- First Content Block -->
+        <section>
+            <div class="block">
+                <p class="line-break margin-top-10"></p>
+                <p class="margin-top-10">Hey there, I'm Rachell! Ever since I made a 
+                    silly little short film involving dinosaurs, ice cream, and spontaneous 
+                    dancing, I've fallen head over heels in love with filmmaking. Like all 
+                    student filmmakers, I've worn every hat in production, 
+                    from directing to editing, or god forbid, attempting to act, but my main 
+                    interests are cinematography and editing.  </p>
+                <p class="line-break margin-top-10"></p>
+            </div>
+            
+        </section>                
+        <!-- <div class="video-container">
+            <iframe src="https://player.vimeo.com/video/1080456084?h=d4cd1d69ab&background=1&loop=1#t=11s"            " 
+                    allow="autoplay" 
+                    allowfullscreen>
+            </iframe>
+            <div class="video-overlay"></div> 
+            <a id = "allFilms" class = 'btn' href = "otherMediaHome.html">Watch all films</a>
+        </div> -->
+
+        <section>
+            <div class="parallax-two">
+                <div class="parallax-two-overlay">
+                <a id = "allFilms" class = 'btn' href = "otherMediaHome.html">Watch all films</a>
+            </div>
+        </section>
+
+
+
+        <!-- Second Content Block -->
+        <section>
+            <div class="block">
+                <p class="line-break margin-top-10"></p>
+                <p class="margin-top-10" style = "text-align:center">There's a quote I love about being a creative because it's so true it stings:</p>
+                <h2>In every creative pursuit, if your taste continually outpaces your skill, you know you're on the right path.</h2>
+                <p class="margin-top-10">I've always held myself and my work up to frankly, ridiculous standards, 
+                    but the great thing about that is that I never finish a project without learning in leaps and bounds, 
+                    or sometimes, through tears and sweat. Even if I can't help cringing while watching my work (I'm sure you know that feeling...),
+                     there's nothing to regret because I know I gave it my all.</p>
+                <p class="line-break margin-top-10"></p>
+            </div>
+        </section>
+
+        <!-- Third Parallax Section -->
+        <section>
+            <div class="parallax-three">
+                <div class="parallax-three-overlay">
+                <a id = "allPhotos" class = 'btn' href = "mediaPhotography.html">View all photos</a>
+            </div>
+        </section>
+
+        <!-- Third Content Block
+        <section>
+            <div class="block">
+                <p class="line-break margin-top-10"></p>
+                <p class="margin-top-10">Cities have always been crucibles of innovation, where the density of human interaction catalyzes creativity and cultural evolution. Yet within these bustling environments, designers increasingly recognize the need for moments of pause—thoughtful spaces that allow for reflection and connection with nature. The juxtaposition of the runner against the green park beyond the window speaks to this essential balance: the human-made and the natural, movement and stillness, individual journeys within collective spaces. As urban populations continue to grow, with over 68% of humanity projected to live in cities by 2050, the thoughtful design of these environments becomes not just an aesthetic concern but a fundamental aspect of human wellbeing—creating spaces where people can thrive physically, socially, and psychologically.</p>
+            </div>
+        </section> -->
     </div>
-</div>
-  <div id = "camPenContainer">
-    <a id = "penBoundingBox" href = "writingHome.html">
-      <div></div> 
-    </a>
 
-    <a id = "camBoundingBox" class = "tooltip" href = "Media Pages/mediaHome.html">
-      <span class="tooltiptext">Click!</span>
-      <div></div> 
-    </a>
-    <img src = "Camera compressed.png" id = "camImg"></img>
-    <img src = "The Pen compressed.png" id ="penImg"></img>
-  </div>
+    <div id="footer-placeholder"></div>
 
-  
-
-  <div id ="allPenMarquees">
-    <div class = "scrollContainer">
-      <div class = "marquee" id = "marquee1">
-        <h2>
-          Writing is distilled thinking. 
-          Writing is distilled thinking. 
-          Writing is distilled thinking. 
-          Writing is distilled thinking. 
-          Writing is distilled thinking. 
-          Writing is distilled thinking. 
-        </h2>   
-      </div>
-    </div>
-
-    <div class = "scrollContainer">
-      <div class = "marquee"  id = "marquee2">
-        <h2>
-          Fiction is the lie that tells the truth.
-          Fiction is the lie that tells the truth.
-          Fiction is the lie that tells the truth.
-          Fiction is the lie that tells the truth.
-          Fiction is the lie that tells the truth.
-          Fiction is the lie that tells the truth.
-          Fiction is the lie that tells the truth.
-        </h2>   
-      </div>
-    </div>
-
-    <div class = "scrollContainer">
-      <div class = "marquee"  id = "marquee3">
-        <h2>Once, I went down to the beach for a romantic place to write, but came back home not just with writer'sblock, but also a cold. Once, I went down to the beach for a romantic place to write, but came back home not just with writer's block, but also a cold.</h2>   
-      </div>
-    </div>
-
-    <div class = "scrollContainer">
-      <div class = "marquee"  id = "marquee4">
-        <h2>
-          Anything you write can be fixed, but you can't fix a blank page.
-          Anything you write can be fixed, but you can't fix a blank page.
-          Anything you write can be fixed, but you can't fix a blank page.
-          Anything you write can be fixed, but you can't fix a blank page.
-          Anything you write can be fixed, but you can't fix a blank page.
-        </h2>   
-      </div>
-    </div>
-  </div>
-
-  <div class = "filmContainer">
-    <div id ="strip1"> 
-      <picture>
-      <source srcset="super compressed/webp/4 birds on a wire.webp" type="image/webp">
-      <img src = "super compressed/4 birds on a wire.png" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Across the water.webp" type="image/webp">
-      <img src = "super compressed/Across the water.png" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Autum Birds.webp" type="image/webp">
-      <img src = "super compressed/Autum Birds.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/bubble!.webp" type="image/webp">
-      <img src = "super compressed/bubble!.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Evaporating Calligraphy.webp" type="image/webp">
-      <img src = "super compressed/Evaporating Calligraphy.png" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Exit Light, Enter Night.webp" type="image/webp">
-      <img src = "super compressed/Exit Light, Enter Night.png" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Frozen Time.webp" type="image/webp">
-      <img src = "super compressed/Frozen Time.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/IMG_3897.webp" type="image/webp">
-      <img src = "super compressed/IMG_3897.jpg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/IMG_3900.webp" type="image/webp">
-      <img src = "super compressed/IMG_3900.jpg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Lily.webp" type="image/webp">
-      <img src = "super compressed/Lily.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/newspaper.webp" type="image/webp">
-      <img src = "super compressed/newspaper.png" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Old Times.webp" type="image/webp">
-      <img src = "super compressed/Old Times.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Remember.webp" type="image/webp">
-      <img src = "super compressed/Remember.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Running Guy.webp" type="image/webp">
-      <img src = "super compressed/Running Guy.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Sparrow on Wire.webp" type="image/webp">
-      <img src = "super compressed/Sparrow on Wire.jpeg" class = "photo" loading="lazy">
-    </picture>     
-    </div>
-  </div>
-
-  <div class = "filmContainer">
-    <div id = "strip2">
-      <picture>
-      <source srcset="super compressed/webp/somwhere in London.webp" type="image/webp">
-      <img src = "super compressed/somwhere in London.jpg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Frozen Time.webp" type="image/webp">
-      <img src = "super compressed/Frozen Time.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Stairs.webp" type="image/webp">
-      <img src = "super compressed/Stairs.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/White Collars and Ironed Pants.webp" type="image/webp">
-      <img src = "super compressed/White Collars and Ironed Pants.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Winter.webp" type="image/webp">
-      <img src = "super compressed/Winter's Coming Again.png" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/4 birds on a wire.webp" type="image/webp">
-      <img src = "super compressed/4 birds on a wire.png" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Across the water.webp" type="image/webp">
-      <img src = "super compressed/Across the water.png" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Autum Birds.webp" type="image/webp">
-      <img src = "super compressed/Autum Birds.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Running Guy.webp" type="image/webp">
-      <img src = "super compressed/Running Guy.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Evaporating Calligraphy.webp" type="image/webp">
-      <img src = "super compressed/Evaporating Calligraphy.png" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Exit Light, Enter Night.webp" type="image/webp">
-      <img src = "super compressed/Exit Light, Enter Night.png" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/IMG_3897.webp" type="image/webp">
-      <img src = "super compressed/IMG_3897.jpg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/IMG_3900.webp" type="image/webp">
-      <img src = "super compressed/IMG_3900.jpg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Lily.webp" type="image/webp">
-      <img src = "super compressed/Lily.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/newspaper.webp" type="image/webp">
-      <img src = "super compressed/newspaper.png" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Sparrow on Wire.webp" type="image/webp">
-      <img src = "super compressed/Sparrow on Wire.jpeg" class = "photo" loading="lazy">
-    </picture>     
-    </div>
-  </div>
-
-  <div class = "filmContainer">
-    <div id = "strip3">
-      <picture>
-      <source srcset="super compressed/webp/Old Times.webp" type="image/webp">
-      <img src = "super compressed/Old Times.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Remember.webp" type="image/webp">
-      <img src = "super compressed/Remember.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/White Collars and Ironed Pants.webp" type="image/webp">
-      <img src = "super compressed/White Collars and Ironed Pants.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Old Times.webp" type="image/webp">
-      <img src = "super compressed/Old Times.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Evaporating Calligraphy.webp" type="image/webp">
-      <img src = "super compressed/Evaporating Calligraphy.png" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Winter.webp" type="image/webp">
-      <img src = "super compressed/Winter's Coming Again.png" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Exit Light, Enter Night.webp" type="image/webp">
-      <img src = "super compressed/Exit Light, Enter Night.png" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Stairs.webp" type="image/webp">
-      <img src = "super compressed/Stairs.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Sparrow on Wire.webp" type="image/webp">
-      <img src = "super compressed/Sparrow on Wire.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Across the water.webp" type="image/webp">
-      <img src = "super compressed/Across the water.png" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Lily.webp" type="image/webp">
-      <img src = "super compressed/Lily.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/4 birds on a wire.webp" type="image/webp">
-      <img src = "super compressed/4 birds on a wire.png" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/Autum Birds.webp" type="image/webp">
-      <img src = "super compressed/Autum Birds.jpeg" class = "photo" loading="lazy">
-    </picture>
-      <picture>
-      <source srcset="super compressed/webp/somwhere in London.webp" type="image/webp">
-      <img src = "super compressed/somwhere in London.jpg" class = "photo" loading="lazy">
-    </picture>
-
-    </div>
-  </div>
-
-  <script type="module" src="click-spark.js"></script>
-  <script src = "index.js"></script>
-
+    <click-spark></click-spark>
+    <script src="js/utils/script.js"></script>
+    <script type="module" src="js/utils/click-spark.js"></script>
 </body>
 </html>
