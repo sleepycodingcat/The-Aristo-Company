@@ -57,9 +57,9 @@ jobs:
 
       - name: Update CSS relative paths in compiled CSS
         run: |
-          sed -i 's|url("\.\./\.\./\.\./dist/|url("dist/|g' docs/styles/css.css
-          sed -i 's|url("\.\./\.\./\.\./archive/|url("archive/|g' docs/styles/css.css
-          sed -i 's|url("\.\./assets/|url("assets/|g' docs/styles/css.css
+          sed -i 's|url("\.\./\.\./dist/|url("../dist/|g' docs/styles/css.css
+          sed -i 's|url("\.\./\.\./archive/|url("../archive/|g' docs/styles/css.css
+          sed -i 's|url("assets/|url("../assets/|g' docs/styles/css.css
 
       - name: Commit and push built docs
         run: |
