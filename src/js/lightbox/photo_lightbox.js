@@ -229,15 +229,36 @@ document.addEventListener("DOMContentLoaded", () => {
         imgRow.appendChild(col)
       })
 
-      // Update visibleImages array with the new cloned images
-      visibleImages = Array.from(document.querySelectorAll(".picture")).filter((img) => {
-        // Only include images that are in the DOM (not filtered out)
-        const container = img.closest(".imgContainer")
-        const column = container.closest(".imgColumn")
-        return column !== null
-      })
+      // Update visibleImages array in visual reading order
+      visibleImages = getImagesInVisualOrder()
     })
   })
+
+  // Function to get images in visual reading order (left-to-right, top-to-bottom)
+  function getImagesInVisualOrder() {
+    const columns = Array.from(document.querySelectorAll(".imgColumn"))
+    if (columns.length === 0) return []
+
+    // Get all images from each column
+    const columnImages = columns.map(col => 
+      Array.from(col.querySelectorAll(".picture"))
+    )
+
+    // Find the maximum number of images in any column
+    const maxImagesPerColumn = Math.max(...columnImages.map(col => col.length))
+
+    // Interleave images from columns to create visual reading order
+    const visualOrder = []
+    for (let row = 0; row < maxImagesPerColumn; row++) {
+      for (let col = 0; col < columnImages.length; col++) {
+        if (columnImages[col][row]) {
+          visualOrder.push(columnImages[col][row])
+        }
+      }
+    }
+
+    return visualOrder
+  }
 
   // Function to distribute images across columns using a better algorithm
   function distributeImages(images, columns) {
@@ -310,8 +331,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Distribute all images evenly
     distributeImages(sortedImages, Array.from(initialColumns))
 
-    // Update visibleImages to match the new order
-    visibleImages = Array.from(document.querySelectorAll(".picture"))
+    // Update visibleImages to match visual reading order
+    visibleImages = getImagesInVisualOrder()
   }
 })
 
