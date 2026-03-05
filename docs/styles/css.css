@@ -495,7 +495,7 @@ header button {
 /* SIDEBAR REFINEMENT (MOBILE-FIRST) */
 .sideNav h1,
 .sideNav #btecBtn {
-  font-size: 1.35rem;
+  font-size: 3rem;
   margin: 10px 0 6px 0;
   line-height: 1;
   text-decoration-thickness: 2px;
@@ -513,16 +513,17 @@ header button {
   text-decoration: none;
   font-family: "League Spartan", sans-serif;
   color: black;
-  font-size: 1.12rem;
-  font-weight: 600;
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
   position: relative;
   transition: all 0.25s ease;
   z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 8px;
-  padding: 8px 0;
+  padding: 9px 0;
   margin: 0;
   min-height: 0;
 }
@@ -557,9 +558,14 @@ header button {
 }
 
 .sideNav .sidebar-submenu a {
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
   padding: 6px 0;
+}
+
+.sideNav .sidebar-submenu a::after {
+  content: none !important;
 }
 
 #navContent {
@@ -578,17 +584,21 @@ header button {
 @media screen and (min-width: 768px) {
   .sideNav h1,
   .sideNav #btecBtn {
-    font-size: 1.6rem;
+    font-size: 3.2rem;
   }
 
   .sideNav a,
   .sideNav .sidebar-accordion-toggle {
-    font-size: 1.2rem;
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     padding: 9px 0;
   }
 
   .sideNav .sidebar-submenu a {
-    font-size: 1.06rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
   }
 
   #navContent {
@@ -599,17 +609,21 @@ header button {
 @media screen and (min-width: 1025px) {
   .sideNav h1,
   .sideNav #btecBtn {
-    font-size: 1.9rem;
+    font-size: 3.6rem;
   }
 
   .sideNav a,
   .sideNav .sidebar-accordion-toggle {
-    font-size: 1.35rem;
+    font-size: 2.9rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     padding: 11px 0;
   }
 
   .sideNav .sidebar-submenu a {
-    font-size: 1.12rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
   }
 
   #navContent {
@@ -669,33 +683,6 @@ footer .subheading {
 .phone-link:hover,
 .email-link:hover {
   color: #c1272d;
-}
-
-/* Social links container */
-.social-container {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Social media buttons */
-.social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #c1272d;
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.social-link:hover {
-  background-color: #a01f24;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Copyright text */
