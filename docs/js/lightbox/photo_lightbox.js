@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Add keyboard navigation
   document.addEventListener("keydown", (e) => {
-    if (modal.style.display === "block") {
+    if (modal.style.display !== "none" && modal.style.display !== "") {
       if (e.key === "ArrowLeft") {
         plusSlides(-1)
       } else if (e.key === "ArrowRight") {
@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
       <a class="next" onclick="event.stopPropagation(); plusSlides(1);">&#10095;</a>
     `
 
-    // Display the modal
-    modal.style.display = "block"
+    // Display the modal as flex so centering rules apply
+    modal.style.display = "flex"
 
     // Add event listeners to navigation buttons
     const prevBtn = modalContent.querySelector(".prev")
