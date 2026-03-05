@@ -25,9 +25,12 @@ async function fetchComponentHtml(fileName) {
 }
 
 // Initialize everything when DOM is loaded
-document.addEventListener("DOMContentLoaded", async () => {
-  // Load sidebar first
-  await loadSidebar()
+document.addEventListener("DOMContentLoaded", () => {
+  // Load sidebar without blocking other startup work
+  loadSidebar()
+
+  // Apply media loading optimizations as early as possible
+  optimizePageMediaLoading()
 
   // Add global event listeners
   document.addEventListener("click", handleOutsideClick)
@@ -61,6 +64,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (logoContainer && video) {
     function playVideo() {
       if (window.getComputedStyle(video).display !== "none") {
+        if (video.preload === "none" && video.readyState === 0) {
+          video.load()
+        }
         video.play()
       }
     }
@@ -82,7 +88,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // Preloader functionality: Disappear after a fixed delay after DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-  // Minimum show time (e.g., 500ms) before fading out
+  // Keep preloader brief so first paint feels faster
   setTimeout(() => {
     document.body.classList.add("loaded")
     // Remove after fade completes (500ms transition in CSS)
@@ -92,8 +98,36 @@ document.addEventListener("DOMContentLoaded", () => {
         preloader.remove()
       }
     }, 500)
-  }, 500) // Preloader visible for at least 500ms after DOMContentLoaded
+  }, 150)
 })
+
+function optimizePageMediaLoading() {
+  const staticLogo = document.getElementById("staticLogo")
+  if (staticLogo) {
+    staticLogo.decoding = "async"
+    staticLogo.setAttribute("fetchpriority", "high")
+  }
+
+  const logoVideo = document.getElementById("videoLogo")
+  if (logoVideo) {
+    logoVideo.preload = "none"
+  }
+
+  const galleryImages = document.querySelectorAll(".picture")
+  galleryImages.forEach((img, index) => {
+    img.decoding = "async"
+    if (index > 7) {
+      img.setAttribute("fetchpriority", "low")
+    }
+  })
+
+  const decorativeImages = document.querySelectorAll(".hoverStickPpl")
+  decorativeImages.forEach((img) => {
+    img.loading = "lazy"
+    img.decoding = "async"
+    img.setAttribute("fetchpriority", "low")
+  })
+}
 
 // Check if device is mobile
 function checkMobile() {

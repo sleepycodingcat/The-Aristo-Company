@@ -688,6 +688,11 @@ footer .subheading {
   position: relative;
 }
 
+.media-photography-page .imgContainer {
+  content-visibility: auto;
+  contain-intrinsic-size: 320px 420px;
+}
+
 #runningStick {
   position: absolute;
   left: 68%;

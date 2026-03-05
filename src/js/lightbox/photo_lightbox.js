@@ -308,32 +308,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Set "Show All" as default active filter
-  document.querySelector('.filter-btn[data-filter="all"]').classList.add("active")
-
-  // Initialize visibleImages with all images
-  visibleImages = Array.from(allImages)
-
-  // Apply initial distribution for "all" images
-  const initialColumns = document.querySelectorAll(".imgColumn")
-  if (initialColumns.length > 0) {
-    // Sort images by height (tallest first) to improve distribution
-    const sortedImages = [...allImages].sort((a, b) => {
-      const aRatio = a.naturalHeight / a.naturalWidth || 1
-      const bRatio = b.naturalHeight / b.naturalWidth || 1
-      return bRatio - aRatio // Sort by aspect ratio (tallest first)
-    })
-
-    // Clear all columns
-    initialColumns.forEach((column) => {
-      column.innerHTML = ""
-    })
-
-    // Distribute all images evenly
-    distributeImages(sortedImages, Array.from(initialColumns))
-
-    // Update visibleImages to match visual reading order
-    visibleImages = getImagesInVisualOrder()
+  const showAllButton = document.querySelector('.filter-btn[data-filter="all"]')
+  if (showAllButton) {
+    showAllButton.classList.add("active")
   }
+
+  // Keep original DOM on first paint (faster first load)
+  visibleImages = getImagesInVisualOrder()
 })
 
 // Function to close modal (referenced in HTML)
