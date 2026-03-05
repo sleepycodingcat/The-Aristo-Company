@@ -3370,7 +3370,12 @@ click-spark {
 
 @media screen and (max-width: 767px) {
   .media-photography-page .modal-content {
-    padding-top: 50px;
+    padding-top: 0;
+    justify-content: center;
+  }
+
+  .media-photography-page .mySlides {
+    margin-top: 0;
   }
 
   .media-photography-page .mySlides img,
@@ -3381,7 +3386,8 @@ click-spark {
 
 @media screen and (max-width: 480px) {
   .media-photography-page .modal-content {
-    padding-top: 40px;
+    padding-top: 0;
+    justify-content: center;
   }
 
   .media-photography-page .mySlides img,
@@ -3392,7 +3398,8 @@ click-spark {
 
 @media screen and (max-height: 500px) and (orientation: landscape) {
   .media-photography-page .modal-content {
-    padding-top: 24px;
+    padding-top: 0;
+    justify-content: center;
   }
 
   .media-photography-page .mySlides img,
