@@ -482,3 +482,134 @@ header{
     font-size: clamp(8vw, 8vw, 10vw);
   }
 }
+
+/* SIDEBAR REFINEMENT (MOBILE-FIRST) */
+.sideNav {
+  h1,
+  #btecBtn {
+    font-size: 1.35rem;
+    margin: 10px 0 6px 0;
+    line-height: 1;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  #writingSidebar {
+    margin-top: 14px;
+  }
+
+  a,
+  .sidebar-accordion-toggle {
+    width: 100%;
+    text-align: left;
+    text-decoration: none;
+    font-family: "League Spartan", sans-serif;
+    color: black;
+    font-size: 1.12rem;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.25s ease;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 0;
+    margin: 0;
+    min-height: 0;
+  }
+
+  .sidebar-accordion-toggle {
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .sidebar-accordion-toggle .material-symbols-outlined {
+    font-size: 1.2em;
+    transition: transform 0.2s ease;
+  }
+
+  .sidebar-accordion-toggle.is-open .material-symbols-outlined {
+    transform: rotate(180deg);
+  }
+
+  .sidebar-submenu {
+    width: 100%;
+    margin: 2px 0 6px 0;
+    padding-left: 10px;
+    border-left: 2px solid rgba(193, 39, 45, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .sidebar-submenu[hidden] {
+    display: none;
+  }
+
+  .sidebar-submenu a {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 6px 0;
+  }
+}
+
+#navContent {
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#navBarClose {
+  margin: 4px 0 10px 0;
+  align-self: flex-end;
+  font-size: clamp(30px, 8vw, 40px);
+}
+
+@media screen and (min-width: 768px) {
+  .sideNav {
+    h1,
+    #btecBtn {
+      font-size: 1.6rem;
+    }
+
+    a,
+    .sidebar-accordion-toggle {
+      font-size: 1.2rem;
+      padding: 9px 0;
+    }
+
+    .sidebar-submenu a {
+      font-size: 1.06rem;
+    }
+  }
+
+  #navContent {
+    padding: 16px 26px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .sideNav {
+    h1,
+    #btecBtn {
+      font-size: 1.9rem;
+    }
+
+    a,
+    .sidebar-accordion-toggle {
+      font-size: 1.35rem;
+      padding: 11px 0;
+    }
+
+    .sidebar-submenu a {
+      font-size: 1.12rem;
+    }
+  }
+
+  #navContent {
+    padding: 18px 34px;
+  }
+}

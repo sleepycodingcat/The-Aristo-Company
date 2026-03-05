@@ -179,6 +179,38 @@ function initializeSidebar() {
       }
     })
   })
+
+  const accordionToggles = sidebar.querySelectorAll(".sidebar-accordion-toggle")
+
+  const collapseAccordion = (toggleButton) => {
+    const submenuId = toggleButton.getAttribute("aria-controls")
+    const submenu = submenuId ? sidebar.querySelector(`#${submenuId}`) : null
+    if (!submenu) return
+
+    toggleButton.setAttribute("aria-expanded", "false")
+    toggleButton.classList.remove("is-open")
+    submenu.hidden = true
+  }
+
+  accordionToggles.forEach((toggleButton) => {
+    const submenuId = toggleButton.getAttribute("aria-controls")
+    const submenu = submenuId ? sidebar.querySelector(`#${submenuId}`) : null
+    if (!submenu) return
+
+    toggleButton.addEventListener("click", () => {
+      const willExpand = toggleButton.getAttribute("aria-expanded") !== "true"
+
+      accordionToggles.forEach((btn) => {
+        collapseAccordion(btn)
+      })
+
+      if (willExpand) {
+        toggleButton.setAttribute("aria-expanded", "true")
+        toggleButton.classList.add("is-open")
+        submenu.hidden = false
+      }
+    })
+  })
 }
 
 // Open sidebar function
@@ -222,6 +254,17 @@ function closeNav() {
   sidebar.style.width = "0"
   sidebar.classList.remove("open")
   sidebar.style.transform = "translateX(100%)"
+
+  const accordionToggles = sidebar.querySelectorAll(".sidebar-accordion-toggle")
+  accordionToggles.forEach((toggleButton) => {
+    const submenuId = toggleButton.getAttribute("aria-controls")
+    const submenu = submenuId ? sidebar.querySelector(`#${submenuId}`) : null
+    if (!submenu) return
+
+    toggleButton.setAttribute("aria-expanded", "false")
+    toggleButton.classList.remove("is-open")
+    submenu.hidden = true
+  })
 
   // Restore body scroll and position
   if (isMobile) {
