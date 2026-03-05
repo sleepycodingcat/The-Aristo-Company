@@ -124,17 +124,54 @@ document.addEventListener("DOMContentLoaded", () => {
     return false // Prevent default
   }
 
+  let lastTouchOpenAt = 0
+
+  function addImageOpenHandlers(imageElement) {
+    let touchStartX = 0
+    let touchStartY = 0
+    let isScrolling = false
+
+    imageElement.addEventListener("click", function () {
+      if (Date.now() - lastTouchOpenAt < 400) return
+      openModal(this)
+    })
+
+    imageElement.addEventListener(
+      "touchstart",
+      function (e) {
+        const touch = e.changedTouches[0]
+        touchStartX = touch.screenX
+        touchStartY = touch.screenY
+        isScrolling = false
+      },
+      { passive: true },
+    )
+
+    imageElement.addEventListener(
+      "touchmove",
+      function (e) {
+        const touch = e.changedTouches[0]
+        if (
+          Math.abs(touch.screenX - touchStartX) > 10 ||
+          Math.abs(touch.screenY - touchStartY) > 10
+        ) {
+          isScrolling = true
+        }
+      },
+      { passive: true },
+    )
+
+    imageElement.addEventListener("touchend", function (e) {
+      if (isScrolling) return
+      lastTouchOpenAt = Date.now()
+      if (e.cancelable) e.preventDefault()
+      openModal(this)
+    })
+  }
+
   // Add click and touch events to each image to open modal
   allImages.forEach((img) => {
-    img.addEventListener("click", function () {
-      openModal(this)
-    })
-    
-    // Add touch event for mobile
-    img.addEventListener("touchend", function (e) {
-      e.preventDefault()
-      openModal(this)
-    })
+    addImageOpenHandlers(img)
   })
 
   // Add click event to each stick figure to open the modal for its parent image
@@ -321,15 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Add click event to the cloned image
       const clonedImg = clonedContainer.querySelector(".picture")
-      clonedImg.addEventListener("click", function () {
-        openModal(this)
-      })
-      
-      // Add touch event for mobile reliability
-      clonedImg.addEventListener("touchend", function (e) {
-        e.preventDefault()
-        openModal(this)
-      })
+      addImageOpenHandlers(clonedImg)
 
       // Add click event to any stick figures in the cloned container
       const clonedStick = clonedContainer.querySelector(".hoverStickPpl")
