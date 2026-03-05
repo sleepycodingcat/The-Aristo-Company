@@ -216,7 +216,7 @@ function initializeSidebar() {
 // Open sidebar function
 function openNav() {
   const sidebar = document.getElementById("navBar")
-  const body = document.body
+  const html = document.documentElement
 
   if (!sidebar) {
     console.error("Sidebar not found")
@@ -227,11 +227,8 @@ function openNav() {
 
   if (isMobile) {
     sidebar.style.width = "100%"
-    // Prevent body scroll on mobile
-    body.style.overflow = "hidden"
-    body.style.position = "fixed"
-    body.style.width = "100%"
-    body.style.top = `-${window.scrollY}px`
+    // Prevent body scroll on mobile by hiding overflow on html element
+    html.style.overflow = "hidden"
   } else {
     sidebar.style.width = "40vw"
   }
@@ -243,7 +240,7 @@ function openNav() {
 // Close sidebar function
 function closeNav() {
   const sidebar = document.getElementById("navBar")
-  const body = document.body
+  const html = document.documentElement
 
   if (!sidebar) {
     console.error("Sidebar not found")
@@ -266,18 +263,9 @@ function closeNav() {
     submenu.hidden = true
   })
 
-  // Restore body scroll and position
+  // Restore body scroll on mobile
   if (isMobile) {
-    const scrollY = body.style.top
-    body.style.overflow = "auto"
-    body.style.position = "static"
-    body.style.width = "auto"
-    body.style.top = ""
-
-    // Restore scroll position
-    if (scrollY) {
-      window.scrollTo(0, Number.parseInt(scrollY || "0") * -1)
-    }
+    html.style.overflow = ""
   }
 }
 
