@@ -3421,4 +3421,121 @@ a {
   color: black;
   font-weight: 400;
   text-decoration: none;
-}/*# sourceMappingURL=css.css.map */
+}
+
+/* Simple Banner - Sliding Tab */
+.simple-banner {
+  position: fixed;
+  right: 0;
+  top: 42vh;
+  width: 56px;
+  min-height: 80px;
+  background: #fff9e1;
+  border: 1px solid rgba(193, 39, 45, 0.25);
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  overflow: hidden;
+  z-index: 30;
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.simple-banner:hover {
+  width: 300px;
+}
+
+.simple-banner-tab {
+  width: 56px;
+  padding: 12px 8px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 8px;
+  cursor: default;
+  user-select: none;
+}
+
+.tab-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #c1272d;
+  white-space: nowrap;
+}
+
+.banner-arrow {
+  font-size: 18px;
+  font-weight: 700;
+  color: #c1272d;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.simple-banner-content {
+  padding: 22px 18px;
+  white-space: nowrap;
+  opacity: 1;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.simple-banner-content .banner-emoji {
+  font-size: 24px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.banner-text-block {
+  text-align: center;
+}
+
+.simple-banner-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 22px;
+  color: #c1272d;
+}
+
+.simple-banner-content p {
+  margin: 0 0 12px 0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #666;
+}
+
+.simple-banner-content a {
+  display: inline-block;
+  color: #c1272d;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.simple-banner-content a:hover {
+  text-decoration: underline;
+}
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .simple-banner {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .simple-banner {
+    transition: none;
+  }
+}
+
+/*# sourceMappingURL=css.css.map */
