@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working On Banner - Preview</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 40px;
+            background: #f5f5f5;
+            font-family: "League Spartan", sans-serif;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 50px;
+        }
+        
+        .option-container {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .option-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #c1272d;
+            margin: 0 0 10px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #c1272d;
+        }
+        
+        .option-description {
+            font-size: 13px;
+            color: #666;
+            margin: 0 0 30px 0;
+            font-style: italic;
+        }
+        
+        .banner-preview {
+            background: #fff9e1;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Option 1: Minimal Inline Banner */
+        .working-on-banner-v1 {
+            background: #fff9e1;
+            border-top: 3px solid #c1272d;
+            border-bottom: 3px solid #c1272d;
+            padding: 12px 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-family: "League Spartan", sans-serif;
+            font-size: clamp(12px, 2vw, 16px);
+        }
+
+        .working-on-banner-v1 strong {
+            color: #c1272d;
+            font-weight: 600;
+        }
+
+        .working-on-banner-v1 a {
+            color: #c1272d;
+            text-decoration: none;
+            margin-left: 8px;
+            transition: opacity 0.3s ease;
+        }
+
+        .working-on-banner-v1 a:hover {
+            opacity: 0.7;
+            text-decoration: underline;
+        }
+
+        /* Option 2: Left-Aligned Box with Icon */
+        .working-on-banner-v2 {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            background: #fff9e1;
+            border-left: 5px solid #c1272d;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .working-on-banner-v2 .material-symbols-outlined {
+            color: #c1272d;
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .banner-content {
+            flex: 1;
+        }
+
+        .banner-label {
+            margin: 0;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+        }
+
+        .banner-title {
+            margin: 5px 0 10px 0;
+            font-size: clamp(16px, 2.5vw, 24px);
+            font-weight: 700;
+            color: #c1272d;
+        }
+
+        .working-on-banner-v2 a {
+            color: #c1272d;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .working-on-banner-v2 a:hover {
+            text-decoration: underline;
+        }
+
+        /* Option 3: Gradient Background (Modern) */
+        .working-on-banner-v3 {
+            background: linear-gradient(135deg, #fff9e1 0%, #ffe8e8 100%);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 2px solid #c1272d;
+            text-align: center;
+        }
+
+        .banner-inner h3 {
+            margin: 0 0 10px 0;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .banner-inner .film-name {
+            margin: 0 0 15px 0;
+            font-size: clamp(18px, 3vw, 28px);
+            font-weight: 700;
+            color: #c1272d;
+        }
+
+        .follow-text {
+            margin: 0;
+            font-size: clamp(12px, 1.8vw, 14px);
+            color: #333;
+        }
+
+        .working-on-banner-v3 a {
+            color: #c1272d;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .working-on-banner-v3 a:hover {
+            text-decoration: underline;
+        }
+
+        /* Option 4: Filmstrip Style (Themed) */
+        .working-on-banner-v4 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            background: #fff9e1;
+            border: 2px solid #000;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .filmstrip-decoration {
+            width: 20px;
+            height: 80px;
+            background: #000;
+            position: relative;
+            border-radius: 2px;
+        }
+
+        .filmstrip-decoration::before,
+        .filmstrip-decoration::after {
+            content: "";
+            position: absolute;
+            background: #fff9e1;
+            border-radius: 50%;
+        }
+
+        .filmstrip-decoration::before {
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+        }
+
+        .filmstrip-decoration::after {
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+        }
+
+        .working-on-banner-v4 .banner-content {
+            text-align: center;
+            flex: 1;
+        }
+
+        .label {
+            margin: 0;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .working-on-banner-v4 h3 {
+            margin: 8px 0 12px 0;
+            font-size: clamp(18px, 2.8vw, 26px);
+            color: #c1272d;
+        }
+
+        .working-on-banner-v4 a {
+            color: #c1272d;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .working-on-banner-v4 a:hover {
+            text-decoration: underline;
+        }
+
+        /* Option 4a: Clean Centered (no filmstrips) */
+        .working-on-banner-v4a {
+            text-align: center;
+            padding: 30px 20px;
+            margin: 20px 0;
+            border: 1px solid #c1272d;
+            background: #fff9e1;
+        }
+
+        .working-on-banner-v4a .label {
+            margin: 0;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .working-on-banner-v4a h3 {
+            margin: 8px 0 12px 0;
+            font-size: clamp(18px, 2.8vw, 26px);
+            color: #c1272d;
+        }
+
+        .working-on-banner-v4a a {
+            color: #c1272d;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .working-on-banner-v4a a:hover {
+            text-decoration: underline;
+        }
+
+        /* Option 4b: With Line Dividers */
+        .working-on-banner-v4b {
+            text-align: center;
+            padding: 30px 20px;
+            margin: 20px 0;
+            background: #fff9e1;
+            border-top: 2px solid #c1272d;
+            border-bottom: 2px solid #c1272d;
+        }
+
+        .working-on-banner-v4b .label {
+            margin: 0;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .working-on-banner-v4b h3 {
+            margin: 8px 0 12px 0;
+            font-size: clamp(18px, 2.8vw, 26px);
+            color: #c1272d;
+        }
+
+        .working-on-banner-v4b a {
+            color: #c1272d;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .working-on-banner-v4b a:hover {
+            text-decoration: underline;
+        }
+
+        /* Option 4c: With Side Bars */
+        .working-on-banner-v4c {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px 20px;
+            margin: 20px 0;
+            background: #fff9e1;
+        }
+
+        .side-bar {
+            width: 3px;
+            height: 60px;
+            background: #c1272d;
+        }
+
+        .working-on-banner-v4c .banner-content {
+            text-align: center;
+            flex: 1;
+        }
+
+        .working-on-banner-v4c .label {
+            margin: 0;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .working-on-banner-v4c h3 {
+            margin: 8px 0 12px 0;
+            font-size: clamp(18px, 2.8vw, 26px);
+            color: #c1272d;
+        }
+
+        .working-on-banner-v4c a {
+            color: #c1272d;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .working-on-banner-v4c a:hover {
+            text-decoration: underline;
+        }
+
+        /* Option 4d: Minimal Clean */
+        .working-on-banner-v4d {
+            text-align: center;
+            padding: 25px 20px;
+            margin: 20px 0;
+            background: #fff9e1;
+        }
+
+        .working-on-banner-v4d .label {
+            margin: 0;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .working-on-banner-v4d h3 {
+            margin: 8px 0 12px 0;
+            font-size: clamp(18px, 2.8vw, 26px);
+            color: #c1272d;
+        }
+
+        .working-on-banner-v4d a {
+            color: #c1272d;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .working-on-banner-v4d a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hover Animations for 4d */
+
+        /* Animation Option A: Subtle Scale */
+        .working-on-banner-v4d-anim-a:hover h3 {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        .working-on-banner-v4d-anim-a a {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .working-on-banner-v4d-anim-a a:hover {
+            transform: translateX(5px);
+        }
+
+        /* Animation Option B: Underline Slide */
+        .working-on-banner-v4d-anim-b a {
+            position: relative;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .working-on-banner-v4d-anim-b a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #c1272d;
+            transition: width 0.3s ease;
+        }
+
+        .working-on-banner-v4d-anim-b a:hover::after {
+            width: 100%;
+        }
+
+        /* Animation Option C: Full Banner Lift */
+        .working-on-banner-v4d-anim-c {
+            transition: all 0.3s ease;
+        }
+
+        .working-on-banner-v4d-anim-c:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(193, 39, 45, 0.1);
+        }
+
+        .working-on-banner-v4d-anim-c h3 {
+            transition: all 0.3s ease;
+        }
+
+        .working-on-banner-v4d-anim-c:hover h3 {
+            color: #c1272d;
+        }
+
+        .working-on-banner-v4d-anim-c a {
+            transition: all 0.3s ease;
+        }
+
+        .working-on-banner-v4d-anim-c a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animation Option D: Icon Spin */
+        .working-on-banner-v4d-anim-d {
+            text-align: center;
+            padding: 25px 20px;
+            margin: 20px 0;
+            background: #fff9e1;
+        }
+
+        .working-on-banner-v4d-anim-d .emoji {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .working-on-banner-v4d-anim-d:hover .emoji {
+            transform: rotate(360deg);
+        }
+
+        .working-on-banner-v4d-anim-d .label {
+            margin: 0;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .working-on-banner-v4d-anim-d h3 {
+            margin: 8px 0 12px 0;
+            font-size: clamp(18px, 2.8vw, 26px);
+            color: #c1272d;
+            transition: all 0.3s ease;
+        }
+
+        .working-on-banner-v4d-anim-d:hover h3 {
+            letter-spacing: 2px;
+        }
+
+        .working-on-banner-v4d-anim-d a {
+            color: #c1272d;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .working-on-banner-v4d-anim-d a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animation Option E: Glow Effect */
+        .working-on-banner-v4d-anim-e h3 {
+            transition: all 0.3s ease;
+            text-shadow: none;
+        }
+
+        .working-on-banner-v4d-anim-e:hover h3 {
+            text-shadow: 0 0 10px rgba(193, 39, 45, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .working-on-banner-v4d-anim-e a {
+            transition: all 0.3s ease;
+        }
+
+        .working-on-banner-v4d-anim-e a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animation Option F: Background Fade */
+        .working-on-banner-v4d-anim-f {
+            text-align: center;
+            padding: 25px 20px;
+            margin: 20px 0;
+            background: #fff9e1;
+            transition: all 0.3s ease;
+        }
+
+        .working-on-banner-v4d-anim-f:hover {
+            background: #fff5cc;
+        }
+
+        .working-on-banner-v4d-anim-f .label {
+            margin: 0;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .working-on-banner-v4d-anim-f h3 {
+            margin: 8px 0 12px 0;
+            font-size: clamp(18px, 2.8vw, 26px);
+            color: #c1272d;
+        }
+
+        .working-on-banner-v4d-anim-f a {
+            color: #c1272d;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .working-on-banner-v4d-anim-f a:hover {
+            text-decoration: underline;
+        }
+
+        .code-section {
+            background: #f5f5f5;
+            border-left: 3px solid #c1272d;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #333;
+            overflow-x: auto;
+        }
+
+        .code-label {
+            font-weight: 600;
+            color: #c1272d;
+            margin-bottom: 8px;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        pre {
+            margin: 0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎬 Working On Banner - Style Preview</h1>
+    
+    <!-- OPTION 1 -->
+    <div class="option-container">
+        <div class="option-title">Option 1: Minimal Inline Banner</div>
+        <div class="option-description">Simple, clean, matches your navigation style.</div>
+        
+        <div class="working-on-banner-v1">
+            <p>Currently working on: <strong>A Piece of Cake</strong> 
+            <a href="https://instagram.com/aPieceOfCakeFilm" target="_blank">→ Follow on Instagram</a></p>
+        </div>
+
+        <div class="code-section">
+            <div class="code-label">HTML</div>
+            <pre>&lt;div class="working-on-banner-v1"&gt;
+    &lt;p&gt;Currently working on: &lt;strong&gt;Film Title&lt;/strong&gt; 
+    &lt;a href="https://instagram.com/account" target="_blank"&gt;→ Follow on Instagram&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</pre>
+        </div>
+    </div>
+
+    <!-- OPTION 2 -->
+    <div class="option-container">
+        <div class="option-title">Option 2: Left-Aligned Box with Icon</div>
+        <div class="option-description">More prominent, sidebar-style presentation.</div>
+        
+        <div class="working-on-banner-v2">
+            <span class="material-symbols-outlined">videocam</span>
+            <div class="banner-content">
+                <p class="banner-label">Currently working on</p>
+                <p class="banner-title">A Piece of Cake</p>
+                <a href="https://instagram.com/aPieceOfCakeFilm" target="_blank">Follow the journey →</a>
+            </div>
+        </div>
+
+        <div class="code-section">
+            <div class="code-label">HTML</div>
+            <pre>&lt;div class="working-on-banner-v2"&gt;
+    &lt;span class="material-symbols-outlined"&gt;videocam&lt;/span&gt;
+    &lt;div class="banner-content"&gt;
+        &lt;p class="banner-label"&gt;Currently working on&lt;/p&gt;
+        &lt;p class="banner-title"&gt;Film Title&lt;/p&gt;
+        &lt;a href="https://instagram.com/account" target="_blank"&gt;Follow the journey →&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+        </div>
+    </div>
+
+    <!-- OPTION 3 -->
+    <div class="option-container">
+        <div class="option-title">Option 3: Gradient Background (Modern)</div>
+        <div class="option-description">Eye-catching with subtle gradient background.</div>
+        
+        <div class="working-on-banner-v3">
+            <div class="banner-inner">
+                <h3>Currently filming</h3>
+                <p class="film-name">A Piece of Cake</p>
+                <p class="follow-text">Stay updated: 
+                    <a href="https://instagram.com/aPieceOfCakeFilm" target="_blank">@aPieceOfCakeFilm</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="code-section">
+            <div class="code-label">HTML</div>
+            <pre>&lt;div class="working-on-banner-v3"&gt;
+    &lt;div class="banner-inner"&gt;
+        &lt;h3&gt;Currently filming&lt;/h3&gt;
+        &lt;p class="film-name"&gt;Film Title&lt;/p&gt;
+        &lt;p class="follow-text"&gt;Stay updated: 
+            &lt;a href="https://instagram.com/account" target="_blank"&gt;@instagram_handle&lt;/a&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+        </div>
+    </div>
+
+    <!-- OPTION 4 -->
+    <div class="option-container">
+        <div class="option-title">Option 4: Filmstrip Style (Themed)</div>
+        <div class="option-description">Matches your preloader filmstrip aesthetic.</div>
+        
+        <div class="working-on-banner-v4">
+            <div class="filmstrip-decoration left"></div>
+            <div class="banner-content">
+                <p class="label">🎬 IN PRODUCTION</p>
+                <h3>A Piece of Cake</h3>
+                <a href="https://instagram.com/aPieceOfCakeFilm" target="_blank">Follow on Instagram</a>
+            </div>
+            <div class="filmstrip-decoration right"></div>
+        </div>
+
+        <div class="code-section">
+            <div class="code-label">HTML</div>
+            <pre>&lt;div class="working-on-banner-v4"&gt;
+    &lt;div class="filmstrip-decoration left"&gt;&lt;/div&gt;
+    &lt;div class="banner-content"&gt;
+        &lt;p class="label"&gt;🎬 IN PRODUCTION&lt;/p&gt;
+        &lt;h3&gt;Film Title&lt;/h3&gt;
+        &lt;a href="https://instagram.com/account" target="_blank"&gt;Follow on Instagram&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="filmstrip-decoration right"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+        </div>
+    </div>
+
+    <!-- OPTION 4a: Variations -->
+    <div class="option-container">
+        <div class="option-title">Option 4a: Clean Centered (Text Only)</div>
+        <div class="option-description">Option 4 text styling with subtle border, no filmstrips.</div>
+        
+        <div class="working-on-banner-v4a">
+            <p class="label">🎬 IN PRODUCTION</p>
+            <h3>A Piece of Cake</h3>
+            <a href="https://instagram.com/aPieceOfCakeFilm" target="_blank">Follow on Instagram</a>
+        </div>
+
+        <div class="code-section">
+            <div class="code-label">HTML (use class="working-on-banner-v4a")</div>
+            <pre>&lt;div class="working-on-banner-v4a"&gt;
+    &lt;p class="label"&gt;🎬 IN PRODUCTION&lt;/p&gt;
+    &lt;h3&gt;Film Title&lt;/h3&gt;
+    &lt;a href="https://instagram.com/account" target="_blank"&gt;Follow on Instagram&lt;/a&gt;
+&lt;/div&gt;</pre>
+        </div>
+    </div>
+
+    <!-- OPTION 4b: Top/Bottom Dividers -->
+    <div class="option-container">
+        <div class="option-title">Option 4b: With Line Dividers</div>
+        <div class="option-description">Option 4 text styling with top/bottom border lines.</div>
+        
+        <div class="working-on-banner-v4b">
+            <p class="label">🎬 IN PRODUCTION</p>
+            <h3>A Piece of Cake</h3>
+            <a href="https://instagram.com/aPieceOfCakeFilm" target="_blank">Follow on Instagram</a>
+        </div>
+
+        <div class="code-section">
+            <div class="code-label">HTML (use class="working-on-banner-v4b")</div>
+            <pre>&lt;div class="working-on-banner-v4b"&gt;
+    &lt;p class="label"&gt;🎬 IN PRODUCTION&lt;/p&gt;
+    &lt;h3&gt;Film Title&lt;/h3&gt;
+    &lt;a href="https://instagram.com/account" target="_blank"&gt;Follow on Instagram&lt;/a&gt;
+&lt;/div&gt;</pre>
+        </div>
+    </div>
+
+    <!-- OPTION 4c: Side Bars -->
+    <div class="option-container">
+        <div class="option-title">Option 4c: With Side Bars</div>
+        <div class="option-description">Option 4 text styling with thin vertical accent bars on sides.</div>
+        
+        <div class="working-on-banner-v4c">
+            <div class="side-bar"></div>
+            <div class="banner-content">
+                <p class="label">🎬 IN PRODUCTION</p>
+                <h3>A Piece of Cake</h3>
+                <a href="https://instagram.com/aPieceOfCakeFilm" target="_blank">Follow on Instagram</a>
+            </div>
+            <div class="side-bar"></div>
+        </div>
+
+        <div class="code-section">
+            <div class="code-label">HTML (use class="working-on-banner-v4c")</div>
+            <pre>&lt;div class="working-on-banner-v4c"&gt;
+    &lt;div class="side-bar"&gt;&lt;/div&gt;
+    &lt;div class="banner-content"&gt;
+        &lt;p class="label"&gt;🎬 IN PRODUCTION&lt;/p&gt;
+        &lt;h3&gt;Film Title&lt;/h3&gt;
+        &lt;a href="https://instagram.com/account" target="_blank"&gt;Follow on Instagram&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="side-bar"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+        </div>
+    </div>
+
+    <!-- OPTION 4d: Minimal -->
+    <div class="option-container">
+        <div class="option-title">Option 4d: Minimal Clean</div>
+        <div class="option-description">Option 4 text styling with zero borders or decorations.</div>
+        
+        <div class="working-on-banner-v4d">
+            <p class="label">🎬 IN PRODUCTION</p>
+            <h3>A Piece of Cake</h3>
+            <a href="https://instagram.com/aPieceOfCakeFilm" target="_blank">Follow on Instagram</a>
+        </div>
+
+        <div class="code-section">
+            <div class="code-label">HTML (use class="working-on-banner-v4d")</div>
+            <pre>&lt;div class="working-on-banner-v4d"&gt;
+    &lt;p class="label"&gt;🎬 IN PRODUCTION&lt;/p&gt;
+    &lt;h3&gt;Film Title&lt;/h3&gt;
+    &lt;a href="https://instagram.com/account" target="_blank"&gt;Follow on Instagram&lt;/a&gt;
+&lt;/div&gt;</pre>
+        </div>
+    </div>
+
+    <!-- ANIMATION OPTIONS FOR 4d -->
+    <div class="option-container">
+        <div class="option-title">4d Animation Options</div>
+        <div class="option-description">Hover over each banner to see the animation effect.</div>
+    </div>
+
+    <!-- Animation A: Subtle Scale -->
+    <div class="option-container">
+        <div class="option-title">Animation A: Subtle Scale</div>
+        <div class="option-description">Title scales up slightly and link slides right on hover.</div>
+        
+        <div class="working-on-banner-v4d working-on-banner-v4d-anim-a">
+            <p class="label">🎬 IN PRODUCTION</p>
+            <h3>A Piece of Cake</h3>
+            <a href="https://instagram.com/aPieceOfCakeFilm" target="_blank">Follow on Instagram</a>
+        </div>
+
+        <div class="code-section">
+            <div class="code-label">CSS (add to your stylesheet)</div>
+            <pre>.working-on-banner-v4d-anim-a:hover h3 {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.working-on-banner-v4d-anim-a a {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.working-on-banner-v4d-anim-a a:hover {
+    transform: translateX(5px);
+}</pre>
+        </div>
+    </div>
+
+    <!-- Animation B: Underline Slide -->
+    <div class="option-container">
+        <div class="option-title">Animation B: Underline Slide</div>
+        <div class="option-description">Link underline slides in from left to right.</div>
+        
+        <div class="working-on-banner-v4d working-on-banner-v4d-anim-b">
+            <p class="label">🎬 IN PRODUCTION</p>
+            <h3>A Piece of Cake</h3>
+            <a href="https://instagram.com/aPieceOfCakeFilm" target="_blank">Follow on Instagram</a>
+        </div>
+
+        <div class="code-section">
+            <div class="code-label">CSS (add to your stylesheet)</div>
+            <pre>.working-on-banner-v4d-anim-b a {
+    position: relative;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.working-on-banner-v4d-anim-b a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #c1272d;
+    transition: width 0.3s ease;
+}
+
+.working-on-banner-v4d-anim-b a:hover::after {
+    width: 100%;
+}</pre>
+        </div>
+    </div>
+
+    <!-- Animation C: Full Banner Lift -->
+    <div class="option-container">
+        <div class="option-title">Animation C: Full Banner Lift</div>
+        <div class="option-description">Entire banner lifts up with subtle shadow.</div>
+        
+        <div class="working-on-banner-v4d working-on-banner-v4d-anim-c">
+            <p class="label">🎬 IN PRODUCTION</p>
+            <h3>A Piece of Cake</h3>
+            <a href="https://instagram.com/aPieceOfCakeFilm" target="_blank">Follow on Instagram</a>
+        </div>
+
+        <div class="code-section">
+            <div class="code-label">CSS (add to your stylesheet)</div>
+            <pre>.working-on-banner-v4d-anim-c {
+    transition: all 0.3s ease;
+}
+
+.working-on-banner-v4d-anim-c:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(193, 39, 45, 0.1);
+}</pre>
+        </div>
+    </div>
+
+    <!-- Animation D: Icon Spin -->
+    <div class="option-container">
+        <div class="option-title">Animation D: Icon Spin & Letter Spacing</div>
+        <div class="option-description">Emoji spins and title spreads out on hover.</div>
+        
+        <div class="working-on-banner-v4d working-on-banner-v4d-anim-d">
+            <p class="label"><span class="emoji">🎬</span> IN PRODUCTION</p>
+            <h3>A Piece of Cake</h3>
+            <a href="https://instagram.com/aPieceOfCakeFilm" target="_blank">Follow on Instagram</a>
+        </div>
+
+        <div class="code-section">
+            <div class="code-label">CSS (add to your stylesheet)</div>
+            <pre>.working-on-banner-v4d-anim-d .emoji {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.working-on-banner-v4d-anim-d:hover .emoji {
+    transform: rotate(360deg);
+}
+
+.working-on-banner-v4d-anim-d:hover h3 {
+    letter-spacing: 2px;
+}</pre>
+        </div>
+    </div>
+
+    <!-- Animation E: Glow Effect -->
+    <div class="option-container">
+        <div class="option-title">Animation E: Glow Effect</div>
+        <div class="option-description">Title glows and letter spacing increases on hover.</div>
+        
+        <div class="working-on-banner-v4d working-on-banner-v4d-anim-e">
+            <p class="label">🎬 IN PRODUCTION</p>
+            <h3>A Piece of Cake</h3>
+            <a href="https://instagram.com/aPieceOfCakeFilm" target="_blank">Follow on Instagram</a>
+        </div>
+
+        <div class="code-section">
+            <div class="code-label">CSS (add to your stylesheet)</div>
+            <pre>.working-on-banner-v4d-anim-e h3 {
+    transition: all 0.3s ease;
+}
+
+.working-on-banner-v4d-anim-e:hover h3 {
+    text-shadow: 0 0 10px rgba(193, 39, 45, 0.3);
+    letter-spacing: 1px;
+}</pre>
+        </div>
+    </div>
+
+    <!-- Animation F: Background Fade -->
+    <div class="option-container">
+        <div class="option-title">Animation F: Background Fade</div>
+        <div class="option-description">Background color shifts to a slightly darker cream on hover.</div>
+        
+        <div class="working-on-banner-v4d working-on-banner-v4d-anim-f">
+            <p class="label">🎬 IN PRODUCTION</p>
+            <h3>A Piece of Cake</h3>
+            <a href="https://instagram.com/aPieceOfCakeFilm" target="_blank">Follow on Instagram</a>
+        </div>
+
+        <div class="code-section">
+            <div class="code-label">CSS (add to your stylesheet)</div>
+            <pre>.working-on-banner-v4d-anim-f {
+    background: #fff9e1;
+    transition: all 0.3s ease;
+}
+
+.working-on-banner-v4d-anim-f:hover {
+    background: #fff5cc;
+}</pre>
+        </div>
+    </div>
+
+</body>
+</html>
