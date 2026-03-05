@@ -635,6 +635,8 @@ footer .subheading {
   vertical-align: middle;
   width: 100%;
   cursor: pointer;
+    touch-action: manipulation; /* Prevents touch delays on mobile */
+    user-select: none; /* Prevent text selection on touch */
 }
 
 .imgColumn .picture:hover {
@@ -1053,6 +1055,9 @@ footer .subheading {
   font-weight: 600;
   font-size: 16px;
   transition: all 0.3s ease;
+    touch-action: manipulation; /* Prevents touch delays on mobile */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1); /* Visual feedback on tap */
+    user-select: none; /* Prevent text selection on touch */
 }
 
 .filter-btn:hover {

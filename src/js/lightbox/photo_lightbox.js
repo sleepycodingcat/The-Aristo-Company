@@ -9,6 +9,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let visibleImages = Array.from(allImages)
   let currentIndex = 0
 
+  // Add data-index to all images initially
+  function updateImageIndices() {
+    visibleImages.forEach((img, index) => {
+      img.setAttribute('data-index', index)
+    })
+  }
+  updateImageIndices()
+
   // LIGHTBOX FUNCTIONALITY
   // Get the modal
   const modal = document.getElementById("myModal")
@@ -97,9 +105,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to open modal with image
   function openModal(img) {
-    // Find the index of the clicked image in the visible images array
-    currentIndex = visibleImages.indexOf(img)
-    if (currentIndex === -1) currentIndex = 0 // Fallback if not found
+    // Get index from data attribute with indexOf fallback for safety
+    const imgIndex = parseInt(img.getAttribute("data-index"), 10)
+    const fallbackIndex = visibleImages.indexOf(img)
+    currentIndex =
+      !Number.isNaN(imgIndex) && imgIndex >= 0 && imgIndex < visibleImages.length
+        ? imgIndex
+        : fallbackIndex >= 0
+          ? fallbackIndex
+          : 0
 
     showSlide(currentIndex)
   }
@@ -110,9 +124,15 @@ document.addEventListener("DOMContentLoaded", () => {
     return false // Prevent default
   }
 
-  // Add click event to each image to open modal
+  // Add click and touch events to each image to open modal
   allImages.forEach((img) => {
     img.addEventListener("click", function () {
+      openModal(this)
+    })
+    
+    // Add touch event for mobile
+    img.addEventListener("touchend", function (e) {
+      e.preventDefault()
       openModal(this)
     })
   })
@@ -162,9 +182,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // FILTERING FUNCTIONALITY
-  // Add click event to each filter button
+  // Add click and touch event to each filter button
   filterButtons.forEach((button) => {
-    button.addEventListener("click", function () {
+    const handleFilter = function(e) {
+      // Prevent default and stop propagation to avoid double triggers on mobile
+      e.preventDefault()
+      e.stopPropagation()
+      
       // Remove active class from all buttons
       filterButtons.forEach((btn) => btn.classList.remove("active"))
 
@@ -231,6 +255,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Update visibleImages array in visual reading order
       visibleImages = getImagesInVisualOrder()
+      
+      // Update data-index attributes for new visible images
+      updateImageIndices()
+    }
+    
+    // Add both click and touchend events
+    button.addEventListener("click", handleFilter)
+    button.addEventListener("touchend", function(e) {
+      // Check if this was a tap (not a scroll)
+      if (Math.abs(touchStartX - e.changedTouches[0].screenX) < 10) {
+        handleFilter.call(this, e)
+      }
+    })
+    
+    // Track touch start for swipe detection
+    let touchStartX = 0
+    button.addEventListener("touchstart", function(e) {
+      touchStartX = e.changedTouches[0].screenX
     })
   })
 
@@ -282,6 +324,12 @@ document.addEventListener("DOMContentLoaded", () => {
       clonedImg.addEventListener("click", function () {
         openModal(this)
       })
+      
+      // Add touch event for mobile reliability
+      clonedImg.addEventListener("touchend", function (e) {
+        e.preventDefault()
+        openModal(this)
+      })
 
       // Add click event to any stick figures in the cloned container
       const clonedStick = clonedContainer.querySelector(".hoverStickPpl")
@@ -315,6 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Keep original DOM on first paint (faster first load)
   visibleImages = getImagesInVisualOrder()
+  updateImageIndices()
 })
 
 // Function to close modal (referenced in HTML)
