@@ -48,8 +48,13 @@ jobs:
           mkdir -p docs/dist
           cp -r dist/photos docs/dist/
 
+      - name: Ensure .nojekyll
+        run: |
+          touch docs/.nojekyll
+
       - name: Update HTML relative paths
         run: |
+          find docs -maxdepth 1 -name "*.html" -type f -exec sed -i 's|../../../archive/|archive/|g' {} \;
           find docs -maxdepth 1 -name "*.html" -type f -exec sed -i 's|../../../dist/|dist/|g' {} \;
           find docs -maxdepth 1 -name "*.html" -type f -exec sed -i 's|../../styles/|styles/|g' {} \;
           find docs -maxdepth 1 -name "*.html" -type f -exec sed -i 's|../../assets/|assets/|g' {} \;
