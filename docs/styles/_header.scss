@@ -487,7 +487,7 @@ header{
 .sideNav {
   h1,
   #btecBtn {
-    font-size: 1.35rem;
+    font-size: 3rem;
     margin: 10px 0 6px 0;
     line-height: 1;
     text-decoration-thickness: 2px;
@@ -505,16 +505,17 @@ header{
     text-decoration: none;
     font-family: "League Spartan", sans-serif;
     color: black;
-    font-size: 1.12rem;
-    font-weight: 600;
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     position: relative;
     transition: all 0.25s ease;
     z-index: 1;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 8px;
-    padding: 8px 0;
+    padding: 9px 0;
     margin: 0;
     min-height: 0;
   }
@@ -549,9 +550,14 @@ header{
   }
 
   .sidebar-submenu a {
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
     padding: 6px 0;
+  }
+
+  .sidebar-submenu a::after {
+    content: none !important;
   }
 }
 
@@ -572,17 +578,21 @@ header{
   .sideNav {
     h1,
     #btecBtn {
-      font-size: 1.6rem;
+      font-size: 3.2rem;
     }
 
     a,
     .sidebar-accordion-toggle {
-      font-size: 1.2rem;
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
       padding: 9px 0;
     }
 
     .sidebar-submenu a {
-      font-size: 1.06rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
     }
   }
 
@@ -595,17 +605,21 @@ header{
   .sideNav {
     h1,
     #btecBtn {
-      font-size: 1.9rem;
+      font-size: 3.6rem;
     }
 
     a,
     .sidebar-accordion-toggle {
-      font-size: 1.35rem;
+      font-size: 2.9rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
       padding: 11px 0;
     }
 
     .sidebar-submenu a {
-      font-size: 1.12rem;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
     }
   }
 

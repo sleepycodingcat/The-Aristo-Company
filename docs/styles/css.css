@@ -685,6 +685,33 @@ footer .subheading {
   color: #c1272d;
 }
 
+/* Social links container */
+.social-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Social media buttons */
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #c1272d;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background-color: #a01f24;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
 /* Copyright text */
 .copyright {
   font-size: 0.8rem;
