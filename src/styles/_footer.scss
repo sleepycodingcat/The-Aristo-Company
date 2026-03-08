@@ -58,7 +58,7 @@ footer .subheading {
 .social-container {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
@@ -67,17 +67,22 @@ footer .subheading {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color:$aristoRed;
-  color: white;
+  background-color: $aristoRed !important;
+  color: white !important;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   text-decoration: none;
   transition: all 0.3s ease;
+
+  svg {
+    color: white;
+    fill: white;
+  }
 }
 
 .social-link:hover {
-  background-color: #a01f24;
+  background-color: #a01f24 !important;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
