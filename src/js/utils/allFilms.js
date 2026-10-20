@@ -8,6 +8,8 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
 
 let featuredPlayer
 window.onYouTubeIframeAPIReady = () => {
+  // The commercial page uses the lightbox but has no featured film
+  if (!document.getElementById("featuredPlayer")) return
   featuredPlayer = new YT.Player("featuredPlayer", {
     height: "100%",
     width: "100%",
@@ -41,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
   filmItems.forEach((item) => {
     item.addEventListener("click", function () {
       const videoId = this.getAttribute("data-id")
+      const instagramId = this.getAttribute("data-instagram") // Commercial page reels
       const title = this.getAttribute("data-title")
       const desc = this.getAttribute("data-desc")
       const btsLink = this.getAttribute("data-bts-link") // Get the BTS link
@@ -48,7 +51,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const year = this.getAttribute("data-year")
       const role = this.getAttribute("data-role")
 
-      lightboxPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`
+      // Instagram reels are vertical, so the lightbox switches to a narrower layout
+      const igBtn = document.getElementById("igBtn")
+      if (instagramId) {
+        lightboxPlayer.src = `https://www.instagram.com/p/${instagramId}/embed/`
+        lightbox.classList.add("is-vertical")
+      } else {
+        lightboxPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`
+        lightbox.classList.remove("is-vertical")
+      }
+      if (igBtn) {
+        igBtn.href = `https://www.instagram.com/p/${instagramId}/`
+        igBtn.style.display = instagramId ? "inline-block" : "none"
+      }
       lightboxTitle.textContent = title
       lightboxDesc.innerHTML = desc.replace('|', '<br><br>')
       // Build metadata line
@@ -87,4 +102,18 @@ document.addEventListener("DOMContentLoaded", () => {
     lightboxPlayer.src = ""
     document.body.style.overflow = "auto"
   }
+
+  // Commercial page: filter the social reels by category
+  const socialFilters = document.querySelectorAll(".social-filters .filter-btn")
+  socialFilters.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      socialFilters.forEach((b) => b.classList.remove("active"))
+      btn.classList.add("active")
+      const filter = btn.getAttribute("data-filter")
+      document.querySelectorAll(".social-tile").forEach((tile) => {
+        const show = filter === "all" || tile.getAttribute("data-category") === filter
+        tile.style.display = show ? "" : "none"
+      })
+    })
+  })
 })

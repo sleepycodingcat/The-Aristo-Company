@@ -17,7 +17,8 @@ Live at https://rachell-aristo.github.io/The-Aristo-Company/
 ## Where things live
 
 - Pages: `src/html/pages/*.html`. Shared sidebar/footer: `src/html/components/`, loaded at runtime by `src/js/utils/script.js`.
-- Styles: `src/styles/main.scss` + `_*.scss` partials, compiled to `src/styles/css.css`, which is the file pages link. Recompile it after editing SCSS.
+- Styles: `src/styles/main.scss` + `_*.scss` partials, compiled to `src/styles/css.css`, which is the file pages link. **`css.css` has hand edits that are not in the SCSS** (e.g. the Instagram grid), so recompiling would delete them. Until they're ported back, make style changes in both the `.scss` partial and `css.css`.
+- Video pages: `otherMediaHome.html` is **Narrative** (YouTube films, lightbox in `allFilms.js`); `commercial.html` is **Commercial** (horizontal promos in the same lightbox, plus Instagram reel embeds). The header is copied into every page, not a component, so nav changes must be made on each page.
 - JS: `src/js/utils/` (navigation, films, PDFs, click effect) and `src/js/lightbox/` (photo and BTS galleries).
 - Images: thumbnails/stills in `src/assets/media/`, logos in `src/assets/logos/`, photography in `dist/photos/webp/` with fallbacks in `dist/photos/compressed/`.
 - `archive/` holds old material referenced by some BTS pages; the deploy workflow copies it to `docs/archive/`.
