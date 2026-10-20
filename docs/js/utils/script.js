@@ -24,8 +24,20 @@ async function fetchComponentHtml(fileName) {
   throw new Error(`Failed to load component: ${fileName}`)
 }
 
+// Underline the header link for the page we're on (styled via aria-current)
+function markCurrentHeaderLink() {
+  const currentPage = decodeURIComponent(window.location.pathname.split("/").pop())
+  document.querySelectorAll("header > a").forEach((link) => {
+    if (link.getAttribute("href") === currentPage) {
+      link.setAttribute("aria-current", "page")
+    }
+  })
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
+  markCurrentHeaderLink()
+
   // Load sidebar without blocking other startup work
   loadSidebar()
 

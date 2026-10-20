@@ -98,6 +98,7 @@ header {
 }
 header h1, header #btecBtn {
   font-size: clamp(30px, 2.8vw, 50px); /* Min 16px, max 24px, responsive in between */
+  font-weight: 500; /* lighter than the logo so the nav doesn't compete with it */
   margin: 20px 10px 0px 10px; /* Add horizontal spacing */
   white-space: nowrap; /* Prevent text wrapping */
 }
@@ -139,6 +140,56 @@ header button {
 }
 #menuIcon:hover {
   color: #c1272d; /* Change color on hover */
+}
+
+/* Header nav: small spaced capitals next to the logo, menu icon on the far right.
+   The HTML stays Title Case; the capitals come from text-transform. */
+header {
+  justify-content: flex-start;
+}
+
+header #logoContainer {
+  margin-right: clamp(24px, 5vw, 80px);
+}
+
+header > a {
+  margin-right: clamp(12px, 2.5vw, 40px);
+}
+
+header > a:hover {
+  color: black;
+}
+
+header > a h1 {
+  position: relative;
+  font-size: clamp(15px, 1.35vw, 20px);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Red underline: always shown for the current page, slides in on hover */
+header > a h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0.18em; /* skip the letter-spacing after the last letter */
+  bottom: -8px;
+  height: 2px;
+  background: #c1272d;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+header > a:hover h1::after,
+header > a[aria-current="page"] h1::after {
+  transform: scaleX(1);
+}
+
+header #menuIcon {
+  margin-left: auto;
+  font-size: clamp(28px, 2.6vw, 38px);
 }
 
 #videoLogo {
@@ -514,7 +565,7 @@ header button {
   font-family: "League Spartan", sans-serif;
   color: black;
   font-size: 2.4rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.5px;
   position: relative;
   transition: all 0.25s ease;
@@ -559,7 +610,7 @@ header button {
 
 .sideNav .sidebar-submenu a {
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.3px;
   padding: 6px 0;
 }
@@ -590,14 +641,14 @@ header button {
   .sideNav a,
   .sideNav .sidebar-accordion-toggle {
     font-size: 2.6rem;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 0.5px;
     padding: 9px 0;
   }
 
   .sideNav .sidebar-submenu a {
     font-size: 2.2rem;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 0.3px;
   }
 
@@ -615,14 +666,14 @@ header button {
   .sideNav a,
   .sideNav .sidebar-accordion-toggle {
     font-size: 2.9rem;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 0.5px;
     padding: 11px 0;
   }
 
   .sideNav .sidebar-submenu a {
     font-size: 2.4rem;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 0.3px;
   }
 
@@ -1971,28 +2022,51 @@ footer .subheading {
 
 #featuredFilm {
   margin: 4rem auto;
-  max-width: 1200px;
+  max-width: 1400px; /* same as #filmGrid, so both section title lines line up */
   padding: 0 1rem;
 }
 
-#featuredFilm h2 {
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
-  color: #c1272d;
-  text-align: center;
-  position: relative;
+/* Section titles: a red tab sitting on a red line that runs across the section */
+#featuredFilm h2,
+#filmGrid h2,
+#socialGrid h2 {
+  display: flex;
+  margin: 0 auto 2rem;
+  padding: 0;
+  border-bottom: 3px solid #c1272d;
+  line-height: 1;
+  font-size: clamp(18px, 1.6vw, 24px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: left;
 }
 
-#featuredFilm h2:after {
-  content: "";
-  position: absolute;
-  width: 80px;
-  height: 3px;
+.section-tab {
   background: #c1272d;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
+  color: white;
+  padding: 0.35em 0.9em 0.25em;
 }
+
+/* Commercial page: filters start at the left edge, in line with the section title */
+@media (min-width: 600px) {
+  .commercial-section .social-filters {
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .commercial-section .social-filters .filter-btn:first-child {
+    margin-left: 0;
+  }
+}
+
+/* On phones the 2x2 filter grid spans the full width, like the title line */
+@media (max-width: 599px) {
+  .commercial-section .social-filters {
+    max-width: none;
+    padding: 0;
+  }
+}
+
 
 .featured-container {
   display: flex;
@@ -2103,24 +2177,6 @@ footer .subheading {
   padding: 0 1rem;
 }
 
-#filmGrid h2, #socialGrid h2 {
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
-  color: #c1272d;
-  text-align: center;
-  position: relative;
-}
-
-#filmGrid h2:after, #socialGrid h2:after {
-  content: "";
-  position: absolute;
-  width: 80px;
-  height: 3px;
-  background: #c1272d;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
 
 .masonry-grid {
   display: grid;
@@ -2130,26 +2186,34 @@ footer .subheading {
   grid-gap: 1.5rem;
 }
 
-/* Commercial page: centre the few promos instead of leaving empty columns */
+/* Commercial page: stretch the few promos across the row instead of leaving empty columns */
 .promo-grid {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  max-width: 1144px;
-  margin: 0 auto;
 }
 
-/* Commercial page: vertical reel tiles. Flex (not grid) so a filtered row stays centred */
+/* Commercial page: vertical reel tiles. Rows start at the left edge, in line with the section title */
 .masonry-grid.social-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1.5rem;
-  max-width: 1144px;
-  margin: 0 auto;
 }
 
 .social-grid .masonry-item {
-  flex: 0 1 200px;
+  flex: 0 0 calc((100% - 4 * 1.5rem) / 5); /* 5 across, ending flush with the title line */
   aspect-ratio: 9/16;
+}
+
+@media (max-width: 1100px) {
+  .social-grid .masonry-item {
+    flex-basis: calc((100% - 3 * 1.5rem) / 4);
+  }
+}
+
+@media (max-width: 800px) {
+  .social-grid .masonry-item {
+    flex-basis: calc((100% - 2 * 1.5rem) / 3);
+  }
 }
 
 @media (max-width: 600px) {
