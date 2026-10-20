@@ -45,6 +45,7 @@ jobs:
 
       - name: Copy dist (photos)
         run: |
+          rm -rf docs/dist
           mkdir -p docs/dist
           cp -r dist/photos docs/dist/
 
