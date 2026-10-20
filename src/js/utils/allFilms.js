@@ -116,4 +116,25 @@ document.addEventListener("DOMContentLoaded", () => {
       })
     })
   })
+
+  // Commercial page: repeat the client logos until one set fills the strip, then double it
+  // so that scrolling the track by half loops without a jump
+  const logoTrack = document.querySelector(".logo-track")
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  if (logoTrack && logoTrack.children.length && !reduceMotion) {
+    const originals = [...logoTrack.children]
+    const addCopy = () => {
+      originals.forEach((li) => {
+        const copy = li.cloneNode(true)
+        copy.setAttribute("aria-hidden", "true") // screen readers hear each client once
+        logoTrack.appendChild(copy)
+      })
+    }
+    logoTrack.classList.add("is-scrolling")
+    while (logoTrack.offsetWidth < logoTrack.parentElement.clientWidth) addCopy()
+    const copiesPerSet = logoTrack.children.length / originals.length
+    for (let i = 0; i < copiesPerSet; i++) addCopy()
+    // steady speed (about 50px a second) however long the strip is
+    logoTrack.style.setProperty("--marquee-duration", `${logoTrack.offsetWidth / 2 / 50}s`)
+  }
 })
