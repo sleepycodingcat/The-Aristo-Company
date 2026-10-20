@@ -24,28 +24,51 @@
 
 #featuredFilm {
   margin: 4rem auto;
-  max-width: 1200px;
+  max-width: 1400px; /* same as #filmGrid, so both section title lines line up */
   padding: 0 1rem;
 }
 
-#featuredFilm h2 {
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
-  color: $aristoRed;
-  text-align: center;
-  position: relative;
+/* Section titles: a red tab sitting on a red line that runs across the section */
+#featuredFilm h2,
+#filmGrid h2,
+#socialGrid h2 {
+  display: flex;
+  margin: 0 auto 2rem;
+  padding: 0;
+  border-bottom: 3px solid $aristoRed;
+  line-height: 1;
+  font-size: clamp(18px, 1.6vw, 24px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: left;
 }
 
-#featuredFilm h2:after {
-  content: '';
-  position: absolute;
-  width: 80px;
-  height: 3px;
-  background:$aristoRed;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
+.section-tab {
+  background: $aristoRed;
+  color: white;
+  padding: 0.35em 0.9em 0.25em;
 }
+
+/* Commercial page: filters start at the left edge, in line with the section title */
+@media (min-width: 600px) {
+  .commercial-section .social-filters {
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .commercial-section .social-filters .filter-btn:first-child {
+    margin-left: 0;
+  }
+}
+
+/* On phones the 2x2 filter grid spans the full width, like the title line */
+@media (max-width: 599px) {
+  .commercial-section .social-filters {
+    max-width: none;
+    padding: 0;
+  }
+}
+
 
 .featured-container {
   display: flex;
@@ -153,24 +176,6 @@
   padding: 0 1rem;
 }
 
-#filmGrid h2, #socialGrid h2 {
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
-  color: $aristoRed;
-  text-align: center;
-  position: relative;
-}
-
-#filmGrid h2:after, #socialGrid h2:after {
-  content: '';
-  position: absolute;
-  width: 80px;
-  height: 3px;
-  background: $aristoRed;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
 
 .masonry-grid {
   display: grid;
@@ -180,26 +185,34 @@
   grid-gap: 1.5rem;
 }
 
-/* Commercial page: centre the few promos instead of leaving empty columns */
+/* Commercial page: stretch the few promos across the row instead of leaving empty columns */
 .promo-grid {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  max-width: 1144px;
-  margin: 0 auto;
 }
 
-/* Commercial page: vertical reel tiles. Flex (not grid) so a filtered row stays centred */
+/* Commercial page: vertical reel tiles. Rows start at the left edge, in line with the section title */
 .masonry-grid.social-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1.5rem;
-  max-width: 1144px;
-  margin: 0 auto;
 }
 
 .social-grid .masonry-item {
-  flex: 0 1 200px;
+  flex: 0 0 calc((100% - 4 * 1.5rem) / 5); /* 5 across, ending flush with the title line */
   aspect-ratio: 9/16;
+}
+
+@media (max-width: 1100px) {
+  .social-grid .masonry-item {
+    flex-basis: calc((100% - 3 * 1.5rem) / 4);
+  }
+}
+
+@media (max-width: 800px) {
+  .social-grid .masonry-item {
+    flex-basis: calc((100% - 2 * 1.5rem) / 3);
+  }
 }
 
 @media (max-width: 600px) {
