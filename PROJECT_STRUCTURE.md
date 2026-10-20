@@ -6,7 +6,7 @@ This is a simplified, clean structure that's easy to maintain and scale.
 
 ```
 src/                    → All your working files (HTML, JS, CSS, assets)
-dist/photos/            → Optimized photos (WebP, compressed PNG)
+dist/photos/            → Optimized photos (WebP, plus JPEG fallbacks)
 archive/                → Old projects (keep for reference)
 ```
 
@@ -47,9 +47,9 @@ The-Aristo-Company/
 │       ├── photos/               # Source photos (before optimization)
 │       └── media/                # BTS content, storyboards, etc.
 │
-├── dist/photos/                  # Optimized photos (WebP & PNG)
+├── dist/photos/                  # Optimized photos (WebP & JPEG)
 │   ├── webp/                     # Use these for best performance
-│   └── compressed/               # Fallback for older browsers
+│   └── compressed/               # JPEG fallback for older browsers
 │
 ├── archive/                      # Old projects/content (reference only)
 │
@@ -81,7 +81,7 @@ From `src/html/pages/mediaPhotography.html`:
 <link href="../../styles/css.css">
 <script src="../../js/lightbox/photo_lightbox.js"></script>
 <img src="../../assets/logos/Favicon.png">
-<img src="../../dist/photos/webp/photo-name.webp">
+<img src="../../../dist/photos/webp/photo-name.webp">   <!-- dist/ is at the repo root, so three levels up -->
 ```
 
 ---

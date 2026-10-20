@@ -49,6 +49,11 @@ jobs:
           mkdir -p docs/dist
           cp -r dist/photos docs/dist/
 
+      - name: Copy archive
+        run: |
+          rm -rf docs/archive
+          cp -r archive docs/
+
       - name: Ensure .nojekyll
         run: |
           touch docs/.nojekyll

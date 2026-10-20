@@ -20,5 +20,6 @@ Live at https://rachell-aristo.github.io/The-Aristo-Company/
 - Styles: `src/styles/main.scss` + `_*.scss` partials, compiled to `src/styles/css.css`, which is the file pages link. Recompile it after editing SCSS.
 - JS: `src/js/utils/` (navigation, films, PDFs, click effect) and `src/js/lightbox/` (photo and BTS galleries).
 - Images: thumbnails/stills in `src/assets/media/`, logos in `src/assets/logos/`, photography in `dist/photos/webp/` with fallbacks in `dist/photos/compressed/`.
-- `archive/` holds old material. It is referenced by some BTS pages, but the deploy workflow does not copy it.
-- Paths from a page look like `../../styles/css.css`, `../../dist/photos/webp/x.webp`. Keep that form so the workflow's path rewriting works.
+- `archive/` holds old material referenced by some BTS pages; the deploy workflow copies it to `docs/archive/`.
+- Paths from a page look like `../../styles/css.css`, `../../assets/…`, and `../../../dist/photos/webp/x.webp` (`dist/` and `archive/` are at the repo root, one level further up). Keep that form so local preview works and the workflow's path rewriting works.
+- GitHub Pages is case-sensitive but macOS isn't: match file name capitalisation exactly.
