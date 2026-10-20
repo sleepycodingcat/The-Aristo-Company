@@ -2047,6 +2047,78 @@ footer .subheading {
   padding: 0.35em 0.9em 0.25em;
 }
 
+/* Small caption above the logo strip, in the header's spaced capitals so it stays quieter than the red section tabs */
+.clients-label {
+  margin: 0 0 1.25rem;
+  padding-left: 0.22em; /* balances the letter-spacing after the last letter so it centres */
+  text-align: center;
+  text-transform: uppercase;
+  font-size: clamp(13px, 1.05vw, 16px);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: #777;
+}
+
+/* Commercial page: scrolling strip of client logos. Each logo is a single-colour PNG used
+   as a mask, so its colour comes from background-color here. */
+.logo-marquee {
+  overflow: hidden;
+  /* soft fade at both ends */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.logo-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+/* Spacing is padding on each logo (not gap) so the duplicated sets loop seamlessly */
+.logo-track li {
+  padding: 0 clamp(24px, 3vw, 48px);
+}
+
+.client-logo {
+  display: block;
+  height: calc(clamp(44px, 4.5vw, 64px) * var(--logo-scale, 1));
+  background-color: #111;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  transition: background-color 0.2s ease;
+}
+
+.client-logo:hover {
+  background-color: #c1272d;
+}
+
+/* allFilms.js adds .is-scrolling once it has duplicated the logos enough to fill the strip */
+.logo-track.is-scrolling {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  width: max-content;
+  animation: logo-scroll var(--marquee-duration, 30s) linear infinite;
+}
+
+.logo-marquee:hover .logo-track.is-scrolling {
+  animation-play-state: paused;
+}
+
+@keyframes logo-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* Commercial page: filters start at the left edge, in line with the section title */
 @media (min-width: 600px) {
   .commercial-section .social-filters {
@@ -2171,7 +2243,7 @@ footer .subheading {
 }
 
 /* MASONRY GRID STYLES */
-#filmGrid, #socialGrid {
+#filmGrid, #socialGrid, #clients {
   margin: 4rem auto;
   max-width: 1400px;
   padding: 0 1rem;
