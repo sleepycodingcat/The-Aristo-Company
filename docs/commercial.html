@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercial - The Aristo Company</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="styles/css.css">
+    <link rel="icon" href="assets/logos/Favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- SEO TAGS (ADD BELOW) -->
+    <meta name="description" content="Commercial and social media video work by Rachell Aristo, a Hong Kong student filmmaker.">
+
+    <!-- OPEN GRAPH/SOCIAL TAGS -->
+    <meta property="og:title" content="Rachell Aristo | Commercial Work">
+    <meta property="og:description" content="Rachell Aristo - promos and social media video work">
+    <meta property="og:image" content="https://rachell-aristo.github.io/The-Aristo-Company/assets/seo/og_image_APOC.png">
+    <meta property="og:url" content="https://rachell-aristo.github.io/The-Aristo-Company/commercial.html">
+    <meta property="og:type" content="website">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z20GTZGMZ5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Z20GTZGMZ5');
+    </script>
+</head>
+<body>
+    <div class="aristo-preloader">
+        <div class="loader__filmstrip"></div>
+        <h2 class="loader__text">Loading...</h2>
+    </div>
+  <header>
+      <div id="logoContainer">
+          <a href="index.html"><video playsinline muted id="videoLogo" src="assets/logos/Logo video.mp4"></video></a>
+          <a href="index.html"><img id="staticLogo" src="assets/logos/The Aristo Company logo.png" alt="The Aristo Company Logo"></a>
+      </div>
+
+      <a href="otherMediaHome.html">
+          <h1>NARRATIVE</h1>
+      </a>
+
+      <a href="commercial.html">
+          <h1>COMMERCIAL</h1>
+      </a>
+
+      <a href="mediaPhotography.html">
+          <h1>PHOTOS</h1>
+      </a>
+
+
+      <button onclick="openNav()" id="menuIcon" class="material-symbols-outlined">
+          menu
+      </button>
+    </header>
+
+        <div id="sidebar-placeholder"></div>
+
+<!-- Promos (horizontal, YouTube) - same lightbox as the films page -->
+<section id="filmGrid">
+    <h2>BRANDED CONTENT</h2>
+    <div class="masonry-grid promo-grid">
+
+        <!-- Film Stylo 2025 trailer -->
+        <div class="masonry-item" data-id="5CPSqUov3Xg" data-title="Film Stylo 2025: High Hopes | Trailer" data-desc="Trailer for the films selected for Babel Film Workshop's Film Stylo 2025 contest." data-runtime="" data-year="2025" data-role="Editor">
+            <img src="https://img.youtube.com/vi/5CPSqUov3Xg/maxresdefault.jpg" alt="Film Stylo 2025 trailer">
+            <div class="film-caption">
+                <h3>Film Stylo 2025</h3>
+                <p>Babel Film Workshop · Trailer</p>
+            </div>
+        </div>
+
+        <!-- Come Alive -->
+        <div class="masonry-item" data-id="T4TdrFHx6Kc" data-title="Come Alive!" data-desc="A promotional video for origami products at the KGV 2023 Mini Enterprise Fair." data-bts-link="ComeAliveBTS.html" data-runtime="0:40" data-year="2025" data-role="Director/DP/Editor">
+            <img src="assets/media/Come Alive thumbnail.png" alt="Come Alive! Ad">
+            <div class="film-caption">
+                <h3>Come Alive!</h3>
+                <p>Product ad</p>
+            </div>
+        </div>
+
+        <!-- HK Wanderlust -->
+        <div class="masonry-item" data-id="WELbl7RLxYE" data-title="HK Wanderlust" data-desc="A mock travel ad that takes you exploring the beauty of Hong Kong." data-bts-link="LiveHKBTS.html" data-runtime="2:22" data-year="2024" data-role="Director/Editor/Actor">
+            <img src="assets/media/Wadnerlust thumbnail.png" alt="HK Wanderlust">
+            <div class="film-caption">
+                <h3>HK Wanderlust</h3>
+                <p>Travel advert</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Social media work (vertical, Instagram) -->
+<section id="socialGrid">
+    <h2>SOCIAL MEDIA</h2>
+    <div class="gallery-filters social-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="food">Food &amp; Hospitality</button>
+        <button class="filter-btn" data-filter="sport">Sport &amp; Events</button>
+        <button class="filter-btn" data-filter="art">Art</button>
+    </div>
+    <!-- To add a reel: copy a .social-tile, set data-instagram to the post ID (the part after /reel/ or /p/ in its link),
+         data-category to food / sport / art, and add a cover image to assets/media/commercial/. Newest first. -->
+    <div class="masonry-grid social-grid">
+
+        <div class="masonry-item social-tile" data-instagram="DdsEaj1PJZE" data-category="food" data-title="Baking Maniac" data-desc="Interviewing the founder on creating interlocking bunny cookies for a luxury brand&#x27;s Mid-Autumn set. One of the bakery&#x27;s most-engaged reels." data-year="Sep 2026" data-role="Interviewer/Videographer/Editor">
+            <img src="assets/media/commercial/baking-maniac.jpg" alt="Baking Maniac: Behind the product" loading="lazy">
+            <div class="film-caption">
+                <h3>Baking Maniac</h3>
+                <p>Behind the product</p>
+            </div>
+        </div>
+
+        <div class="masonry-item social-tile" data-instagram="DcShVXuv7uS" data-category="sport" data-title="DY7 Football Academy" data-desc="A youth street football tournament&#x27;s unusual rules, revealed one by one through a condensed match." data-year="Aug 2026" data-role="Director/Producer/Videographer/Editor">
+            <img src="assets/media/commercial/dy7-rules.jpg" alt="DY7 Football Academy: Tournament teaser" loading="lazy">
+            <div class="film-caption">
+                <h3>DY7 Football Academy</h3>
+                <p>Tournament teaser</p>
+            </div>
+        </div>
+
+        <div class="masonry-item social-tile" data-instagram="DajTiYPz9MJ" data-category="sport" data-title="DY7 Football Academy" data-desc="A vibey teaser following a player as they prepare for a street football tournament." data-year="Jul 2026" data-role="Director/Producer/Videographer/Editor">
+            <img src="assets/media/commercial/dy7-tournament.jpg" alt="DY7 Football Academy: Tournament teaser" loading="lazy">
+            <div class="film-caption">
+                <h3>DY7 Football Academy</h3>
+                <p>Tournament teaser</p>
+            </div>
+        </div>
+
+        <div class="masonry-item social-tile" data-instagram="DXlBER5kpRx" data-category="art" data-title="Babel Film Workshop" data-desc="Interview with the Best Editing winner at the 3rd Babel Film Awards." data-year="Apr 2026" data-role="Interviewer/Videographer/Editor">
+            <img src="assets/media/commercial/babel-awards-interview.jpg" alt="Babel Film Workshop: Award winner interview" loading="lazy">
+            <div class="film-caption">
+                <h3>Babel Film Workshop</h3>
+                <p>Award winner interview</p>
+            </div>
+        </div>
+
+        <div class="masonry-item social-tile" data-instagram="DV-uHa4Euo0" data-category="art" data-title="Babel Film Workshop" data-desc="The Interns, Ep. 9: two interns battle over their Babel Film Awards outfits." data-year="Mar 2026" data-role="Director">
+            <img src="assets/media/commercial/babel-the-interns.jpg" alt="Babel Film Workshop: Microdrama episode" loading="lazy">
+            <div class="film-caption">
+                <h3>Babel Film Workshop</h3>
+                <p>Microdrama episode</p>
+            </div>
+        </div>
+
+        <div class="masonry-item social-tile" data-instagram="DSVAwzXki_F" data-category="food" data-title="InterContinental Grand Stanford HK" data-desc="The hotel&#x27;s Christmas festivities, captured for its holiday campaign." data-year="Dec 2025" data-role="Videographer/Editor">
+            <img src="assets/media/commercial/intercontinental-christmas.jpg" alt="InterContinental Grand Stanford HK: Seasonal campaign" loading="lazy">
+            <div class="film-caption">
+                <h3>InterContinental Grand Stanford HK</h3>
+                <p>Seasonal campaign</p>
+            </div>
+        </div>
+
+        <div class="masonry-item social-tile" data-instagram="DQ_130lkmAp" data-category="food" data-title="Hoi King Heen" data-desc="New dishes from a two-chef collaboration at the restaurant." data-year="Nov 2025" data-role="Videographer/Editor">
+            <img src="assets/media/commercial/hoi-king-heen.jpg" alt="Hoi King Heen: Menu launch" loading="lazy">
+            <div class="film-caption">
+                <h3>Hoi King Heen</h3>
+                <p>Menu launch</p>
+            </div>
+        </div>
+
+        <div class="masonry-item social-tile" data-instagram="DNX12SPzVuW" data-category="sport" data-title="Asian Amateur Chess Championships" data-desc="Showcasing the tension of the tournament with a dramatic montage." data-year="Aug 2025" data-role="Videographer/Editor">
+            <img src="assets/media/commercial/chess-montage.jpg" alt="Asian Amateur Chess Championships: Event highlights" loading="lazy">
+            <div class="film-caption">
+                <h3>Asian Amateur Chess Championships</h3>
+                <p>Event highlights</p>
+            </div>
+        </div>
+
+        <div class="masonry-item social-tile" data-instagram="DNVrsSjSJK_" data-category="food" data-title="The Mistral" data-desc="The Mistral&#x27;s new pizza pasta bowl, filmed from the dish&#x27;s point of view." data-year="Aug 2025" data-role="Videographer/Editor">
+            <img src="assets/media/commercial/mistral-pizza-pasta-bowl.jpg" alt="The Mistral: Dish launch" loading="lazy">
+            <div class="film-caption">
+                <h3>The Mistral</h3>
+                <p>Dish launch</p>
+            </div>
+        </div>
+
+        <div class="masonry-item social-tile" data-instagram="DNCVYUYxNYt" data-category="sport" data-title="Asian Amateur Chess Championships" data-desc="Players from across Asia share how to say &quot;checkmate&quot; in their country&#x27;s language." data-year="Aug 2025" data-role="Interviewer/Videographer/Editor">
+            <img src="assets/media/commercial/chess-checkmate.jpg" alt="Asian Amateur Chess Championships: Event vox pop" loading="lazy">
+            <div class="film-caption">
+                <h3>Asian Amateur Chess Championships</h3>
+                <p>Event vox pop</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Film Lightbox - Side-by-side layout -->
+<div id="filmLightbox" class="lightbox">
+    <div class="lightbox-content">
+        <span class="close-btn material-symbols-outlined">close</span>
+        <div class="lightbox-container">
+            <div class="lightbox-media">
+                <iframe id="lightboxPlayer" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle"></h3>
+                <p id="lightboxMeta"></p>
+                <p id="lightboxDesc"></p>
+                <a href="ComeAliveBTS.html" id="btsBtn" class="btn">Behind the Scenes</a>
+                <a href="#" id="igBtn" class="btn" target="_blank" rel="noopener noreferrer">Watch on Instagram</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="footer-placeholder"></div>
+
+
+    <script src="js/utils/script.js"></script>
+    <script src="js/utils/allFilms.js"></script>
+    <script type="module" src="js/utils/click-spark.js"></script>
+</body>
+</html>

@@ -2097,13 +2097,13 @@ footer .subheading {
 }
 
 /* MASONRY GRID STYLES */
-#filmGrid {
+#filmGrid, #socialGrid {
   margin: 4rem auto;
   max-width: 1400px;
   padding: 0 1rem;
 }
 
-#filmGrid h2 {
+#filmGrid h2, #socialGrid h2 {
   font-size: 1.8rem;
   margin-bottom: 2rem;
   color: #c1272d;
@@ -2111,7 +2111,7 @@ footer .subheading {
   position: relative;
 }
 
-#filmGrid h2:after {
+#filmGrid h2:after, #socialGrid h2:after {
   content: "";
   position: absolute;
   width: 80px;
@@ -2128,6 +2128,120 @@ footer .subheading {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-auto-rows: 1fr; /* Makes all rows same height */
   grid-gap: 1.5rem;
+}
+
+/* Commercial page: centre the few promos instead of leaving empty columns */
+.promo-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1144px;
+  margin: 0 auto;
+}
+
+/* Commercial page: vertical reel tiles. Flex (not grid) so a filtered row stays centred */
+.masonry-grid.social-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 1144px;
+  margin: 0 auto;
+}
+
+.social-grid .masonry-item {
+  flex: 0 1 200px;
+  aspect-ratio: 9/16;
+}
+
+@media (max-width: 600px) {
+  .social-grid .masonry-item {
+    flex-basis: calc(50% - 0.75rem);
+  }
+}
+
+/* Reel covers often have text burned in, so the hover caption needs a near-solid backing */
+.social-grid .film-caption {
+  padding-top: 7rem;
+  background: none;
+  isolation: isolate; /* keeps the backing layer above the cover image */
+}
+
+/* The backing lives on its own layer so the fade never touches the caption text */
+.social-grid .film-caption::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(8px); /* smudges any burned-in text that still shows through */
+  -webkit-backdrop-filter: blur(8px);
+  /* eased fade over the top 7rem, then solid behind the text */
+  mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0) calc(7rem * 0),
+    rgba(0,0,0,0.013) calc(7rem * 0.081),
+    rgba(0,0,0,0.049) calc(7rem * 0.155),
+    rgba(0,0,0,0.104) calc(7rem * 0.225),
+    rgba(0,0,0,0.175) calc(7rem * 0.29),
+    rgba(0,0,0,0.259) calc(7rem * 0.353),
+    rgba(0,0,0,0.352) calc(7rem * 0.412),
+    rgba(0,0,0,0.45) calc(7rem * 0.471),
+    rgba(0,0,0,0.55) calc(7rem * 0.529),
+    rgba(0,0,0,0.648) calc(7rem * 0.588),
+    rgba(0,0,0,0.741) calc(7rem * 0.647),
+    rgba(0,0,0,0.825) calc(7rem * 0.71),
+    rgba(0,0,0,0.896) calc(7rem * 0.775),
+    rgba(0,0,0,0.951) calc(7rem * 0.845),
+    rgba(0,0,0,0.987) calc(7rem * 0.919),
+    rgba(0,0,0,1) calc(7rem * 1));
+  -webkit-mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0) calc(7rem * 0),
+    rgba(0,0,0,0.013) calc(7rem * 0.081),
+    rgba(0,0,0,0.049) calc(7rem * 0.155),
+    rgba(0,0,0,0.104) calc(7rem * 0.225),
+    rgba(0,0,0,0.175) calc(7rem * 0.29),
+    rgba(0,0,0,0.259) calc(7rem * 0.353),
+    rgba(0,0,0,0.352) calc(7rem * 0.412),
+    rgba(0,0,0,0.45) calc(7rem * 0.471),
+    rgba(0,0,0,0.55) calc(7rem * 0.529),
+    rgba(0,0,0,0.648) calc(7rem * 0.588),
+    rgba(0,0,0,0.741) calc(7rem * 0.647),
+    rgba(0,0,0,0.825) calc(7rem * 0.71),
+    rgba(0,0,0,0.896) calc(7rem * 0.775),
+    rgba(0,0,0,0.951) calc(7rem * 0.845),
+    rgba(0,0,0,0.987) calc(7rem * 0.919),
+    rgba(0,0,0,1) calc(7rem * 1));
+}
+
+.social-grid .film-caption h3 {
+  font-size: 1.05rem;
+}
+
+#igBtn {
+  margin: 0;
+}
+
+/* Lightbox playing a vertical Instagram reel */
+.lightbox.is-vertical .lightbox-content {
+  max-width: 900px;
+}
+
+.lightbox.is-vertical .lightbox-media {
+  background: white;
+}
+
+.lightbox.is-vertical .lightbox-media::before {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .lightbox.is-vertical .lightbox-media {
+    flex: 0 0 420px;
+  }
+}
+
+@media (max-width: 899px) {
+  .lightbox.is-vertical .lightbox-media {
+    flex: 0 0 65vh;
+  }
 }
 
 .masonry-item {
